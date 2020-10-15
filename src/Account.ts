@@ -1,3 +1,5 @@
+
+/*
 import { IUser } from "./IUser";
 
 
@@ -22,3 +24,4 @@ export class Account {
         throw new Error("Method not implemented.");
     }
 }
+*/

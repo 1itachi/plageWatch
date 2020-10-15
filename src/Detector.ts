@@ -1,3 +1,4 @@
+/*
 import { Color } from "./Color";
 import { IDetector } from "./IDetector";
 import { IParser } from "./IParser";
@@ -32,3 +33,4 @@ export class Detector implements IDetector {
     }
 
 }
+*/

@@ -1,3 +1,5 @@
+// do not generate this with diagram
+/*
 import { IUser } from "./IUser";
 
 //did you mean this to be abstract class or class?
@@ -49,3 +51,4 @@ export abstract class User implements IUser {
         }
     }
 }
+*/
