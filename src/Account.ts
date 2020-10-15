@@ -1,3 +1,4 @@
+// Do not generate UML with this.
 
 /*
 import { IUser } from "./IUser";
