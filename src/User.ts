@@ -1,6 +1,6 @@
 import { IUser } from "./IUser";
 
-//did you mean this to be abstract class or class? 
+//did you mean this to be abstract class or class?
 export abstract class User implements IUser {
     private readonly userID: string;
     private userName: string;
@@ -48,5 +48,4 @@ export abstract class User implements IUser {
             return false;
         }
     }
-
 }

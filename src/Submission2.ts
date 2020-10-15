@@ -1,6 +1,7 @@
 import { ISubmission } from "./ISubmission";
 
-//Do we need to add the submission name(the details of the student who uploaded the doc?? something to identify the submission)
+//Do we need to add the submission name(the details of the student who
+// uploaded the doc?? something to identify the submission)
 export class Submission implements ISubmission {
     private submissionData: string;
 
@@ -8,8 +9,5 @@ export class Submission implements ISubmission {
         this.submissionData = submissionData;
     }
 
-    getSubmissionData(): string {
-        return this.submissionData;
-    }
-
+    getSubmissionData(): string { return; }
 }

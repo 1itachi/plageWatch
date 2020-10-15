@@ -12,8 +12,5 @@ export class Parser implements IParser {
     }
 
     //why is there 2 submissiondata in this class??
-    parse(submissionData: string): string {
-        throw new Error("Method not implemented.");
-    }
-
+    parse(submissionData: string): string { return; }
 }
