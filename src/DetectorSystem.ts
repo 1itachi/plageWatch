@@ -1,3 +1,5 @@
+// Do not generate UML with this.
+
 /*
 import { ISubmission } from "./ISubmission";
 
