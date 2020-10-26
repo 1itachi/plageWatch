@@ -1,3 +1,6 @@
+// Do not generate UML with this.
+
+/*
 import { IParser } from "./IParser";
 import { ISubmission } from "./ISubmission";
 
@@ -17,3 +20,4 @@ export class Parser implements IParser {
     }
 
 }
+*/

@@ -1,7 +1,10 @@
+// Do not generate UML with this.
+
+/*
 import { User } from "./User";
 
 export class Instructor extends User {
-   
+
     private emailAddress: string;
 
     constructor(userID: string, userName: string, password: string, emailAddress: string) {
@@ -14,3 +17,4 @@ export class Instructor extends User {
     }
 
 }
+*/

@@ -1,6 +1,8 @@
+// do not generate this with diagram
+/*
 import { IUser } from "./IUser";
 
-// Made the classes with method stubs to follow report specs.
+//did you mean this to be abstract class or class?
 export abstract class User implements IUser {
     private readonly userID: string;
     private userName: string;
@@ -12,19 +14,41 @@ export abstract class User implements IUser {
         this.password = password;
     }
 
-    getUserID(): string { return; }
+    getUserID(): string {
+        return this.userID;
+    }
 
-    getUserName(): string { return; }
+    getUserName(): string {
+        return this.userName;
+    }
 
     verifyPassword(password: string): boolean {
-        return false;
+        if (this.password === password) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     changeUserName(username: string, password: string): boolean {
-        return false;
+        if (this.password === password) {
+            this.userName = username;
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     changePassword(currPassword: string, newPassword: string): boolean {
-        return false;
+        if (this.password === currPassword) {
+            this.password = newPassword;
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }
+*/
