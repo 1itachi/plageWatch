@@ -1,4 +1,4 @@
-import { Color } from "./Color";
+import { Color } from "../Enums/Color";
 import { IParser } from "./IParser";
 
 export interface IDetector {
