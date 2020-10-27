@@ -1,28 +1,10 @@
-// Do not generate UML with this.
-
-/*
 import { IUser } from "./IUser";
 
-
-//not used anywhere
 export class Account {
-    constructor() {
-    }
+    constructor() { }
 
-    register(user: IUser): void {
-        throw new Error("Method not implemented.");
-    }
-
-    login(user: IUser): boolean {
-        throw new Error("Method not implemented.");
-    }
-
-    logout(user: IUser): void {
-        throw new Error("Method not implemented.");
-    }
-
-    deleteAccount(user: IUser): void {
-        throw new Error("Method not implemented.");
-    }
+    register(user: IUser): void { }
+    login(user: IUser): boolean { return; }
+    logout(user: IUser): void { }
+    deleteAccount(user: IUser): void { }
 }
-*/
