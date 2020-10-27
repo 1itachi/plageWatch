@@ -1,6 +1,6 @@
 // Do not generate UML with this.
 
-/*
+
 import { User } from "./User";
 
 export class Instructor extends User {
@@ -17,4 +17,4 @@ export class Instructor extends User {
     }
 
 }
-*/
+

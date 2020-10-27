@@ -1,6 +1,5 @@
 // Do not generate UML with this.
 
-/*
 import { ISubmission } from "./ISubmission";
 
 export class DetectorSystem {
@@ -25,4 +24,4 @@ export class DetectorSystem {
         throw new Error("Method not implemented.");
     }
 }
-*/
+
