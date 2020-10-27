@@ -1,6 +1,6 @@
 // Do not generate UML with this.
 
-import { Color } from "./Color";
+import { Color } from "../Enums/Color";
 import { IDetector } from "./IDetector";
 import { IParser } from "./IParser";
 
