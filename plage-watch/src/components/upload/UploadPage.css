@@ -1,0 +1,25 @@
+.upload-text {
+    text-align: center;
+    color: #384C74;
+    font-family: Lucida Console, Courier, monospace;
+    margin-top: 50px;
+ }
+
+ .card-upload {
+    background-color: white;
+    padding: 32px;
+    width: 50%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
+    box-sizing: border-box;
+  }
+
+  .plagirism-button{
+    /*Change the width as much as you like, but make sure 
+    margin-left and margin-right + width = 100%*/
+    width:50%;
+    margin-left:25%;
+    margin-right:25%;
+}
