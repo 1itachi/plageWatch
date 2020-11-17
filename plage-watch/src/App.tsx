@@ -1,17 +1,11 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import MainPage from './components/main/Main';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Welcome to team 28 plagewatch!!
-        </p>
-        <p>Page under construction.......</p>
-      </header>
+      <MainPage/>
     </div>
   );
 }
