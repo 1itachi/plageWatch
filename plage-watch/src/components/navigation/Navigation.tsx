@@ -6,15 +6,15 @@ export default class NavBar extends React.Component {
   render() {
     return (
       <Navbar
-        sticky={'top'}
+        // sticky={'top'}
         collapseOnSelect
         expand="lg"
-        className="header-margin"
+        className="header-margin navbar-style"
         variant="light"
       >
         <div className="col-sm-6 row center">
           <img className="ml-4 plagewatch-image-style" src={detect} alt="detect" />
-          <h1 className="mt-4 nav-text-style"> PlageWatch</h1>
+          <h1 className="mt-3 nav-text-style"> PlageWatch</h1>
         </div>
        </Navbar>
 
