@@ -1,4 +1,4 @@
-.upload-text {
+.upload-text, .directions {
     text-align: center;
     color: #384C74;
     font-family: Lucida Console, Courier, monospace;
@@ -20,6 +20,11 @@
    background-color: #476EEC;
 }
 
+.cancel-button{
+  background-color: #FF0000;
+  margin-right: 60px;
+}
+
 .check-button:hover{
     color: yellow;
     transform: scale(1.1);
@@ -31,7 +36,11 @@
     align-items: center;
   }
 
-  .sub-style {  
+  .sub-style {
     margin-left: 25%;
     margin-right: 25%;
+  }
+
+  .h2 {
+    color: darkblue;
   }
