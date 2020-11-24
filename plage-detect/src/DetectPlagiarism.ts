@@ -1,4 +1,3 @@
-var diff = require('deep-diff').diff
 var _ = require('lodash');
 
 //provided array of two nodes
@@ -19,10 +18,6 @@ export default class DetectPlagiarism {
     detect(){
         //loop through first submission
         let result  =  {}
-
-        let ignoredProperties = ['loc', 'start', 'range', 'leadingComments', 'innerComments', 'trailingComments','extra','end', 
-        'sourceType','interpreter', 'name']
-
         let totalLinesInSubmission1 = 0
         let numberOfFilesMatched = 0
         let  numberOfLinesPlagiarised = 0
@@ -47,13 +42,8 @@ export default class DetectPlagiarism {
                         file2.forEach(node2=>{
                             //check if the node is sub-nested
                             if(_.has(node2,'body')|| _.has(node2,'expression')|| _.has(node2,'arguments')|| _.has(node2,'init') || _.has(node2,'declarations')){  
-                     
-                                let difference = diff(node1, node2, function(path, key) {
-                                return ignoredProperties.indexOf(key) >= 0;
-                            });
-
-                             //if plagiarism is found
-                                if(difference === undefined){
+                                 //if plagiarism is found
+                                if(this.compare(node1, node2)===true){
                                     //add lines to sets of file 1
                                     for(let i = node1.loc.start.line ; i<=node1.loc.end.line; i++){
                                         lineSet1.add(i)
@@ -85,7 +75,6 @@ export default class DetectPlagiarism {
             })
 
             numberOfLinesPlagiarised = (numberOfLinesPlagiarised + linesPLagiarisedInFile.size) 
-            // console.log(counter)
         })
 
 
@@ -97,6 +86,43 @@ export default class DetectPlagiarism {
 
 
 
-   
+    private compare (obj1, obj2):boolean {
+
+        //properties to ignore while comparing
+        let ignoredProperties = ['loc', 'start', 'range', 'leadingComments', 'innerComments', 'trailingComments','extra','end', 
+    'sourceType','interpreter', 'name']
+
+            //Loop through properties in object 1
+
+        for (var p in obj1) {
+
+            if(ignoredProperties.includes(p)) continue;
+
+            //Check property exists on both objects
+            if (obj1.hasOwnProperty(p) !== obj2.hasOwnProperty(p)) return false;
+
+            
+            switch (typeof (obj1[p])) {
+                //Deep compare objects
+                case 'object':
+                    if (!this.compare(obj1[p], obj2[p])) return false;
+                    break;
+                //Compare function code
+                case 'function':
+                    if (typeof (obj2[p]) == 'undefined' || (p != 'compare' && obj1[p].toString() != obj2[p].toString())) return false;
+                    break;
+                //Compare values
+                default:
+                    if (obj1[p] != obj2[p]) return false;
+            }
+        }
+     
+        //Check object 2 for any extra properties
+        for (var p in obj2) {
+            if(ignoredProperties.includes(p)) continue;
+            if (typeof (obj1[p]) == 'undefined') return false;
+        }
+        return true;
+    };
 
 }
