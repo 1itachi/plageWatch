@@ -60,13 +60,25 @@ export default class DetectPlagiarism {
                         })
                     }
                 })
-
+                    //
                     //add the lines for respoective files
                     if(lineSet1.size!==0 && lineSet2.size!=0){
                         numberOfFilesMatched = numberOfFilesMatched+1
                         let plageObject = {}
-                        plageObject[this.file1NameMap[index1]] = Array.from(lineSet1)
-                        plageObject[this.file2NameMap[index2]] = Array.from(lineSet2)
+                        // plageObject[this.file1NameMap[index1]] = Array.from(lineSet1)
+                        // plageObject[this.file2NameMap[index2]] = Array.from(lineSet2)
+                        // //build plagiarised object
+                        let sub1Object = {
+                            "file" : this.file1NameMap[index1],
+                            "lines" : Array.from(lineSet1)
+                        }
+                        let sub2Object = {
+                            "file" : this.file2NameMap[index2],
+                            "lines" : Array.from(lineSet2)
+                        }
+
+                        plageObject['submission1'] = sub1Object
+                        plageObject['submission2'] = sub2Object
         
                         result[numberOfFilesMatched] = plageObject
     
