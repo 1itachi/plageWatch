@@ -1,45 +1,51 @@
 import React from 'react';
-import { Col, Jumbotron, Row } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 import CodePage from './CodePage';
-import ReactSpeedometer from "react-d3-speedometer"
-
+import ReactSpeedometer from "react-d3-speedometer";
+import * as fs from 'fs';
 function CodeArea(props: any) {
+
+    const readFiles = (path:any)=>{
+    //    const  selectedFile = "./Sample1.js";
+    // const reader = new FileReader();
+    // reader.onload = (e) => {
+    //     const text = reader.result.toString().trim();
+    //     console.log(text);
+    // }
+    // reader.readAsText("./Sample1.js");
+        const text = fs.readFileSync('./Sample1.js');
+        console.log(text)
+
+    }
 
     return (
         <>
             <Row>
                 <Col md={5}>
                     <CodePage
-                        code={props.code1}
-                        filename={props.filename1}
-                        plagiarized_code_lines={props.plagiarized_code1_lines}
+                        code={readFiles('')}
+                        filename={props.plagiarism_data[props.index].submission1.file}
+                        plagiarized_code_lines={props.plagiarism_data[props.index].submission1.lines}
                     />
                 </Col>
-                <Col md={2} className='my-auto test'>
+                <Col md={2} className='my-auto speedometer'>
                 <ReactSpeedometer
                  value={50}
                  maxValue={100}
                 //  fluidWidth={true}
                 width={180}
+                height={120}
                 />
                     </Col>
                 <Col md={5}>
                     <CodePage
-                        code={props.code2}
-                        filename={props.filename2}
-                        plagiarized_code_lines={props.plagiarized_code2_lines}
+                        code={readFiles(props.plagiarism_data[props.index].submission2.file)}
+                        filename={props.plagiarism_data[props.index].submission2.file}
+                        plagiarized_code_lines={props.plagiarism_data[props.index].submission2.lines}
                     />
                 </Col>
             </Row>
-            {/* <Row>
-            <Col md={5}>
-            <div>hi</div>
-                </Col>
-                <Col md={2} className='my-auto'></Col>
-                <Col md={5}>
-                    <div className=''>hi</div>
-                </Col>
-            </Row> */}
+         
         </>
     );
 
