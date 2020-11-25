@@ -6,12 +6,16 @@ export default class DetectPlagiarism {
     private submission2:Array<Array<any>>
     private file1NameMap = {}
     private file2NameMap = {}
+    private fileSubmission1 = {}
+    private fileSubmission2 = {}
 
-    constructor(submission1, submission2, file1NameMap, file2NameMap ){
+    constructor(submission1, submission2, file1NameMap, file2NameMap, fileSubmission1, fileSubmission2 ){
         this.submission1 = submission1
         this.submission2 = submission2
         this.file1NameMap = file1NameMap
         this.file2NameMap = file2NameMap
+        this.fileSubmission1 = fileSubmission1
+        this.fileSubmission2 = fileSubmission2
     }   
 
 
@@ -89,7 +93,8 @@ export default class DetectPlagiarism {
             numberOfLinesPlagiarised = (numberOfLinesPlagiarised + linesPLagiarisedInFile.size) 
         })
 
-
+        result['submission1'] = this.fileSubmission1
+        result['submission2'] = this.fileSubmission2
         result['score'] = (numberOfLinesPlagiarised/totalLinesInSubmission1) * 100
 
         return result
