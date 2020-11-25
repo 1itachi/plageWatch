@@ -8,26 +8,25 @@ export default class Upload extends React.Component {
     state = {
         file1: '',
         file2: '',
-        diabled: true
+        disabled: true
     }
 
 
+    /* Check for plagiarism, disable until the upload is completed. */
     runPlagiarism() {
+
         console.log("hi");
     }
 
-
-
     render() {
+        // @ts-ignore
         return (
             <div className="mt-4">
                 <h1 className="center upload-text">Upload Folders To
                 Detect For Plagiarism!!</h1>
                 <h3 className="center directions">
-                    Please upload all student submissions to transfer
-                    to the PlageWatch system for similarity analysis.
-                    Supported formats for file transfer includes:
-                    .js
+                    Please upload two submissions to run plagiarism.
+                    Supported formats for file transfer: .js
                 </h3>
                 <div className="container-fluid  row flex">
                     <div className="col-sm-6  mt-4 center sub-style">
@@ -40,16 +39,12 @@ export default class Upload extends React.Component {
                     </div>
                     <div className="col-sm-12 mt-4 center">
 
-                        <div className="btn border rounded cancel-button text-light p-2" onClick={this.runPlagiarism}>
-                            <i className="fas fa-times"> </i>
-                            <span> Cancel</span>
-                        </div>
-
                         <br></br>
 
                         <div className="btn border rounded check-button text-light p-2" onClick={this.runPlagiarism}>
-                            <i className="fas fa-search"> </i>
-                            <span> Check Plagiarism</span>
+                            <button className={"primary"}>
+                                <i className="fas fa-search"> </i>
+                                Check Plagiarism</button>
                         </div>
 
 

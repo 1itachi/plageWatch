@@ -1,7 +1,8 @@
 import React from "react";
-import Navbar from "./../navigation/Navigation";
-import Upload from './../upload/UploadPage';
+import Navbar from "../navigation/Navigation";
+import Upload from '../upload/UploadPage';
 import './Login.css';
+// import detect from './../../images/plagewatch.jpg';
 import detect from './../../images/plagewatch.jpg';
 import { Link } from "react-router-dom";
 
