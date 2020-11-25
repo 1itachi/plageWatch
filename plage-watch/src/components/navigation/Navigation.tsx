@@ -17,8 +17,6 @@ export default class NavBar extends React.Component {
           <h1 className="mt-3 nav-text-style"> PlageWatch</h1>
         </div>
        </Navbar>
-
-
     );
   }
 }

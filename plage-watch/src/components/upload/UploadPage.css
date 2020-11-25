@@ -1,4 +1,4 @@
-.upload-text {
+.upload-text, .directions {
     text-align: center;
     color: #384C74;
     font-family: Lucida Console, Courier, monospace;
@@ -8,7 +8,7 @@
  .card-upload {
     background-color: white;
     padding: 32px;
-    width: 50%;
+    width: 200%;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
@@ -16,10 +16,31 @@
     box-sizing: border-box;
   }
 
-  .plagirism-button{
-    /*Change the width as much as you like, but make sure 
-    margin-left and margin-right + width = 100%*/
-    width:50%;
-    margin-left:25%;
-    margin-right:25%;
+.check-button{
+   background-color: #476EEC;
 }
+
+.cancel-button{
+  background-color: #FF0000;
+  margin-right: 60px;
+}
+
+.check-button:hover{
+    color: yellow;
+    transform: scale(1.1);
+}
+
+.center{
+    display:flex;
+    justify-content:center;
+    align-items: center;
+  }
+
+  .sub-style {
+    margin-left: 25%;
+    margin-right: 25%;
+  }
+
+  .h2 {
+    color: darkblue;
+  }
