@@ -3,11 +3,28 @@ import './UploadPage.css'
 import Dropzone from 'react-dropzone';
 import Drop from './DropZone';
 
+{/* For this page (Deepak's Instructions):
+
+1) Maintain a state for file upload 1.
+2) Maintain a state for file upload 2.
+3) Maintain a state for button active.
+4) Change state of button only if the other two
+states are true. */}
+
 export default class Upload extends React.Component {
 
-    state = {
+    /** Make separate states for each file upload and button. */
+    file1State = {
         file1: '',
-        file2: '',
+        disabled: true
+    }
+
+    file2State = {
+        file1: '',
+        disabled: true
+    }
+
+    fileButtonState = {
         disabled: true
     }
 

@@ -2,6 +2,14 @@ import React from "react";
 import './Results.css'
 import detect from './../../images/plagewatch.jpg'
 
+{/* For this page:
+
+1) Display the results side by side for both student submissions.
+2) Get the results from the plagiarism findings of the algo.
+3) Display each file and line that plagiarism occurred.
+4) Finally, display the similarity score as a 'read more' type of
+dropdown. */}
+
 export default class Results extends React.Component {
     render() {
         return (
@@ -14,19 +22,6 @@ export default class Results extends React.Component {
                 </div>
 
                 <div className="container col-sm-6 row center">
-                    {/*
-                     Plagiarism (%):
-                    {
-                    '1': {
-                    './src/test1/Sample2Copy.js': [ 3, 4, 5 ],
-                    './src/test2/Sample3.js': [ 3, 4, 5 ]
-                    },
-                    '2': {
-                    './src/test1/fib1.js': [ 12, 13 ],
-                    './src/test2/fib2.js': [ 13, 14 ]
-                    },
-                    score: 25
-                    */}
 
                     {/* Hardcoded for now. */}
                     <div className="row">
