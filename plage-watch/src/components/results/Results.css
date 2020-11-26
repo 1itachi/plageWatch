@@ -1,4 +1,22 @@
-.h1 {
+h3 {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 6;
     color: red;
-    border: orangered;
+}
+
+p {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 4;
+}
+
+.similarity {
+    font-family: Arial, Helvetica, sans-serif;
+    color: green;
+    background-color: greenyellow;
+}
+
+.student1, .student2 {
+    font-family: Arial, Helvetica, sans-serif;
+    color: blue;
+    background-color: lightblue;
 }

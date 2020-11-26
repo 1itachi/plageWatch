@@ -3,24 +3,14 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 
 import MainPage from './components/main/Main';
-import LoginPage from './components/login/Login';
-import Results from "./components/results/Results";
+import UploadPage from './components/upload/UploadPage';
+import CodeCompare from './components/codecomparison/CodeCompare';
 
 function App() {
   return (
-    <Router>
-      <div>
-        <div className="App">
-          <Switch>
-            {/*
-            <Route path="/" component={LoginPage} exact />
-            */}
-            <Route path="/main" component={MainPage} />
-            <Route path="/results" component={Results} />
-          </Switch>
-        </div>
-      </div>
-    </Router>
+    <div className="App">
+      <MainPage />
+    </div>
   );
 }
 
