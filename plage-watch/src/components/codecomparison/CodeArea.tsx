@@ -4,7 +4,6 @@ import CodePage from './CodePage';
 import ReactSpeedometer from "react-d3-speedometer";
 
 interface CodeState {
-    // index: number;
     plag_code1: string;
     plag_code2: string;
     plag_lines1: Array<number>;
@@ -12,7 +11,6 @@ interface CodeState {
     plag_fileName1: string;
     plag_fileName2: string;
     plag_score: number;
-    // plagiarism_data: any;
 }
 
 interface CodeProps {
@@ -46,7 +44,7 @@ class CodeArea extends React.Component<CodeProps, CodeState> {
                 plag_lines2: plagiarism_data[index].submission2.lines,
                 plag_fileName1: plagiarism_data[index].submission1.file,
                 plag_fileName2: plagiarism_data[index].submission2.file,
-                plag_score: plagiarism_data.score,
+                plag_score: plagiarism_data.score.toFixed(2),
             });
         }
     }
@@ -89,43 +87,5 @@ class CodeArea extends React.Component<CodeProps, CodeState> {
     }
 
 }
-
-
-// function CodeArea(props: any) {
-
-//     return (
-//         <>
-//             <Row>
-//                 <Col md={5}>
-//                     <CodePage
-//                         code={props.plagiarism_data.submission1[props.plagiarism_data[props.index].submission1.file||""]||""}
-//                         filename={props.plagiarism_data[props.index].submission1.file||''}
-//                         plagiarized_code_lines={props.plagiarism_data[props.index].submission1.lines||[]}
-//                     />
-//                 </Col>
-//                 <Col md={2} className='my-auto speedometer'>
-//                     <ReactSpeedometer
-//                         value={props.plagiarism_data.score}
-//                         maxValue={100}
-//                         width={180}
-//                         height={120}
-//                         startColor='#33CC33'
-//                         endColor='red'
-//                         segments={10}
-//                     />
-//                 </Col>
-//                 <Col md={5}>
-//                     <CodePage
-//                         code={props.plagiarism_data.submission2[props.plagiarism_data[props.index].submission2.file]}
-//                         filename={props.plagiarism_data[props.index].submission2.file}
-//                         plagiarized_code_lines={props.plagiarism_data[props.index].submission2.lines}
-//                     />
-//                 </Col>
-//             </Row>
-
-//         </>
-//     );
-
-// }
 
 export default CodeArea;

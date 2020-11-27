@@ -1,7 +1,6 @@
 import React from 'react';
 import { Jumbotron } from 'react-bootstrap';
 import CodeLine from './CodeLine';
-// import './CodeCompare.css'
 
 function CodePage(props: any) {
     const LineOfCode = props.code.split( /\n/g ).map((line: string, index: number) => {
