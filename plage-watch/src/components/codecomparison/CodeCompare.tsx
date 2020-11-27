@@ -224,8 +224,9 @@ class CodeCompare extends React.Component<{}, CodeState> {
                         variant='primary'
                         className='plagiarism-buttons'
                     >
-                        Go Back
-                </Button>
+                        <a href="http://localhost:3000/home">
+                            Go Back</a>
+                    </Button>
                 </Col>
             </div>
         )

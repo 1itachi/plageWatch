@@ -4,7 +4,7 @@ import './Results.css'
 const disabled: boolean = false;
 const enabled: boolean = true;
 // make this dynamic with respect to plagiarism findings.
-let plagiarismValue: number = 0.0;
+let plagiarismValue: number = 70.0;
 
 interface ResultsState {
     checkedPlagiarism: boolean;
@@ -41,7 +41,8 @@ export default class Results extends React.Component
 
                     {/* Display the findings here:  */}
                     <div className="container-main">
-                        <h1 className={"nav-text-style"}>Plagiarism Finding Results: </h1>
+                        <h1 className={"nav-text-style"}>Plagiarism Detection
+                        Results: </h1>
                     </div>
 
                     {/** Similarity of plagiarism here, change colors
@@ -49,7 +50,8 @@ export default class Results extends React.Component
 
                     <div className="center similarity row">
                         <div className="center similarity col">
-                            <h2><strong>Similarity %: {plagiarismValue}</strong></h2>
+                            <h2><strong>Similarity Percentage:
+                                {plagiarismValue} %</strong></h2>
                         </div>
                     </div>
 
