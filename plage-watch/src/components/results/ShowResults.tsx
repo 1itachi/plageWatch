@@ -5,6 +5,7 @@
 
 import React, { useState } from 'react';
 import Results from './../results/Results';
+import CircularProgressBar from './../results/Results';
 import { ProgressBar } from 'react-onsenui';
 
 export default function ShowResults() {
@@ -14,7 +15,7 @@ export default function ShowResults() {
         <div className="container center">
             <button onClick={() => onResults(!results)} />
             {/* Add a progress bar here */}
-            <ProgressBar indeterminate />
+            <CircularProgressBar />
             {results ? (
                 <Results />
             ) : null}

@@ -35,7 +35,7 @@ export default class Results extends React.Component
 
     render() {
         return (
-            <div className="mt-4 container-wide">
+            <div className="results mt-4 container-wide">
                 <div className="container">
 
                     {/* Hardcoded for now. */}

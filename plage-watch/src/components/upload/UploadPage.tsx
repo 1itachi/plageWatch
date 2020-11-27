@@ -6,6 +6,7 @@ import './UploadPage.css'
 import Drop from './DropZone';
 import Results from './../../components/results/Results';
 import ShowResults from './../../components/results/ShowResults';
+import CircularProgressBar from './../../components/results/CircularProgressBar';
 import { Button } from "react-bootstrap";
 import { ProgressBar } from 'react-onsenui';
 
@@ -117,8 +118,9 @@ export default class Upload extends React.Component
                     </div>
 
                     <div className="progress-bar center">
-                        <label>Loading...</label>
-                        <progress id="plagiarism_check" value="55" max="100">15%</progress>
+                        <br></br>
+                        <hr></hr>
+                        <CircularProgressBar />
                         {ShowResults &&
                             <Results />}
                     </div>

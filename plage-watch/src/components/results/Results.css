@@ -20,3 +20,8 @@ p {
     color: blue;
     background-color: lightblue;
 }
+
+.results {
+    margin-top: 50px;
+    border: 2px blue;
+}
