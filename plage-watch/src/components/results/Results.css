@@ -9,10 +9,16 @@ p {
     font-size: 4;
 }
 
-.similarity {
+.similarity-good {
     font-family: Arial, Helvetica, sans-serif;
-    color: green;
-    background-color: greenyellow;
+    color: darkgreen;
+    background-color: lightgreen;
+}
+
+.similarity-bad {
+    font-family: Arial, Helvetica, sans-serif;
+    color: darkred;
+    background-color: lightpink;
 }
 
 .student1, .student2 {

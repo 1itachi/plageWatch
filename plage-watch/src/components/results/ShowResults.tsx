@@ -6,7 +6,6 @@
 import React, { useState } from 'react';
 import Results from './../results/Results';
 import CircularProgressBar from './../results/Results';
-import { ProgressBar } from 'react-onsenui';
 
 export default function ShowResults() {
     const [results, onResults] = useState(false);

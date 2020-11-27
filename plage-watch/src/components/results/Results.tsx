@@ -1,15 +1,20 @@
 import React from "react";
 import './Results.css'
-import { ProgressBar } from 'react-onsenui';
+import { green, red } from "@material-ui/core/colors";
 
 const disabled: boolean = false;
 const enabled: boolean = true;
 // make this dynamic with respect to plagiarism findings.
-let plagiarismValue: number = 70.0;
+let plagiarismValue: number = Math.floor(Math.random() * 100) + 1;
+let plagiarismColor: Object = green;
+
+// change the color based on similarity value
+const isSimilarity = false;
 
 interface ResultsState {
     checkedPlagiarism: boolean;
     plagiarismValue: number;
+    plagarismColor: Object;
 }
 
 export default class Results extends React.Component
@@ -19,16 +24,19 @@ export default class Results extends React.Component
         super(props);
         this.state = {
             checkedPlagiarism: false,
-            plagiarismValue: 0.0
+            plagiarismValue: 0.0,
+            plagarismColor: green
         }
         this.checkPlagiarism = this.checkPlagiarism.bind(this);
     }
 
     checkPlagiarism() {
         const { checkedPlagiarism, plagiarismValue } = this.state;
-        if (plagiarismValue > 70.0 && checkedPlagiarism == true) {
+        if (plagiarismValue > 70 && checkedPlagiarism === true) {
+            this.setState({ plagarismColor: red });
             this.setState({ checkedPlagiarism: enabled });
         } else {
+            this.setState({ plagarismColor: green });
             this.setState({ checkedPlagiarism: disabled });
         }
     }
@@ -37,10 +45,6 @@ export default class Results extends React.Component
         return (
             <div className="results mt-4 container-wide">
                 <div className="container">
-
-                    {/* Hardcoded for now. */}
-                    <ProgressBar indeterminate />
-                    <ProgressBar value={55} secondaryValue={87} />
                     {/* Display the findings here:  */}
                     <div className="container-main">
                         <h1 className={"nav-text-style"}>Plagiarism Detection
@@ -50,10 +54,15 @@ export default class Results extends React.Component
                     {/** Similarity of plagiarism here, change colors
                      * based on the severity of the plagiarism. */}
 
-                    <div className="center similarity row">
-                        <div className="center similarity col">
+                    {/* toggle colors here */}
+
+                    <div className={isSimilarity ? 'similarity-good' : 'similarity-bad'}>
+                        <div className="center similarity-good col">
+                            {/* Just for debug */}
+                            {/* <h2><strong>Similarity colors:
+                                &nbsp; {plagiarismColor} %</strong></h2> */}
                             <h2><strong>Similarity Percentage:
-                                {plagiarismValue} %</strong></h2>
+                                &nbsp; {plagiarismValue} %</strong></h2>
                         </div>
                     </div>
                 </div>
