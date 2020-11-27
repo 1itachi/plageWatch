@@ -1,7 +1,6 @@
 import React from 'react';
 import { Jumbotron } from 'react-bootstrap';
 import CodeLine from './CodeLine';
-// import './CodeCompare.css'
 
 function CodePage(props: any) {
     const LineOfCode = props.code.split( /\n/g ).map((line: string, index: number) => {
@@ -20,7 +19,7 @@ function CodePage(props: any) {
             <div className='progam-window-filename'>{props.filename}</div>
             <div className='ml-0'>{LineOfCode}</div>
         </Jumbotron>
-        <div className='container-fluid similarity-portion-count mb-3'>Similar Code Portion: 2/6 </div>
+    <div className='container-fluid similarity-portion-count mb-3'>Plagiarized Code Lines: {props.plagiarized_code_lines.length}/{props.code.split(/\n/g).length}</div>
         </>
     );
 
