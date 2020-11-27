@@ -2,14 +2,11 @@ import React from "react";
 import './UploadPage.css'
 import Drop from './DropZone';
 import Results from './../../components/results/Results';
-import NavBar from './../navigation/Navigation';
+import ShowResults from './../../components/results/ShowResults';
 import { Button } from "react-bootstrap";
 
 const uploaded: boolean = true;
 const notUploaded: boolean = false;
-const displayResults: boolean = true;
-const notDisplayResults: boolean = false;
-
 
 interface UploadState {
     file1Uploaded: boolean,
@@ -39,7 +36,7 @@ export default class Upload extends React.Component
     }
 
     /* Check for plagiarism, disable until the upload is completed. */
-    componentDidUpdate(prevState: any) {
+    componentDidUpdate() {
         if (this.state.checkedPlagiarism !== true) {
             const { file1Uploaded, file2Uploaded } = this.state;
             if (file1Uploaded === uploaded && file2Uploaded === uploaded) {
@@ -74,8 +71,9 @@ export default class Upload extends React.Component
     }
 
     displayResultFunction() {
-        const { displayed } = this.state;
-        this.setState({ displayed: !displayed })
+        this.setState({
+            displayed: uploaded
+        })
     }
 
     render() {
@@ -110,32 +108,19 @@ export default class Upload extends React.Component
                                 <i className="fas fa-search"> </i>
                                 Check Plagiarism </Button>
                         </div>
+                        {!this.runPlagiarism && ShowResults}
                     </div>
-
-                    <Results></Results>
 
                     <div className="col-sm-12 mt-4 center">
                         <br></br>
                         <div className="col center">
-                            <Button disabled={true}
+                            <Button disabled={!this.state.checkedPlagiarism}
                                 className="btn border rounded check-button text-light p-2">
                                 <i className="fas fa-search"> </i>
                                 <a href="/codecomparsion">Compare</a> </Button>
                         </div>
                     </div>
-                    {/* Hide results until the plagiarism button
-                    is clicked. */}
-                    {/* <Results disabled={!this.state.checkedPlagiarism} /> */}
-                    {/*
-                    {this.onClick && !this.runPlagiarism &&
-                        enabled &&
-                        <Results />}
-                    */}
-                    <br></br>
                 </div>
-                {/* Compare button to go to side by side compare page.
-                    */}
-                <br></br>
             </div>
         );
     }
