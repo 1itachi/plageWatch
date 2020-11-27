@@ -110,7 +110,6 @@ export default class Upload extends React.Component
                         <div className="col center">
                             <Button disabled={!this.state.checkedPlagiarism}
                                 className="btn border rounded check-button text-light p-2" >
-                                <i className="fas fa-search"> </i>
                                 Check Plagiarism </Button>
 
                             <br></br>
@@ -133,7 +132,6 @@ export default class Upload extends React.Component
                         <div className="col center">
                             <Button disabled={!this.state.checkedPlagiarism}
                                 className="btn border rounded check-button text-light p-2">
-                                <i className="fas fa-search"> </i>
                                 <a href="http://localhost:3000/codecomparison">Compare</a> </Button>
                         </div>
                     </div>

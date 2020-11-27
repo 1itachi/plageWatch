@@ -18,6 +18,8 @@
 
 .check-button{
    background-color: #476EEC;
+   size: fixed;
+   width: 200px;
 }
 
 .cancel-button{
