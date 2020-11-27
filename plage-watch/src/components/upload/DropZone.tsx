@@ -38,7 +38,10 @@ export default function StyledDropzone(props: any) {
     props.onChange();
   };
 
-  const { getRootProps, getInputProps } = useDropzone({ onDrop, accept: '.zip' });
+  const { getRootProps, getInputProps } = useDropzone({
+    onDrop, accept:
+      '.zip'
+  });
 
   const {
     isDragActive,

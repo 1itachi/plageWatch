@@ -54,42 +54,6 @@ export default class Results extends React.Component
                                 {plagiarismValue} %</strong></h2>
                         </div>
                     </div>
-
-                    <br></br>
-
-                    <div className="row">
-                        <div className="col-6">
-                            <div className="center student1">
-                                <h4>Student 1</h4></div>
-                            <br></br>
-                            <div className="h3-title"><h2>Plagiarism occurred at:</h2>
-                                <h3>File: src/test1/Sample2Copy.js</h3>
-                                <p>(Sample2Copy.fibonacci(): line 3)</p>
-                                <p>(Sample2Copy.fibonacci(): line 4)</p>
-                                <p>(Sample2Copy.fibonacci(): line 5)</p>
-                                <hr></hr>
-                                <h3>File: src/test1/Sample1.js</h3>
-                                <p>(Sample1.binarySearch(): line 3)</p>
-                                <p>(Sample1.binarySearch(): line 4)</p>
-                                <p>(Sample1.binarySearch(): line 5)</p>
-                            </div>
-                        </div>
-
-                        <div className="col-6">
-                            <div className="center student2">
-                                <h4>Student 2</h4></div>
-                            <br></br>
-                            <div className="h3-title"><h2>Plagiarism occurred at:</h2>
-                                <h3>File: src/test2/Sample3.js</h3>
-                                <p>(Sample3.fibonacci(): line 12)</p>
-                                <p>(Sample3.fibonacci(): line 13)</p>
-                                <hr></hr>
-                                <h3>File: src/test2/Sample4.js</h3>
-                                <p>(Sample4.BinarySearch(): line 13)</p>
-                                <p>(Sample4.BinarySearch(): line 14)</p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         );
