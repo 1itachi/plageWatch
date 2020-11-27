@@ -6,12 +6,13 @@
 import React, { useState } from 'react';
 import Results from './../results/Results';
 import CircularProgressBar from './../results/Results';
+import './Results.css'
 
 export default function ShowResults() {
     const [results, onResults] = useState(false);
 
     return (
-        <div className="container center">
+        <div className="container center results">
             <button onClick={() => onResults(!results)} />
             {/* Add a progress bar here */}
             <CircularProgressBar />

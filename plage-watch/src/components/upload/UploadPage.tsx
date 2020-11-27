@@ -117,11 +117,14 @@ export default class Upload extends React.Component
                         </div>
                     </div>
 
+                    {/* How to transition between progress bar and
+                    results here? */}
                     <div className="progress-bar center">
                         <br></br>
                         <hr></hr>
-                        <CircularProgressBar />
                         {ShowResults &&
+                            <CircularProgressBar />}
+                        {ShowResults && this.runPlagiarism &&
                             <Results />}
                     </div>
 

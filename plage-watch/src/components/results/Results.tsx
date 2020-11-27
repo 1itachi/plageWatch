@@ -9,7 +9,7 @@ let plagiarismValue: number = Math.floor(Math.random() * 100) + 1;
 let plagiarismColor: Object = green;
 
 // change the color based on similarity value
-const isSimilarity = false;
+const isSimilarity = true;
 
 interface ResultsState {
     checkedPlagiarism: boolean;
@@ -54,13 +54,8 @@ export default class Results extends React.Component
                     {/** Similarity of plagiarism here, change colors
                      * based on the severity of the plagiarism. */}
 
-                    {/* toggle colors here */}
-
                     <div className={isSimilarity ? 'similarity-good' : 'similarity-bad'}>
                         <div className="center similarity-good col">
-                            {/* Just for debug */}
-                            {/* <h2><strong>Similarity colors:
-                                &nbsp; {plagiarismColor} %</strong></h2> */}
                             <h2><strong>Similarity Percentage:
                                 &nbsp; {plagiarismValue} %</strong></h2>
                         </div>

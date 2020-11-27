@@ -29,5 +29,7 @@ p {
 
 .results {
     margin-top: 50px;
-    border: 2px blue;
+    border-color: blue;
+    border: 1px solid;
+    padding: 2px;
 }
