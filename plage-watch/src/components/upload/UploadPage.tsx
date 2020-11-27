@@ -1,9 +1,13 @@
+// Source for progress bar:
+// https://www.w3schools.com/tags/tag_meter.asp
+
 import React from "react";
 import './UploadPage.css'
 import Drop from './DropZone';
 import Results from './../../components/results/Results';
 import ShowResults from './../../components/results/ShowResults';
 import { Button } from "react-bootstrap";
+import { ProgressBar } from 'react-onsenui';
 
 const uploaded: boolean = true;
 const notUploaded: boolean = false;
@@ -107,11 +111,17 @@ export default class Upload extends React.Component
                                 className="btn border rounded check-button text-light p-2" >
                                 <i className="fas fa-search"> </i>
                                 Check Plagiarism </Button>
+
+                            <br></br>
                         </div>
                     </div>
 
-                    {ShowResults &&
-                        <Results />}
+                    <div className="progress-bar center">
+                        <label>Loading...</label>
+                        <progress id="plagiarism_check" value="55" max="100">15%</progress>
+                        {ShowResults &&
+                            <Results />}
+                    </div>
 
                     <div className="col-sm-12 mt-4 center">
                         <br></br>

@@ -48,3 +48,16 @@
   a{
     color: white;
   }
+
+  .progress-bar {
+    size: 4ex;
+    color: darkblue;
+    background-color: white;
+  }
+
+  progress.plagiarism-check {
+    color: blue;
+    margin-left: 50%;
+    size: 150%;
+    width: 150px;
+  }

@@ -1,6 +1,11 @@
 // Function call class to display the results.
+
+// Source (for progress bar):
+// https://onsen.io/v2/api/react/ProgressBar.html
+
 import React, { useState } from 'react';
 import Results from './../results/Results';
+import { ProgressBar } from 'react-onsenui';
 
 export default function ShowResults() {
     const [results, onResults] = useState(false);
@@ -9,6 +14,7 @@ export default function ShowResults() {
         <div className="container center">
             <button onClick={() => onResults(!results)} />
             {/* Add a progress bar here */}
+            <ProgressBar indeterminate />
             {results ? (
                 <Results />
             ) : null}

@@ -1,5 +1,6 @@
 import React from "react";
 import './Results.css'
+import { ProgressBar } from 'react-onsenui';
 
 const disabled: boolean = false;
 const enabled: boolean = true;
@@ -38,7 +39,8 @@ export default class Results extends React.Component
                 <div className="container">
 
                     {/* Hardcoded for now. */}
-
+                    <ProgressBar indeterminate />
+                    <ProgressBar value={55} secondaryValue={87} />
                     {/* Display the findings here:  */}
                     <div className="container-main">
                         <h1 className={"nav-text-style"}>Plagiarism Detection
