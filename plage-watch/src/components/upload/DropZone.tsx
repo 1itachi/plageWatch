@@ -1,4 +1,4 @@
-import React, { useMemo, useState, Fragment } from 'react';
+import React, { useMemo } from 'react';
 import { useDropzone } from 'react-dropzone';
 
 const baseStyle = {
@@ -30,12 +30,9 @@ const rejectStyle = {
 };
 
 export default function StyledDropzone(props: any) {
-  const [files, setFiles] = useState([]);
 
   const onDrop = (acceptedFiles: any) => {
-    // setFiles(files => files.concat(...acceptedFiles));
-    setFiles(files => acceptedFiles)
-    props.onChange();
+    props.onChange(acceptedFiles);
   };
 
   const { getRootProps, getInputProps } = useDropzone({
@@ -61,7 +58,7 @@ export default function StyledDropzone(props: any) {
   ]);
 
   return (
-    <Fragment>
+    <>
       <div className="container">
         <div {...getRootProps({ style })}>
           <input {...getInputProps()} multiple={false} />
@@ -70,10 +67,10 @@ export default function StyledDropzone(props: any) {
         </div>
         <div>
           {
-            files.map((file: any) => <div>{file.path}   </div>)
+             props.submission.map((file: any, index: number) => <div key={index}>{file.path}   </div>)
           }
         </div>
       </div>
-    </Fragment>
+    </>
   );
 }
