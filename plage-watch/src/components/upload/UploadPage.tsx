@@ -5,7 +5,7 @@ import Results from './../../components/results/Results';
 import { Button } from "react-bootstrap";
 import {LinkContainer} from 'react-router-bootstrap'
 import { PieChart } from 'react-minimal-pie-chart';
-
+import runPlag from './../../services/upload';
 
 const uploaded: boolean = true;
 const notUploaded: boolean = false;
@@ -16,12 +16,14 @@ const defaultLabelStyle = {
   };
 
 interface UploadState {
-    file1Uploaded: boolean,
-    file2Uploaded: boolean,
+    file1Uploaded: boolean;
+    file2Uploaded: boolean;
 
-    displayResult: boolean,
-    displayProgress: boolean,
-    enableRunButton: boolean
+    displayResult: boolean;
+    displayProgress: boolean;
+    enableRunButton: boolean;
+    submission1Files: any;
+    submission2Files: any;
 }
 
 export default class Upload extends React.Component
@@ -34,7 +36,9 @@ export default class Upload extends React.Component
             file2Uploaded: notUploaded,
             displayResult: false,
             enableRunButton: false,
-            displayProgress: false
+            displayProgress: false,
+            submission1Files: [],
+            submission2Files: [],
         }
 
         this.uploadFile1 = this.uploadFile1.bind(this);
@@ -53,12 +57,14 @@ export default class Upload extends React.Component
         }
     }
 
-    uploadFile1() {
+    uploadFile1(submissionFile: any) {
         this.setState({ file1Uploaded: true });
+        this.setState({ submission1Files: submissionFile});
     }
 
-    uploadFile2() {
+    uploadFile2(submissionFile: any) {
         this.setState({ file2Uploaded: true });
+        this.setState({ submission2Files: submissionFile});
     }
 
     async runPlagiarism () {
@@ -68,7 +74,9 @@ export default class Upload extends React.Component
          })
     
          //api call to backend
-
+        //  console.log([this.state.submission1Files, this.state.submission2Files])
+        // const results:any = 
+        await runPlag([this.state.submission1Files, this.state.submission2Files])
 
 
         await this.setState({
@@ -105,11 +113,11 @@ export default class Upload extends React.Component
                 <div className="container-fluid mx-auto">
 
                     <div className=" mt-4 center sub-style">
-                        <Drop onChange={this.uploadFile1} />
+                        <Drop onChange={this.uploadFile1} submission={this.state.submission1Files}/>
                     </div>
 
                     <div className="mt-4 center sub-style">
-                        <Drop onChange={this.uploadFile2} />
+                        <Drop onChange={this.uploadFile2} submission={this.state.submission2Files}/>
                     </div>
 
                         <div className="col-sm mt-4 center">

@@ -1,8 +1,10 @@
 const runPlag = async (files: any) => {
 
     var data = new FormData()
+    let i: number=1;
     for (const file of files) {
-        data.append('files', file, file.name)
+        data.append(`submission${i}`, file[0], file[0].name);
+        i++
     }
 
     let results = await (await fetch(`${process.env.REACT_APP_API_ENDPOINT}/plag`, {
