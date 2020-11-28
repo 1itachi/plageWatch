@@ -19,7 +19,6 @@ function CodeArea(props: any) {
                 <ReactSpeedometer
                  value={props.plagiarism_data.score}
                  maxValue={100}
-                //  fluidWidth={true}
                 width={180}
                 height={120}
                 />

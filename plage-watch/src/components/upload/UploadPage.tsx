@@ -9,9 +9,18 @@ import ShowResults from './../../components/results/ShowResults';
 import CircularProgressBar from './../../components/results/CircularProgressBar';
 import { Button } from "react-bootstrap";
 import { ProgressBar } from 'react-onsenui';
+import {LinkContainer} from 'react-router-bootstrap'
+import { PieChart } from 'react-minimal-pie-chart';
+
+
 
 const uploaded: boolean = true;
 const notUploaded: boolean = false;
+
+const defaultLabelStyle = {
+    fontSize: '15%',
+    fontFamily: 'sans-serif',
+  };
 
 interface UploadState {
     file1Uploaded: boolean,
@@ -35,14 +44,15 @@ export default class Upload extends React.Component
             displayProgress: false
         }
 
-        // this.uploadFile1 = this.uploadFile1.bind(this);
-        // this.uploadFile2 = this.uploadFile2.bind(this);
-        // this.runPlagiarism = this.runPlagiarism.bind(this);
+        this.uploadFile1 = this.uploadFile1.bind(this);
+        this.uploadFile2 = this.uploadFile2.bind(this);
+        this.runPlagiarism = this.runPlagiarism.bind(this);
         // this.displayResultFunction = this.displayResultFunction.bind(this);
+
     }
 
     /* Check for plagiarism, disable until the upload is completed. */
-    componentDidUpdate() {
+    componentDidUpdate(prevState:any) {
         if (this.state.enableRunButton !== true) {
             const { file1Uploaded, file2Uploaded } = this.state;
             if (file1Uploaded === uploaded && file2Uploaded === uploaded) {
@@ -50,6 +60,10 @@ export default class Upload extends React.Component
                 // this.setState({ checkedResults: true });
             }
         }
+
+        // if(this.state.displayResult !== prevState.displayResult){
+        //     this.setState({displayProgress:false})
+        // }
     }
 
     uploadFile1() {
@@ -62,104 +76,117 @@ export default class Upload extends React.Component
         this.setState({ file2Uploaded: true });
     }
 
-    // runPlagiarism() {
-    //     if (this.uploadFile1 && this.uploadFile2) {
-    //         this.setState({
-    //             checkedPlagiarism: uploaded,
-    //             checkedResults: uploaded
-    //         });
-    //     } else {
-    //         this.setState({
-    //             checkedPlagiarism: !uploaded,
-    //             checkedResults: !uploaded
-    //         });
-    //     }
-    // }
-
-    // displayResultFunction() {
-    //     this.setState({
-    //         display: uploaded
-    //     })
-    // }
-
-    displayProgressBar() {
-        this.setState((prevState) => ({
-            displayProgress: !prevState.displayProgress
-        }))
-    }
-
-    runPlagiarism() {
+    async runPlagiarism () {
         //dispaly progress bar
-        this.displayProgressBar()
-        //api call to backend
+        await this.setState({
+            displayProgress : true
+         })
+    
+         //api call to backend
 
-        this.setState({
+
+
+        await this.setState({
             displayResult: true
         })
+        
+        const result:any = document.getElementById('result')
+        result.scrollIntoView({ behavior: 'smooth' })
 
         //hide progress bar
-        this.displayProgressBar()
+        await this.setState({
+            displayProgress : false
+         })
+
+
     }
 
+    data:any =[
+        { title: 'Plagiarised', value: 47, color: '#C13C37'},
+        { title: 'Not Plagiarised', value: 100-47, color: '#02A938' },
+        ]
+
+     
+
     render() {
-        // @ts-ignore
         return (
-            <div className="mt-4">
+            <div className="m-4">
                 <h1 className="center upload-text">Upload Folders To
                 Detect For Plagiarism!!</h1>
-                <h3 className="center directions">
+                <h3 className="m-4 center directions">
                     Please upload two submissions to run plagiarism.
                     Supported formats for file transfer: .js
                 </h3>
-                <div className="container-fluid center row flex">
+                <div className="container-fluid mx-auto">
 
-                    {/* File 1 upload here. */}
-                    <div className="col-sm-6  mt-4 center sub-style">
+                    <div className=" mt-4 center sub-style">
                         <Drop onChange={this.uploadFile1} />
                     </div>
 
-                    {/* File 2 upload here. */}
-                    <div className="col-sm-6 mt-4 center sub-style">
+                    <div className="mt-4 center sub-style">
                         <Drop onChange={this.uploadFile2} />
                     </div>
 
-                    <div className="col-sm-12 mt-4 center">
 
-                        <br></br>
 
-                        <div className="col center">
+                        <div className="col-sm mt-4 center">
                             <Button disabled={!this.state.enableRunButton}
                                 className="btn border rounded check-button text-light p-2"
                                 onClick={this.runPlagiarism}>
                                 <i className="fas fa-search"> </i>
-                                Check Plagiarism </Button>
-
-                            <br></br>
+                                Check Plagiarism </Button>  
                         </div>
-                    </div>
 
-                    {/* How to transition between progress bar and
-                    results here? */}
-                    {this.state.displayProgress && <CircularProgressBar />}
+                       
+                        {this.state.displayProgress &&
+                         <div className= "mx-auto mt-3 center">
+                          <CircularProgressBar />
+                         </div>
+                        }
 
-                    {/* <div className="progress-bar center">
-                        <br></br>
-                        <hr></hr>
-                        {!ShowResults &&
-                       }
-                        {!ShowResults && this.runPlagiarism &&
-                            }
-                    </div> */}
+                       
+                  
+                  
                     {this.state.displayResult &&
-                        <div className="col-sm-12 mt-4 center">
+                        <div id="result" className="mt-4 center row">
+                            <div className="col-sm-12 center">
                             <Results />
-                            <br></br>
-                            <div className="col center">
+                          
+                            
+                            <div className="m-2 mx-auto col center">
+                                <LinkContainer to="/codecomparison">
                                 <Button className="btn border rounded check-button text-light p-2">
                                     <i className="fas fa-search"> </i>
-                                    <a href="http://localhost:3000/codecomparison">Compare</a> </Button>
+                                  Compare
+                                   </Button>
+                                   </LinkContainer>
                             </div>
+                            </div>
+                        <div className="col-sm-6 mx-auto">
+                        <PieChart
+                           animate
+                           animationDuration={500}
+                           animationEasing="ease-out"
+                            data = {this.data}
+                            label={({ dataEntry }) => {    
+                                if(dataEntry.value === 0){
+                                   return dataEntry.title = ""
+                                }
+                            return dataEntry.title
+                            }}
+                            labelStyle={{
+                                ...defaultLabelStyle,
+                              }}
+                            radius = {30}
+                        />
+
+                        </div>
                         </div>}
+
+                   
+
+ 
+
                 </div>
             </div>
         );
