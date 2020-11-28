@@ -7,7 +7,7 @@ const runPlag = async (files: any) => {
         i++
     }
 
-    let results = await (await fetch(`${process.env.REACT_APP_API_ENDPOINT}/plag`, {
+    let results = await (await fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/plagiarism`, {
         method: 'POST',
         body: data
     }).then((response) => response.json()).catch((error) => error));

@@ -3,7 +3,7 @@ import './UploadPage.css'
 import Drop from './DropZone';
 import Results from './../../components/results/Results';
 import { Button } from "react-bootstrap";
-import {LinkContainer} from 'react-router-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
 import { PieChart } from 'react-minimal-pie-chart';
 import runPlag from './../../services/upload';
 
@@ -13,21 +13,24 @@ const notUploaded: boolean = false;
 const defaultLabelStyle = {
     fontSize: '30%',
     fontFamily: 'cursive'
-  };
+};
 
 interface UploadState {
     file1Uploaded: boolean;
     file2Uploaded: boolean;
-
     displayResult: boolean;
     displayProgress: boolean;
     enableRunButton: boolean;
     submission1Files: any;
     submission2Files: any;
 }
+interface UploadProps {
+    updatePlagData: any;
+    plagiarism_data: any;
+}
 
 export default class Upload extends React.Component
-    <{}, UploadState> {
+    <UploadProps, UploadState> {
 
     constructor(props: any) {
         super(props);
@@ -47,7 +50,7 @@ export default class Upload extends React.Component
     }
 
     /* Check for plagiarism, disable until the upload is completed. */
-    componentDidUpdate(prevState:any) {
+    componentDidUpdate(prevProps: any) {
         if (this.state.enableRunButton !== true) {
             const { file1Uploaded, file2Uploaded } = this.state;
             if (file1Uploaded === uploaded && file2Uploaded === uploaded) {
@@ -59,47 +62,45 @@ export default class Upload extends React.Component
 
     uploadFile1(submissionFile: any) {
         this.setState({ file1Uploaded: true });
-        this.setState({ submission1Files: submissionFile});
+        this.setState({ submission1Files: submissionFile });
     }
 
     uploadFile2(submissionFile: any) {
         this.setState({ file2Uploaded: true });
-        this.setState({ submission2Files: submissionFile});
+        this.setState({ submission2Files: submissionFile });
     }
 
-    async runPlagiarism () {
+    async runPlagiarism() {
         //dispaly progress bar
         await this.setState({
-            displayProgress : true
-         })
-    
-         //api call to backend
-        //  console.log([this.state.submission1Files, this.state.submission2Files])
-        // const results:any = 
-        await runPlag([this.state.submission1Files, this.state.submission2Files])
+            displayProgress: true
+        })
 
+        //api call to backend
+        const data: any = await runPlag([this.state.submission1Files, this.state.submission2Files])
+        this.props.updatePlagData(data[0])
 
         await this.setState({
             displayResult: true
         })
-        
-        const result:any = document.getElementById('result')
+
+        const result: any = document.getElementById('result')
         result.scrollIntoView({ behavior: 'smooth' })
 
         //hide progress bar
         await this.setState({
-            displayProgress : false
-         })
-
-
+            displayProgress: false
+        })
     }
 
-    data:any =[
-        { title: 'Plagiarised', value:70, color: '#C13C37'},
-        { title: 'Not Plagiarised', value: 30, color: '#02A938' },
+    data: any = () => {
+        let { score } = this.props.plagiarism_data;
+        score = parseInt(score.toFixed(2))
+        return [
+            { title: 'Plagiarised', value: score, color: '#C13C37' },
+            { title: 'Not Plagiarised', value: 100 - score, color: '#02A938' },
         ]
-
-     
+    }
 
     render() {
         return (
@@ -113,62 +114,53 @@ export default class Upload extends React.Component
                 <div className="container-fluid mx-auto">
 
                     <div className=" mt-4 center sub-style">
-                        <Drop onChange={this.uploadFile1} submission={this.state.submission1Files}/>
+                        <Drop onChange={this.uploadFile1} submission={this.state.submission1Files} />
                     </div>
 
                     <div className="mt-4 center sub-style">
-                        <Drop onChange={this.uploadFile2} submission={this.state.submission2Files}/>
+                        <Drop onChange={this.uploadFile2} submission={this.state.submission2Files} />
                     </div>
 
-                        <div className="col-sm mt-4 center">
-                            <Button disabled={!this.state.enableRunButton}
-                                className="btn border rounded check-button text-light p-2"
-                                onClick={this.runPlagiarism}>
-                              <i className="fas fa-search"><span style={{fontFamily:"cursive"}}>Check Plagiarism  </span></i>
-                             </Button>  
-                        </div>
+                    <div className="col-sm mt-4 center">
+                        <Button disabled={!this.state.enableRunButton}
+                            className="btn border rounded check-button text-light p-2"
+                            onClick={this.runPlagiarism}>
+                            <i className="fas fa-search"><span style={{ fontFamily: "cursive" }}>Check Plagiarism  </span></i>
+                        </Button>
+                    </div>
 
-                       
-                        {/* {this.state.displayProgress &&
-                         <div className= "mx-auto mt-3 center">
-                          <CircularProgressBar />
-                         </div>
-                        } */}
-                        
                     {this.state.displayResult &&
                         <div id="result" className="mt-2 p-4 center row">
                             <div className="mt-4 center sub-style">
-                            <Results score={16}/>
+                                <Results score={Math.round(this.props.plagiarism_data.score)} />
                             </div>
 
                             <div className="mt-4 center sub-style">
                                 <LinkContainer to="/codecomparison">
-                                <Button className="btn border rounded check-button text-light p-2">
-                                <i className="far fa-file-code"> <span style={{fontFamily:"cursive"}}>Compare</span></i>                              
-                                   </Button>
-                                   </LinkContainer>
+                                    <Button className="btn border rounded check-button text-light p-2">
+                                        <i className="far fa-file-code"> <span style={{ fontFamily: "cursive" }}>Compare</span></i>
+                                    </Button>
+                                </LinkContainer>
                             </div>
 
-                            {/* <Row style={{width:'40%', height:"40%", padding:"0%"}}> */}
                             <div className="mt-4 sub-style">
-                        <PieChart
-                           animate
-                           animationDuration={500}
-                           animationEasing="ease-out"
-                            data = {this.data}
-                            label={({ dataEntry }) => {    
-                                if(dataEntry.value === 0){
-                                   return dataEntry.title = ""
-                                }
-                            return dataEntry.title +':' + dataEntry.value + "%"
-                            }}
-                            labelStyle={{
-                                ...defaultLabelStyle,
-                              }}
-                            radius = {50}
-                        />
-                        {/* </Row> */}
-                        </div>
+                                <PieChart
+                                    animate
+                                    animationDuration={500}
+                                    animationEasing="ease-out"
+                                    data={this.data()}
+                                    label={({ dataEntry }) => {
+                                        if (dataEntry.value === 0) {
+                                            return dataEntry.title = ""
+                                        }
+                                        return dataEntry.title + ':' + dataEntry.value + "%"
+                                    }}
+                                    labelStyle={{
+                                        ...defaultLabelStyle,
+                                    }}
+                                    radius={50}
+                                />
+                            </div>
                         </div>}
 
                 </div>

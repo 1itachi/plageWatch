@@ -3,7 +3,7 @@ import { Col, Row } from 'react-bootstrap';
 import CodePage from './CodePage';
 import ReactSpeedometer from "react-d3-speedometer";
 
-interface State {
+interface CodeState {
     plag_code1: string;
     plag_code2: string;
     plag_lines1: Array<number>;
@@ -13,12 +13,12 @@ interface State {
     plag_score: number;
 }
 
-interface Props {
+interface CodeProps {
     index: number;
     plagiarism_data: any;
 }
 
-class CodeArea extends React.Component<Props, State> {
+class CodeArea extends React.Component<CodeProps, CodeState> {
     constructor(props: any) {
         super(props);
         this.state = {
@@ -36,17 +36,26 @@ class CodeArea extends React.Component<Props, State> {
         const { plagiarism_data, index } = this.props;
         if (prevProps.plagiarism_data !== plagiarism_data || prevProps.index !== index) {
             if (plagiarism_data.submission1 !== undefined) {
-                this.setState({
-                    plag_code1: plagiarism_data.submission1[plagiarism_data[index].submission1.file],
-                    plag_code2: plagiarism_data.submission2[plagiarism_data[index].submission2.file],
-                    plag_lines1: plagiarism_data[index].submission1.lines,
-                    plag_lines2: plagiarism_data[index].submission2.lines,
-                    plag_fileName1: plagiarism_data[index].submission1.file,
-                    plag_fileName2: plagiarism_data[index].submission2.file,
-                    plag_score: parseInt(plagiarism_data.score.toFixed(2)),
-                });
+                this.loadData();
             }
         }
+    }
+
+    componentDidMount() {
+        this.loadData();
+    }
+
+    loadData() {
+        const { plagiarism_data, index } = this.props;
+        this.setState({
+            plag_code1: plagiarism_data.submission1[plagiarism_data[index].submission1.file],
+            plag_code2: plagiarism_data.submission2[plagiarism_data[index].submission2.file],
+            plag_lines1: plagiarism_data[index].submission1.lines,
+            plag_lines2: plagiarism_data[index].submission2.lines,
+            plag_fileName1: plagiarism_data[index].submission1.file,
+            plag_fileName2: plagiarism_data[index].submission2.file,
+            plag_score: parseInt(plagiarism_data.score.toFixed(2)),
+        });
     }
 
     render() {

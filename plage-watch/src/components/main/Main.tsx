@@ -5,17 +5,33 @@ import NavBar from './../navigation/Navigation';
 import Upload from './../upload/UploadPage';
 import './Main.css'
 
+interface PlagState {
+  plagiarism_data: any;
+}
 
-export default class MainPage extends React.Component {
+export default class MainPage extends React.Component<{}, PlagState> {
+  constructor(props:any) {
+    super(props);
+    this.state={
+      plagiarism_data:{}
+    }
+    this.updatePlagData = this.updatePlagData.bind(this);
+  }
+
+  updatePlagData(data: any) {
+    this.setState({plagiarism_data: data});
+  }
+
   render() {
+    const {plagiarism_data} = this.state;
     return (
       <div>
         <BrowserRouter>
           <NavBar />
 
           <Switch>
-            <Route path='/home' render={() => <Upload />} />
-            <Route path='/codecomparison' render={() => <CodeCompare />} />
+            <Route path='/home' render={() => <Upload updatePlagData={this.updatePlagData} plagiarism_data={plagiarism_data} />} />
+            <Route path='/codecomparison' render={() => <CodeCompare plagiarism_data={plagiarism_data} />} />
             <Redirect exact from="/" to="/home" />
           </Switch>
         </BrowserRouter>
