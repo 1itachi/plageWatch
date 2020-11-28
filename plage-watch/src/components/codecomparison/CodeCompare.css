@@ -11,22 +11,61 @@
 .progam-window-filename{
     position: relative;
     bottom: 30px;
+    font-weight: bold;
 }
 
-.code-jumbotron{
-  min-height: 300px;
-  height:   65vh;
-  overflow: 'auto';
-
-}
 .similarity-portion-count{
     padding-top: 8px;
     padding-bottom: 8px;
     background-color: #e9ecef;
     border-radius: .3rem;
+    border: 1px solid grey;
 }
+
 .speedometer{
-    width: 5%;
-    margin: 0px;
-    
+    width: 10%;
+    height: 150px;
+    padding: 0px;   
+}
+@media (min-width: 1000px) { 
+    .speedometer{
+        width: 100rem;
+        height: 130px;
+    }
+}
+@media (min-width: 800px) { 
+    .speedometer{
+        width: 15%;
+        height: 210px;
+    }
+}
+@media (min-width: 600px) { 
+    .speedometer{
+        width: 7%;
+        height: 170px;
+    }
+}
+legend { 
+    margin-left: 10px;
+    border: none;
+    width: auto;
+}
+
+.code-area{
+    min-height:   250px;
+    height: 65vh;
+    border: 1px solid grey;
+    border-radius: .3rem;
+    padding: 10px; 
+    background-color: #e9ecef;    
+    margin-bottom: 20px;
+}
+
+.code{
+    height :100%;
+    white-space: nowrap;  
+}
+
+.code-lines{
+    font-family: 'Consolas', 'Monaco','Lucida Sans',  'Dina', 'Arial';   
 }
