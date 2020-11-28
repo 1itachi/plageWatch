@@ -22,13 +22,13 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.get('/plagiarism/', async(request: any, response: any) => {
+app.get('/plagiarism/', async (request: any, response: any) => {
     let items = []
     items.push(runPlagiarism())
     response.status(200).send(items);
 });
 
 const port: number = 8000;
-app.listen(port, function() {
+app.listen(port, function () {
     console.log('PlageWatch Client Server listening on port ' + port);
 });

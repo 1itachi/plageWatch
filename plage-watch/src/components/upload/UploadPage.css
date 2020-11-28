@@ -5,25 +5,13 @@
     margin-top: 50px;
  }
 
- .card-upload {
-    background-color: white;
-    padding: 32px;
-    width: 200%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
-    box-sizing: border-box;
-  }
-
 .check-button{
    background-color: #476EEC;
+   size: fixed;
+   width: 200px;
+   font-family: cursive;
 }
 
-.cancel-button{
-  background-color: #FF0000;
-  margin-right: 60px;
-}
 
 .check-button:hover{
     color: yellow;
@@ -43,4 +31,21 @@
 
   .h2 {
     color: darkblue;
+  }
+
+  a{
+    color: white;
+  }
+
+  .progress-bar {
+    size: 4ex;
+    color: darkblue;
+    background-color: white;
+  }
+
+  progress.plagiarism-check {
+    color: blue;
+    margin-left: 50%;
+    size: 150%;
+    width: 150px;
   }

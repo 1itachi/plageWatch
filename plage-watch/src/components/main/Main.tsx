@@ -11,8 +11,8 @@ export default class MainPage extends React.Component {
     return (
       <div>
         <BrowserRouter>
-            <NavBar />
-            
+          <NavBar />
+
           <Switch>
             <Route path='/home' render={() => <Upload />} />
             <Route path='/codecomparison' render={() => <CodeCompare />} />

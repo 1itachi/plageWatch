@@ -2,7 +2,7 @@
   "name": "plage-detect",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "Server.ts",
   "scripts": {
     "start": "npx ts-node src/Server.ts",
     "test": "echo \"Error: no test specified\" && exit 1",

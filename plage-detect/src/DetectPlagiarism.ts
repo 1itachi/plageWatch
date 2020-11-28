@@ -108,8 +108,14 @@ export default class DetectPlagiarism {
         let ignoredProperties = ['loc', 'start', 'range', 'leadingComments', 'innerComments', 'trailingComments','extra','end', 
     'sourceType','interpreter', 'name']
 
-            //Loop through properties in object 1
-
+      
+        //Logic to check the condition 9 * (5+10) && (5+10) * 9 is plagiarised
+        if(obj1 != null && obj2 !=null && obj1.type === 'BinaryExpression' && obj2.type === 'BinaryExpression'){
+            return (this.compare(obj1.left, obj2.left) && this.compare(obj1.right, obj2.right)) 
+            || (this.compare(obj1.right, obj2.left) && (this.compare(obj1.left, obj2.right)))
+        }
+        
+        //Loop through properties in object 1    
         for (var p in obj1) {
 
             if(ignoredProperties.includes(p)) continue;
