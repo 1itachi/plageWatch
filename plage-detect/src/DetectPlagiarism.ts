@@ -96,7 +96,6 @@ export default class DetectPlagiarism {
         result['submission1'] = this.fileSubmission1
         result['submission2'] = this.fileSubmission2
         result['score'] = (numberOfLinesPlagiarised/totalLinesInSubmission1) * 100
-
         return result
 
     }
