@@ -11,6 +11,7 @@ import { Button } from "react-bootstrap";
 import { ProgressBar } from 'react-onsenui';
 import {LinkContainer} from 'react-router-bootstrap'
 import { PieChart } from 'react-minimal-pie-chart';
+import {Row, Col} from 'react-bootstrap'; 
 
 
 
@@ -47,8 +48,6 @@ export default class Upload extends React.Component
         this.uploadFile1 = this.uploadFile1.bind(this);
         this.uploadFile2 = this.uploadFile2.bind(this);
         this.runPlagiarism = this.runPlagiarism.bind(this);
-        // this.displayResultFunction = this.displayResultFunction.bind(this);
-
     }
 
     /* Check for plagiarism, disable until the upload is completed. */
@@ -60,19 +59,13 @@ export default class Upload extends React.Component
                 // this.setState({ checkedResults: true });
             }
         }
-
-        // if(this.state.displayResult !== prevState.displayResult){
-        //     this.setState({displayProgress:false})
-        // }
     }
 
     uploadFile1() {
-        // const { file1Uploaded } = this.state;
         this.setState({ file1Uploaded: true });
     }
 
     uploadFile2() {
-        // const { file2Uploaded } = this.state;
         this.setState({ file2Uploaded: true });
     }
 
@@ -127,8 +120,6 @@ export default class Upload extends React.Component
                         <Drop onChange={this.uploadFile2} />
                     </div>
 
-
-
                         <div className="col-sm mt-4 center">
                             <Button disabled={!this.state.enableRunButton}
                                 className="btn border rounded check-button text-light p-2"
@@ -145,24 +136,27 @@ export default class Upload extends React.Component
                         }
 
                        
+{/* this.state.displayResult */}
                   
-                  
-                    {this.state.displayResult &&
-                        <div id="result" className="mt-4 center row">
-                            <div className="col-sm-12 center">
+                    { true &&
+                        <div id="result" className="mt-4 p-4 center row">
+                            <Row>
+                                <Col sm={9}>
                             <Results />
-                          
-                            
-                            <div className="m-2 mx-auto col center">
+                            </Col>
+                            <Col sm={3} className='my-auto'>
+                            {/* <div className="m-2 mx-auto col center"> */}
                                 <LinkContainer to="/codecomparison">
                                 <Button className="btn border rounded check-button text-light p-2">
                                     <i className="fas fa-search"> </i>
                                   Compare
                                    </Button>
                                    </LinkContainer>
-                            </div>
-                            </div>
-                        <div className="col-sm-6 mx-auto">
+                            {/* </div> */}
+                            </Col>
+                            </Row>
+                            <Row style={{width:'40%', height:"40%"}}>
+                        {/* <div className="col-sm-6 mx-auto" > */}
                         <PieChart
                            animate
                            animationDuration={500}
@@ -180,7 +174,8 @@ export default class Upload extends React.Component
                             radius = {30}
                         />
 
-                        </div>
+                        {/* </div> */}
+                        </Row>
                         </div>}
 
                    
