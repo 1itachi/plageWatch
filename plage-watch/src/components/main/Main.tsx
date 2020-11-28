@@ -3,6 +3,8 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import CodeCompare from "../codecomparison/CodeCompare";
 import NavBar from './../navigation/Navigation';
 import Upload from './../upload/UploadPage';
+import Footer from './../footer/Footer';
+
 import './Main.css'
 
 interface PlagState {
@@ -34,6 +36,7 @@ export default class MainPage extends React.Component<{}, PlagState> {
             <Route path='/codecomparison' render={() => <CodeCompare plagiarism_data={plagiarism_data} />} />
             <Redirect exact from="/" to="/home" />
           </Switch>
+          <Footer/>
         </BrowserRouter>
       </div>
     );
