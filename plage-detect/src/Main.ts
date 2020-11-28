@@ -2,8 +2,6 @@ import ASTNodeGenerator from "./ASTNodeGenerator";
 import CollectNodes from "./CollectNodes";
 import DetectPlagiarism from "./DetectPlagiarism";
 
-const fs = require('fs')
-
 export default function runPlagiarism(){
 
     let sub1RootNodes = [];
@@ -26,7 +24,8 @@ export default function runPlagiarism(){
     sub2AllNodes = collectNodes.collectNodes(sub2RootNodes)
     
 
-    let plagiarismDetector = new DetectPlagiarism(sub1AllNodes, sub2AllNodes,sub1FileNameMap, sub2FileNameMap, fileSubmission1, fileSubmission2);
+    let plagiarismDetector = new DetectPlagiarism(sub1AllNodes, sub2AllNodes,sub1FileNameMap,
+                             sub2FileNameMap, fileSubmission1, fileSubmission2);
     let result = plagiarismDetector.detect()
 
     return result

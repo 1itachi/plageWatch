@@ -137,6 +137,7 @@ class CodeCompare extends React.Component<{}, CodeState> {
 
                 />
                 <Col md={{ span: 2, offset: 11 }}>
+
                     <LinkContainer to="/home">
                         <Button
                             variant='primary'
