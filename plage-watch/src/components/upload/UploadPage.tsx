@@ -2,12 +2,9 @@ import React from "react";
 import './UploadPage.css'
 import Drop from './DropZone';
 import Results from './../../components/results/Results';
-import CircularProgressBar from './../../components/results/CircularProgressBar';
 import { Button } from "react-bootstrap";
 import {LinkContainer} from 'react-router-bootstrap'
 import { PieChart } from 'react-minimal-pie-chart';
-import {Row} from 'react-bootstrap'; 
-
 
 
 const uploaded: boolean = true;
@@ -124,13 +121,13 @@ export default class Upload extends React.Component
                         </div>
 
                        
-                        {this.state.displayProgress &&
+                        {/* {this.state.displayProgress &&
                          <div className= "mx-auto mt-3 center">
                           <CircularProgressBar />
                          </div>
-                        }
-{/* this.state.displayResult  */}
-                    {true &&
+                        } */}
+                        
+                    {this.state.displayResult &&
                         <div id="result" className="mt-2 p-4 center row">
                             <div className="mt-4 center sub-style">
                             <Results score={16}/>
