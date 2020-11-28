@@ -1,7 +1,7 @@
-### Plage Watch a web application to detect plagiarism in Javascript files.
+## Plage Watch a web application to detect plagiarism in Javascript files.
 
 
-## Steps to Build the application
+### Steps to Build the application
 
 1] Clone this repository or Download the zip file of an entire application.
 
