@@ -16,9 +16,10 @@ const notUploaded: boolean = false;
 interface UploadState {
     file1Uploaded: boolean,
     file2Uploaded: boolean,
-    checkedPlagiarism: boolean,
-    checkedResults: boolean,
-    displayed: boolean
+
+    displayResult: boolean,
+    displayProgress: boolean,
+    enableRunButton: boolean
 }
 
 export default class Upload extends React.Component
@@ -29,56 +30,75 @@ export default class Upload extends React.Component
         this.state = {
             file1Uploaded: notUploaded,
             file2Uploaded: notUploaded,
-            displayed: notUploaded,
-            checkedPlagiarism: false,
-            checkedResults: false
+            displayResult: false,
+            enableRunButton: false,
+            displayProgress: false
         }
 
-        this.uploadFile1 = this.uploadFile1.bind(this);
-        this.uploadFile2 = this.uploadFile2.bind(this);
-        this.runPlagiarism = this.runPlagiarism.bind(this);
-        this.displayResultFunction = this.displayResultFunction.bind(this);
+        // this.uploadFile1 = this.uploadFile1.bind(this);
+        // this.uploadFile2 = this.uploadFile2.bind(this);
+        // this.runPlagiarism = this.runPlagiarism.bind(this);
+        // this.displayResultFunction = this.displayResultFunction.bind(this);
     }
 
     /* Check for plagiarism, disable until the upload is completed. */
     componentDidUpdate() {
-        if (this.state.checkedPlagiarism !== true) {
+        if (this.state.enableRunButton !== true) {
             const { file1Uploaded, file2Uploaded } = this.state;
             if (file1Uploaded === uploaded && file2Uploaded === uploaded) {
-                this.setState({ checkedPlagiarism: true });
-                this.setState({ checkedResults: true });
+                this.setState({ enableRunButton: true });
+                // this.setState({ checkedResults: true });
             }
         }
     }
 
     uploadFile1() {
-        const { file1Uploaded } = this.state;
-        this.setState({ file1Uploaded: !file1Uploaded });
+        // const { file1Uploaded } = this.state;
+        this.setState({ file1Uploaded: true });
     }
 
     uploadFile2() {
-        const { file2Uploaded } = this.state;
-        this.setState({ file2Uploaded: !file2Uploaded });
+        // const { file2Uploaded } = this.state;
+        this.setState({ file2Uploaded: true });
+    }
+
+    // runPlagiarism() {
+    //     if (this.uploadFile1 && this.uploadFile2) {
+    //         this.setState({
+    //             checkedPlagiarism: uploaded,
+    //             checkedResults: uploaded
+    //         });
+    //     } else {
+    //         this.setState({
+    //             checkedPlagiarism: !uploaded,
+    //             checkedResults: !uploaded
+    //         });
+    //     }
+    // }
+
+    // displayResultFunction() {
+    //     this.setState({
+    //         display: uploaded
+    //     })
+    // }
+
+    displayProgressBar() {
+        this.setState((prevState) => ({
+            displayProgress: !prevState.displayProgress
+        }))
     }
 
     runPlagiarism() {
-        if (this.uploadFile1 && this.uploadFile2) {
-            this.setState({
-                checkedPlagiarism: uploaded,
-                checkedResults: uploaded
-            });
-        } else {
-            this.setState({
-                checkedPlagiarism: !uploaded,
-                checkedResults: !uploaded
-            });
-        }
-    }
+        //dispaly progress bar
+        this.displayProgressBar()
+        //api call to backend
 
-    displayResultFunction() {
         this.setState({
-            displayed: uploaded
+            displayResult: true
         })
+
+        //hide progress bar
+        this.displayProgressBar()
     }
 
     render() {
@@ -108,8 +128,10 @@ export default class Upload extends React.Component
                         <br></br>
 
                         <div className="col center">
-                            <Button disabled={!this.state.checkedPlagiarism}
-                                className="btn border rounded check-button text-light p-2" >
+                            <Button disabled={!this.state.enableRunButton}
+                                className="btn border rounded check-button text-light p-2"
+                                onClick={this.runPlagiarism}>
+                                <i className="fas fa-search"> </i>
                                 Check Plagiarism </Button>
 
                             <br></br>
@@ -118,23 +140,26 @@ export default class Upload extends React.Component
 
                     {/* How to transition between progress bar and
                     results here? */}
-                    <div className="progress-bar center">
+                    {this.state.displayProgress && <CircularProgressBar />}
+
+                    {/* <div className="progress-bar center">
                         <br></br>
                         <hr></hr>
-                        {ShowResults &&
-                            <CircularProgressBar />}
-                        {ShowResults && this.runPlagiarism &&
-                            <Results />}
-                    </div>
-
-                    <div className="col-sm-12 mt-4 center">
-                        <br></br>
-                        <div className="col center">
-                            <Button disabled={!this.state.checkedPlagiarism}
-                                className="btn border rounded check-button text-light p-2">
-                                <a href="http://localhost:3000/codecomparison">Compare</a> </Button>
-                        </div>
-                    </div>
+                        {!ShowResults &&
+                       }
+                        {!ShowResults && this.runPlagiarism &&
+                            }
+                    </div> */}
+                    {this.state.displayResult &&
+                        <div className="col-sm-12 mt-4 center">
+                            <Results />
+                            <br></br>
+                            <div className="col center">
+                                <Button className="btn border rounded check-button text-light p-2">
+                                    <i className="fas fa-search"> </i>
+                                    <a href="http://localhost:3000/codecomparison">Compare</a> </Button>
+                            </div>
+                        </div>}
                 </div>
             </div>
         );

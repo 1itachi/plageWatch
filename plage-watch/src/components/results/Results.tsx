@@ -7,9 +7,9 @@ const enabled: boolean = true;
 // make this dynamic with respect to plagiarism findings.
 let plagiarismValue: number = Math.floor(Math.random() * 100) + 1;
 let plagiarismColor: Object = green;
+let isSimilarity: boolean = true;
 
 // change the color based on similarity value
-const isSimilarity = true;
 
 interface ResultsState {
     checkedPlagiarism: boolean;
