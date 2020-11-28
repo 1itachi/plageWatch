@@ -1,17 +1,12 @@
-// Source for progress bar:
-// https://www.w3schools.com/tags/tag_meter.asp
-
 import React from "react";
 import './UploadPage.css'
 import Drop from './DropZone';
 import Results from './../../components/results/Results';
-import ShowResults from './../../components/results/ShowResults';
 import CircularProgressBar from './../../components/results/CircularProgressBar';
 import { Button } from "react-bootstrap";
-import { ProgressBar } from 'react-onsenui';
 import {LinkContainer} from 'react-router-bootstrap'
 import { PieChart } from 'react-minimal-pie-chart';
-import {Row, Col} from 'react-bootstrap'; 
+import {Row} from 'react-bootstrap'; 
 
 
 
@@ -19,8 +14,8 @@ const uploaded: boolean = true;
 const notUploaded: boolean = false;
 
 const defaultLabelStyle = {
-    fontSize: '15%',
-    fontFamily: 'sans-serif',
+    fontSize: '30%',
+    fontFamily: 'cursive'
   };
 
 interface UploadState {
@@ -95,8 +90,8 @@ export default class Upload extends React.Component
     }
 
     data:any =[
-        { title: 'Plagiarised', value: 47, color: '#C13C37'},
-        { title: 'Not Plagiarised', value: 100-47, color: '#02A938' },
+        { title: 'Plagiarised', value:70, color: '#C13C37'},
+        { title: 'Not Plagiarised', value: 30, color: '#02A938' },
         ]
 
      
@@ -124,8 +119,8 @@ export default class Upload extends React.Component
                             <Button disabled={!this.state.enableRunButton}
                                 className="btn border rounded check-button text-light p-2"
                                 onClick={this.runPlagiarism}>
-                                <i className="fas fa-search"> </i>
-                                Check Plagiarism </Button>  
+                              <i className="fas fa-search"><span style={{fontFamily:"cursive"}}>Check Plagiarism  </span></i>
+                             </Button>  
                         </div>
 
                        
@@ -134,29 +129,23 @@ export default class Upload extends React.Component
                           <CircularProgressBar />
                          </div>
                         }
+{/* this.state.displayResult  */}
+                    {true &&
+                        <div id="result" className="mt-2 p-4 center row">
+                            <div className="mt-4 center sub-style">
+                            <Results score={16}/>
+                            </div>
 
-                       
-{/* this.state.displayResult */}
-                  
-                    { true &&
-                        <div id="result" className="mt-4 p-4 center row">
-                            <Row>
-                                <Col sm={9}>
-                            <Results />
-                            </Col>
-                            <Col sm={3} className='my-auto'>
-                            {/* <div className="m-2 mx-auto col center"> */}
+                            <div className="mt-4 center sub-style">
                                 <LinkContainer to="/codecomparison">
                                 <Button className="btn border rounded check-button text-light p-2">
-                                    <i className="fas fa-search"> </i>
-                                  Compare
+                                <i className="far fa-file-code"> <span style={{fontFamily:"cursive"}}>Compare</span></i>                              
                                    </Button>
                                    </LinkContainer>
-                            {/* </div> */}
-                            </Col>
-                            </Row>
-                            <Row style={{width:'40%', height:"40%"}}>
-                        {/* <div className="col-sm-6 mx-auto" > */}
+                            </div>
+
+                            {/* <Row style={{width:'40%', height:"40%", padding:"0%"}}> */}
+                            <div className="mt-4 sub-style">
                         <PieChart
                            animate
                            animationDuration={500}
@@ -166,21 +155,16 @@ export default class Upload extends React.Component
                                 if(dataEntry.value === 0){
                                    return dataEntry.title = ""
                                 }
-                            return dataEntry.title
+                            return dataEntry.title +':' + dataEntry.value + "%"
                             }}
                             labelStyle={{
                                 ...defaultLabelStyle,
                               }}
-                            radius = {30}
+                            radius = {50}
                         />
-
-                        {/* </div> */}
-                        </Row>
+                        {/* </Row> */}
+                        </div>
                         </div>}
-
-                   
-
- 
 
                 </div>
             </div>

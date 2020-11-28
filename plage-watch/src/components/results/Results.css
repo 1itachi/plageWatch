@@ -1,35 +1,7 @@
-h3 {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 6;
-    color: red;
-}
 
-p {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 4;
-}
-
-.similarity-good {
-    font-family: Arial, Helvetica, sans-serif;
-    color: darkgreen;
-    background-color: lightgreen;
-}
-
-.similarity-bad {
-    font-family: Arial, Helvetica, sans-serif;
-    color: darkred;
-    background-color: lightpink;
-}
-
-.student1, .student2 {
-    font-family: Arial, Helvetica, sans-serif;
-    color: blue;
-    background-color: lightblue;
-}
-
-.results {
+.upload-text {
+    text-align: center;
+    color: #384C74;
+    font-family: Lucida Console, Courier, monospace;
     margin-top: 50px;
-    border-color: blue;
-    border: 1px solid;
-    padding: 2px;
-}
+ }
