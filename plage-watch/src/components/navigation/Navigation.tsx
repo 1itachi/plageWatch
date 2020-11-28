@@ -6,7 +6,6 @@ export default class NavBar extends React.Component {
   render() {
     return (
       <Navbar
-        // sticky={'top'}
         collapseOnSelect
         expand="lg"
         className="header-margin navbar-style"
