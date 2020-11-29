@@ -8,7 +8,7 @@ export default function  Footer () {
                     <p className= "footer-header col-sm-4 center"><u>CONTRIBUTORS</u></p>
                     <div className="row">
                     <a className= "col-sm-3 footer-element mr-3" href="https://www.linkedin.com/in/deepak-kumar-bb1810115/">Deepak Kumar <i className="fab fa-linkedin"></i></a>
-                    <a className= "col-sm-3 offset-sm-0 footer-element" href="https://www.linkedin.com/in/jasonlu123/">Jason Lu<i className="fab pl-1 fa-linkedin"></i></a>
+                    <a className= "col-sm-3 offset-sm-0 footer-element" href="#">Jason Lu</a>
                     </div>
                     <div className="row">
                     <a className= "col-sm-3 footer-element mr-3" href="https://www.linkedin.com/in/sanket-ghanmare/"> Sanket Ghanmare<i className="fab fa-linkedin"></i></a>
@@ -18,7 +18,6 @@ export default function  Footer () {
                 <div className="col-sm-5 center">
                 <i className="fas fa-map-marker-alt float-right"><span className="location pl-2">Northeastern University, 2020</span></i>
                 </div>
-
             </div>
         );
 }
