@@ -15,7 +15,7 @@ interface ComapareState {
     plagiarism_count: number;
 }
 interface ComapareProps {
-    plagiarism_data: {};
+    plagiarism_data: any;
 }
 class CodeCompare extends React.Component<ComapareProps, ComapareState> {
     constructor(props: any) {

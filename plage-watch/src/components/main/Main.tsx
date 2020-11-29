@@ -32,7 +32,7 @@ export default class MainPage extends React.Component<{}, PlagState> {
           <Switch>
             <Route path='/home' render={() => <Upload updatePlagData={this.updatePlagData} plagiarism_data={plagiarism_data} />} />
             <Route path='/codecomparison' render={() => <CodeCompare plagiarism_data={plagiarism_data} />} />
-            <Redirect exact from="/" to="/home" />
+            <Redirect from="/" to="/home" />
           </Switch>
         </BrowserRouter>
       </div>

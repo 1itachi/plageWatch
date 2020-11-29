@@ -95,7 +95,7 @@ export default class Upload extends React.Component
 
     data: any = () => {
         let { score } = this.props.plagiarism_data;
-        score = parseInt(score.toFixed(2))
+        score =  parseInt(score.toFixed(2));
         return [
             { title: 'Plagiarised', value: score, color: '#C13C37' },
             { title: 'Not Plagiarised', value: 100 - score, color: '#02A938' },
@@ -132,7 +132,7 @@ export default class Upload extends React.Component
                     {this.state.displayResult &&
                         <div id="result" className="mt-2 p-4 center row">
                             <div className="mt-4 center sub-style">
-                                <Results score={Math.round(this.props.plagiarism_data.score)} />
+                                <Results score={parseInt(this.props.plagiarism_data.score.toFixed(2))} />
                             </div>
 
                             <div className="mt-4 center sub-style">
