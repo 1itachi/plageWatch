@@ -5,7 +5,6 @@ import NavBar from './../navigation/Navigation';
 import Upload from './../upload/UploadPage';
 import Footer from './../footer/Footer';
 
-import './Main.css'
 
 interface PlagState {
   plagiarism_data: any;

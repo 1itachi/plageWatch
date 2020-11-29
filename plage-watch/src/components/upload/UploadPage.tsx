@@ -12,7 +12,7 @@ const notUploaded: boolean = false;
 
 const defaultLabelStyle = {
     fontSize: '30%',
-    fontFamily: 'cursive'
+    fontFamily: 'Lucida Console, Courier, monospace'
 };
 
 interface UploadState {
@@ -125,7 +125,7 @@ export default class Upload extends React.Component
                         <Button disabled={!this.state.enableRunButton}
                             className="btn border rounded check-button text-light p-2"
                             onClick={this.runPlagiarism}>
-                            <i className="fas fa-search"><span style={{ fontFamily: "cursive" }}>Check Plagiarism  </span></i>
+                            <i className="fas fa-search"><span style={{ fontFamily: "Lucida Console, Courier, monospace" }}>Check Plagiarism  </span></i>
                         </Button>
                     </div>
 
@@ -138,7 +138,7 @@ export default class Upload extends React.Component
                             <div className="mt-4 center sub-style">
                                 <LinkContainer to="/codecomparison">
                                     <Button className="btn border rounded check-button text-light p-2">
-                                        <i className="far fa-file-code"> <span style={{ fontFamily: "cursive" }}>Compare</span></i>
+                                        <i className="far fa-file-code"> <span style={{ fontFamily: "Lucida Console, Courier, monospace" }}>Compare</span></i>
                                     </Button>
                                 </LinkContainer>
                             </div>
