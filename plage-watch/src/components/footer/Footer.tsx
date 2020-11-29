@@ -8,11 +8,11 @@ export default function  Footer () {
                     <p className= "footer-header col-sm-4 center"><u>CONTRIBUTORS</u></p>
                     <div className="row">
                     <a className= "col-sm-3 footer-element mr-3" href="https://www.linkedin.com/in/deepak-kumar-bb1810115/">Deepak Kumar <i className="fab fa-linkedin"></i></a>
-                    <a className= "col-sm-3 offset-sm-0 footer-element" href="https://www.linkedin.com/in/vinaysj/">Vinay S.Joseph<i className="fab pl-1 fa-linkedin"></i></a>
+                    <a className= "col-sm-3 offset-sm-0 footer-element" href="https://www.linkedin.com/in/jasonlu123/">Jason Lu<i className="fab pl-1 fa-linkedin"></i></a>
                     </div>
                     <div className="row">
-                    <a className= "col-sm-3 footer-element mr-3" href="https://www.linkedin.com/in/jasonlu123/">Jason Lu <i className="fab fa-linkedin"></i></a>
-                    <a className= "col-sm-3 footer-element" href="https://www.linkedin.com/in/sanket-ghanmare/">Sanket Ghanmare<i className="fab fa-linkedin"></i></a>
+                    <a className= "col-sm-3 footer-element mr-3" href="https://www.linkedin.com/in/sanket-ghanmare/"> Sanket Ghanmare<i className="fab fa-linkedin"></i></a>
+                    <a className= "col-sm-3 footer-element" href="https://www.linkedin.com/in/vinaysj/">Vinay S.Joseph<i className="fab fa-linkedin"></i></a>
                     </div>
                 </div>
                 <div className="col-sm-5 center">
