@@ -31,3 +31,6 @@ Enter URL http: http://localhost:3000/home
 
 ### Note:- It will take some time to open for the first time on browser.
 ### Note:- The application requires the Node version to be above v12.
+
+### Home Page
+
