@@ -55,7 +55,7 @@ app.post("/api/plagiarism", async (req: any, res: any) => {
             items.push(await runPlagiarism(submission1Path, submission2Path))
 			return res.status(200).send(items)
 			}catch(e){
-			  return res.status(400).send({"message":"sorry something went wrong!!"})
+			  return res.status(400).send({"message":"Sorry something went wrong!!"})
 			}
         } else {
             return res.status(400).send({"message":"Only zip folders are accepted"}) // return some error for not being zip
