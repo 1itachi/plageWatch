@@ -43,7 +43,6 @@ export default async function runPlagiarism (sub1path, sub2path) {
 		 result['score'] = 0
 	 }
 
-	 console.log(result)
 	return result
 }
 
