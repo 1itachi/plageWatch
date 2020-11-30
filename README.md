@@ -9,13 +9,13 @@
 
 3] Open the project folder through IDE or directly paste the repository link and wait for the IDE to finish its process.
 
-4] Navigate to plage-detect folder from command prompt or terminal run command: 
-#### npm install. 
+4] Navigate to `plage-detect` folder from command prompt or terminal run command: 
+#### `npm install.` 
 It will install the dependencies on local system mentioned in package.json file present inside plage-detect.
 
 
-5] Navigate to plage-watch folder and from command prompt or terminal run command: 
-#### npm install. 
+5] Navigate to `plage-watch` folder and from command prompt or terminal run command: 
+#### `npm install.` 
 It will install the dependencies on local system mentioned in package.json file present inside plage-watch.
 
 
