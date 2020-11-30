@@ -51,7 +51,7 @@ app.post('/api/plagiarism', async (req: any, res: any)=> { ///check the return t
     });
 
     let items = []
-    items.push(runPlagiarism())
+    items.push(runPlagiarism(submission1Path, submission2Path))
     res.status(200).send(items);
 })
 

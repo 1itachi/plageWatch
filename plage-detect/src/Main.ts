@@ -1,8 +1,9 @@
 import ASTNodeGenerator from "./ASTNodeGenerator";
 import CollectNodes from "./CollectNodes";
 import DetectPlagiarism from "./DetectPlagiarism";
+const path = require('path');
 
-export default function runPlagiarism(){
+export default function runPlagiarism(sub1path, sub2path){
 
     let sub1RootNodes = [];
     let sub2RootNodes = [];
@@ -15,8 +16,8 @@ export default function runPlagiarism(){
     let sub2AllNodes:Array<Array<any>>
 
     let generator = new ASTNodeGenerator()
-    sub1RootNodes = generator.generateASTNodes('./src/test1', sub1FileNameMap, fileSubmission1)
-    sub2RootNodes = generator.generateASTNodes('./src/test2', sub2FileNameMap, fileSubmission2)
+    sub1RootNodes = generator.generateASTNodes(sub1path, sub1FileNameMap, fileSubmission1)
+    sub2RootNodes = generator.generateASTNodes(sub2path, sub2FileNameMap, fileSubmission2)
 
 
     let collectNodes = new CollectNodes()
@@ -31,4 +32,11 @@ export default function runPlagiarism(){
     return result
 
 }
+
+// const submission1Directory: string = '/Submissions/Submission1';
+// const submission2Directory: string = '/Submissions/Submission2';
+
+// const submission1Path: string = path.join(__dirname, submission1Directory);
+// const submission2Path: string = path.join(__dirname, submission2Directory);
+// runPlagiarism(submission1Path,submission2Path)
 
