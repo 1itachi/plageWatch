@@ -23,6 +23,7 @@ interface UploadState {
     enableRunButton: boolean;
     submission1Files: any;
     submission2Files: any;
+    displayCompare : boolean
 }
 interface UploadProps {
     updatePlagData: any;
@@ -42,6 +43,7 @@ export default class Upload extends React.Component
             displayProgress: false,
             submission1Files: [],
             submission2Files: [],
+            displayCompare : false
         }
 
         this.uploadFile1 = this.uploadFile1.bind(this);
@@ -80,7 +82,7 @@ export default class Upload extends React.Component
             displayProgress: true,
             displayResult: false
         })
-        console.log("here")
+
         //api call to backend
      
         const data: any = await runPlag([this.state.submission1Files, this.state.submission2Files])
@@ -96,7 +98,12 @@ export default class Upload extends React.Component
             await this.setState({
                 displayResult: true
             })
-    
+            
+            if(data[0].score!== 0){
+                await this.setState({
+                    displayCompare: true
+                })
+            }
             const result: any = document.getElementById('result')
             result.scrollIntoView({ behavior: 'smooth' })
     
@@ -149,6 +156,7 @@ export default class Upload extends React.Component
                                 <Results score={parseInt(this.props.plagiarism_data.score.toFixed(2))} />
                             </div>
 
+                        {this.state.displayCompare &&
                             <div className="mt-4 center sub-style">
                                 <LinkContainer to="/codecomparison">
                                     <Button className="btn border rounded check-button text-light p-2">
@@ -156,6 +164,7 @@ export default class Upload extends React.Component
                                     </Button>
                                 </LinkContainer>
                             </div>
+                            }
 
                             <div className="mt-4 sub-style">
                                 <PieChart
