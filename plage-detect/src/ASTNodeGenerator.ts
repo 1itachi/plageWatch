@@ -29,11 +29,13 @@ export default class ASTNodeGenerator {
 
         allFilePaths.forEach(path=>{
 
-            
-            map[counter] = path;
+            //format name to take only names that appear on submitted zip
+            let newPath = path.split("Submissions\\")[1]
+            console.log(newPath)
+            map[counter] = newPath;
             nodes.push(babel.transformFileSync(path, {ast:true}).ast);
             const content = fs.readFileSync(path, 'utf-8');
-            fileSubmission[path] = content;
+            fileSubmission[newPath] = content;
             counter = counter+1;
         })
 
