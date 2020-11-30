@@ -11,12 +11,12 @@
 
 4] Navigate to plage-detect folder from command prompt or terminal run command: 
 #### npm install. 
-It will install the dependecies on local system mentioned in package.json file present inside plage-detect.
+It will install the dependencies on local system mentioned in package.json file present inside plage-detect.
 
 
 5] Navigate to plage-watch folder and from command prompt or terminal run command: 
 #### npm install. 
-It will install the dependecies on local system mentioned in package.json file present inside plage-watch.
+It will install the dependencies on local system mentioned in package.json file present inside plage-watch.
 
 
 ## Steps to Run the application
@@ -30,3 +30,7 @@ Navigate to page-detect directory and run `npm start`
 Enter URL http: http://localhost:3000/home
 
 ### Note:- It will take some time to open for the first time on browser.
+### Note:- The application requires the Node version to be above v12.
+
+### Home Page
+
