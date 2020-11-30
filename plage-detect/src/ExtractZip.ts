@@ -7,11 +7,11 @@ const extract = require("extract-zip")
 class ExtractZip {
 
 	private async clearDirectory(directoryPath: string) {
-		fs.readdir(directoryPath, async (err, files) => {
+		await fs.readdir(directoryPath, async (err, files) => {
 			for (const file of files) {
 				try {
 					fs.rmdirSync(path.join(directoryPath, file), { recursive: true })
-				} catch (error) {
+				} catch (err) {
 					// console.log(error)
 					throw new exception(err)
 				}
@@ -19,17 +19,17 @@ class ExtractZip {
 		})
 	}
 
-	private createDirectory(directoryPath: string) {
-		fs.mkdir(directoryPath,(err)=>{
+	private async createDirectory(directoryPath: string) {
+		await fs.mkdir(directoryPath,async(err)=>{
 			if(err) {
-		this.clearDirectory(directoryPath)
+		await this.clearDirectory(directoryPath)
 			}
 		})
 }
 
 	async extractFiles(compressedFilePath: string, submissionPath: string) {
 		//check the return type
-		this.createDirectory(submissionPath)
+		await this.createDirectory(submissionPath)
 		try {
 			await extract(compressedFilePath, { dir: submissionPath })
 		} catch (error) {
