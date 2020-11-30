@@ -11,7 +11,7 @@ const uploaded: boolean = true;
 const notUploaded: boolean = false;
 
 const defaultLabelStyle = {
-    fontSize: '30%',
+    fontSize: '25%',
     fontFamily: 'Lucida Console, Courier, monospace'
 };
 
