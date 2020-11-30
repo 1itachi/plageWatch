@@ -38,7 +38,10 @@ export default function runPlagiarism (sub1path, sub2path) {
 		fileSubmission2
 	)
 	let result = plagiarismDetector.detect()
-
+	console.log(result)
+	 if(Number.isNaN(result['score'])){
+		 result['score'] = 0
+	 }
 	return result
 }
 
