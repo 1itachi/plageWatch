@@ -11,8 +11,8 @@ class ExtractZip {
 				try {
 					fs.rmdirSync(path.join(directoryPath, file), { recursive: true })
 				} catch (error) {
-                    // console.log(error)
-                    throw new exception(err)
+					// console.log(error)
+					throw new exception(err)
 				}
 			}
 		})
@@ -32,8 +32,8 @@ class ExtractZip {
 		try {
 			await extract(compressedFilePath, { dir: submissionPath })
 		} catch (error) {
-            // console.log(error);
-            throw new exception(error)
+			// console.log(error);
+			throw new exception(error)
 		}
 	}
 }
