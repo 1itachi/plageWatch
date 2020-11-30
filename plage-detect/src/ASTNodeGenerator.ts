@@ -3,6 +3,7 @@ const fs = require("fs")
 var path = require("path")
 
 export default class ASTNodeGenerator {
+
 	generateASTNodes(folderPath: string, map: any, fileSubmission: {}): any {
 		let nodes: Array<any> = []
 		let counter = 0
@@ -12,7 +13,6 @@ export default class ASTNodeGenerator {
 		allFilePaths.forEach((path) => {
 			//format name to take only names that appear on submitted zip
 			let newPath = path.split("Submissions\\")[1]
-			console.log(newPath)
 			map[counter] = newPath
 			nodes.push(babel.transformFileSync(path, { ast: true }).ast)
 			const content = fs.readFileSync(path, "utf-8")
@@ -30,7 +30,7 @@ export default class ASTNodeGenerator {
 			if (fs.statSync(dirPath + "/" + file).isDirectory()) {
 				arrayOfFiles = this.getAllFiles(dirPath + "/" + file, arrayOfFiles)
 			} else {
-				if (file.includes(".js"))
+				if (file.endsWith(".js"))
 					arrayOfFiles.push(path.join(dirPath, "/", file))
 			}
 		})

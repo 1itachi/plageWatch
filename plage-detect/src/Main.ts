@@ -1,9 +1,8 @@
 import ASTNodeGenerator from "./ASTNodeGenerator"
 import CollectNodes from "./CollectNodes"
 import DetectPlagiarism from "./DetectPlagiarism"
-const path = require("path")
 
-export default function runPlagiarism(sub1path, sub2path) {
+export default function runPlagiarism (sub1path, sub2path) {
 	let sub1RootNodes = []
 	let sub2RootNodes = []
 	let sub1FileNameMap = {}

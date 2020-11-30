@@ -5,8 +5,9 @@ const path = require("path")
 const extract = require("extract-zip")
 
 class ExtractZip {
+
 	private async clearDirectory(directoryPath: string) {
-		await fs.readdir(directoryPath, async (err, files) => {
+		fs.readdir(directoryPath, async (err, files) => {
 			for (const file of files) {
 				try {
 					fs.rmdirSync(path.join(directoryPath, file), { recursive: true })
@@ -18,13 +19,13 @@ class ExtractZip {
 		})
 	}
 
-	private async createDirectory(directoryPath: string) {
-		try {
-			await fs.mkdir(directoryPath)
-		} catch (error) {
-			this.clearDirectory(directoryPath)
-		}
-	}
+	private createDirectory(directoryPath: string) {
+		fs.mkdir(directoryPath,(err)=>{
+			if(err) {
+		this.clearDirectory(directoryPath)
+			}
+		})
+}
 
 	async extractFiles(compressedFilePath: string, submissionPath: string) {
 		//check the return type

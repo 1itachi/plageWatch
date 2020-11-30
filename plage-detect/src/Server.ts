@@ -1,6 +1,7 @@
 import * as express from "express"
 import runPlagiarism from "./Main"
 import ExtractZip from "./ExtractZip"
+import { resolve } from "path"
 require("dotenv").config()
 const formidable = require("formidable")
 const path = require("path")
@@ -35,27 +36,30 @@ app.post("/api/plagiarism", async (req: any, res: any) => {
 	///check the return type
 
 	const form = formidable({ multiples: true })
+	
+	// file size limit 15MB.
+	form.maxFileSize = 15 * 1024 * 1024;
+	form.keepExtensions = true;
 
 	const extractZip = new ExtractZip()
-
-	form.parse(req, async (err: any, fields: any, files: any) => {
-		const compressedSub1: any = files.submission1
-		const compressedSub2: any = files.submission2
-
-		if (
-			path.extname(compressedSub1.name) === ".zip" &&
-			path.extname(compressedSub2.name) === ".zip"
-		) {
-			extractZip.extractFiles(compressedSub1.path, submission1Path)
-			extractZip.extractFiles(compressedSub2.path, submission2Path)
-		} else {
-			return "error" // return some error for not being zip
-		}
-	})
-
 	let items = []
-	items.push(runPlagiarism(submission1Path, submission2Path))
-	res.status(200).send(items)
+
+	await form.parse(req, async (err: any, fields: any, files: any) => {
+        const compressedSub1: any = files.submission1
+        const compressedSub2: any = files.submission2
+        if (
+            path.extname(compressedSub1.name) === ".zip" &&
+            path.extname(compressedSub2.name) === ".zip"
+        ) {
+            await extractZip.extractFiles(compressedSub1.path, submission1Path)
+            await extractZip.extractFiles(compressedSub2.path, submission2Path)
+            items.push(runPlagiarism(submission1Path, submission2Path))
+            res.status(200).send(items)
+        } else {
+            return "error" // return some error for not being zip
+        }
+    })
+	
 })
 
 app.listen(port, function () {
