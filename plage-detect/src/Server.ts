@@ -8,8 +8,8 @@ const path = require('path');
 const port: string = process.env.API_SERVER_PORT || '8000';
 const UI_ENDPOINT: string = process.env.UI_ENDPOINT || 'http://localhost:3000';
 
-const submission1Directory: string = '/../Submissions/Submission1';
-const submission2Directory: string = '/../Submissions/Submission2';
+const submission1Directory: string = '/Submissions/Submission1';
+const submission2Directory: string = '/Submissions/Submission2';
 
 const submission1Path: string = path.join(__dirname, submission1Directory);
 const submission2Path: string = path.join(__dirname, submission2Directory);
@@ -32,7 +32,7 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.post('/api/plagiarism', async (req: any, res: any): Promise<any> => { ///check the return type
+app.post('/api/plagiarism', async (req: any, res: any)=> { ///check the return type
 
     const form = formidable({ multiples: true });
 
