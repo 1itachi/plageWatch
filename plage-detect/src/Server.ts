@@ -1,7 +1,6 @@
 import * as express from "express"
 import runPlagiarism from "./Main"
 import ExtractZip from "./ExtractZip"
-import { resolve } from "path"
 require("dotenv").config()
 const formidable = require("formidable")
 const path = require("path")
@@ -41,7 +40,6 @@ app.post("/api/plagiarism", async (req: any, res: any) => {
 	form.maxFileSize = 15 * 1024 * 1024;
 	form.keepExtensions = true;
 
-	// const extractZip = new ExtractZip()
 	let items = []
 
 	await form.parse(req, async (err: any, fields: any, files: any) => {
@@ -51,11 +49,16 @@ app.post("/api/plagiarism", async (req: any, res: any) => {
             path.extname(compressedSub1.name) === ".zip" &&
             path.extname(compressedSub2.name) === ".zip"
         ) {
+		
 			await extractfiles(compressedSub1.path, submission1Path, compressedSub2.path, submission2Path)
-            items.push(runPlagiarism(submission1Path, submission2Path))
-            res.status(200).send(items)
+			try{
+            items.push(await runPlagiarism(submission1Path, submission2Path))
+			return res.status(200).send(items)
+			}catch(e){
+			  return res.status(400).send({"message":"sorry something went wrong!!"})
+			}
         } else {
-            return "error" // return some error for not being zip
+            return res.status(400).send({"message":"Only zip folders are accepted"}) // return some error for not being zip
         }
     })
 	
@@ -63,8 +66,8 @@ app.post("/api/plagiarism", async (req: any, res: any) => {
 
 async function extractfiles(compressedSub1, submission1Path, compressedSub2, submission2Path) {
 	const extractZip = new ExtractZip()
-	extractZip.extractFiles(compressedSub1, submission1Path)
-    extractZip.extractFiles(compressedSub2, submission2Path)
+	await  extractZip.extractFiles(compressedSub1, submission1Path)
+    await  extractZip.extractFiles(compressedSub2, submission2Path)
 }
 
 app.listen(port, function () {

@@ -70,27 +70,41 @@ export default class Upload extends React.Component
         this.setState({ submission2Files: submissionFile });
     }
 
+    timeout(ms:number) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
     async runPlagiarism() {
         //dispaly progress bar
         await this.setState({
-            displayProgress: true
+            displayProgress: true,
+            displayResult: false
         })
-
+        console.log("here")
         //api call to backend
+     
         const data: any = await runPlag([this.state.submission1Files, this.state.submission2Files])
-        this.props.updatePlagData(data[0])
 
-        await this.setState({
-            displayResult: true
-        })
+        //temperory fix for errors
+        if(data.hasOwnProperty("message")){
+            console.log(data)
+            alert(data.message + "! Make sure you only zip .js files.")
 
-        const result: any = document.getElementById('result')
-        result.scrollIntoView({ behavior: 'smooth' })
+        }else{
+            this.props.updatePlagData(data[0])
 
-        //hide progress bar
-        await this.setState({
-            displayProgress: false
-        })
+            await this.setState({
+                displayResult: true
+            })
+    
+            const result: any = document.getElementById('result')
+            result.scrollIntoView({ behavior: 'smooth' })
+    
+            //hide progress bar
+            await this.setState({
+                displayProgress: false
+            })
+        }
     }
 
     data: any = () => {

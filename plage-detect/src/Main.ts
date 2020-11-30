@@ -2,7 +2,7 @@ import ASTNodeGenerator from "./ASTNodeGenerator"
 import CollectNodes from "./CollectNodes"
 import DetectPlagiarism from "./DetectPlagiarism"
 
-export default function runPlagiarism (sub1path, sub2path) {
+export default async function runPlagiarism (sub1path, sub2path) {
 	let sub1RootNodes = []
 	let sub2RootNodes = []
 	let sub1FileNameMap = {}
@@ -38,16 +38,12 @@ export default function runPlagiarism (sub1path, sub2path) {
 		fileSubmission2
 	)
 	let result = plagiarismDetector.detect()
-	console.log(result)
+
 	 if(Number.isNaN(result['score'])){
 		 result['score'] = 0
 	 }
+
+	 console.log(result)
 	return result
 }
 
-// const submission1Directory: string = '/Submissions/Submission1';
-// const submission2Directory: string = '/Submissions/Submission2';
-
-// const submission1Path: string = path.join(__dirname, submission1Directory);
-// const submission2Path: string = path.join(__dirname, submission2Directory);
-// runPlagiarism(submission1Path,submission2Path)
