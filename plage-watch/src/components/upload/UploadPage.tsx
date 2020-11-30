@@ -72,15 +72,12 @@ export default class Upload extends React.Component
         this.setState({ submission2Files: submissionFile });
     }
 
-    timeout(ms:number) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-    }
-
     async runPlagiarism() {
         //dispaly progress bar
         await this.setState({
             displayProgress: true,
-            displayResult: false
+            displayResult: false,
+            displayCompare: false
         })
 
         //api call to backend
@@ -89,9 +86,7 @@ export default class Upload extends React.Component
 
         //temperory fix for errors
         if(data.hasOwnProperty("message")){
-            console.log(data)
             alert(data.message + "! Make sure you only zip .js files.")
-
         }else{
             this.props.updatePlagData(data[0])
 
