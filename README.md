@@ -60,3 +60,4 @@ It will install the dependencies on local system mentioned in package.json file 
 
 ### Dependencies
 1. The application requires the Node version to be above v12.
+#### Refer to package.json present inside plage-detect and plage-watch directories.
