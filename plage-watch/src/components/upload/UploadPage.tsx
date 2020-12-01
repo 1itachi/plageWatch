@@ -89,7 +89,7 @@ export default class Upload extends React.Component
             alert(data.message + "! Make sure you only zip .js files.")
         }else{
             this.props.updatePlagData(data[0])
-
+            localStorage.setItem('data', JSON.stringify(data[0]))
             await this.setState({
                 displayResult: true
             })

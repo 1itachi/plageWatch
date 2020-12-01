@@ -3,6 +3,7 @@ import { Button, Row, Col } from 'react-bootstrap';
 import './CodeCompare.css'
 import CodeArea from './CodeArea';
 import { LinkContainer } from 'react-router-bootstrap';
+import { JsxEmit } from 'typescript';
 
 const disabled: boolean = false;
 const enabled: boolean = true;
@@ -13,6 +14,7 @@ interface ComapareState {
     prev_button: boolean;
     next_button: boolean;
     plagiarism_count: number;
+    plagiarism_data : any;
 }
 interface ComapareProps {
     plagiarism_data: any;
@@ -25,15 +27,16 @@ class CodeCompare extends React.Component<ComapareProps, ComapareState> {
             index: firstPage,
             prev_button: disabled,
             next_button: disabled,
-            plagiarism_count: Object.keys(props.plagiarism_data).length - 3,
+            plagiarism_count: Object.keys(JSON.parse(localStorage.getItem('data')|| " ")).length - 3,
+            plagiarism_data: JSON.parse(localStorage.getItem('data')|| " ")
         };
         this.nextButtonClick = this.nextButtonClick.bind(this);
         this.previousButtonClick = this.previousButtonClick.bind(this);
     }
 
+
     async componentDidMount() {
-        let { index, plagiarism_count } = this.state;
-        
+        let { index, plagiarism_count} = this.state;
         if (index < plagiarism_count) {
             this.setState({ next_button: enabled })
         }
@@ -71,7 +74,9 @@ class CodeCompare extends React.Component<ComapareProps, ComapareState> {
 
     render() {
         return (
+           
             <div className='container'>
+             <div>
                 <Row className='mb-1 mt-3'>
                     <Col
                         xs={{ span: 1, offset: 8 }}
@@ -136,7 +141,7 @@ class CodeCompare extends React.Component<ComapareProps, ComapareState> {
                 </Row>
                 <CodeArea
                     index={this.state.index}
-                    plagiarism_data={this.props.plagiarism_data}
+                    plagiarism_data={this.state.plagiarism_data}
                 />
                 <Col xs={{ span: 3, offset: 10 }} md={{ span: 2, offset: 10 }} lg={{ span: 2, offset: 11 }}>
                     <LinkContainer to="/home">
@@ -149,6 +154,7 @@ class CodeCompare extends React.Component<ComapareProps, ComapareState> {
                     </LinkContainer>
                 </Col>
             </div>
+        </div>
         );
     }
 }
