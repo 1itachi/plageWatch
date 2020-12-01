@@ -9,7 +9,6 @@ export default class ASTNodeGenerator {
 		let counter = 0
 
 		let allFilePaths: Array<string> = this.getAllFiles(folderPath, [])
-
 		allFilePaths.forEach((path) => {
 			//format name to take only names that appear on submitted zip
 			let newPath = path.split("Submissions\\")[1]
@@ -25,7 +24,6 @@ export default class ASTNodeGenerator {
 
 	getAllFiles = (dirPath, arrayOfFiles): Array<string> => {
 		let files = fs.readdirSync(dirPath)
-		arrayOfFiles = arrayOfFiles || []
 		files.forEach((file) => {
 			if (fs.statSync(dirPath + "/" + file).isDirectory()) {
 				arrayOfFiles = this.getAllFiles(dirPath + "/" + file, arrayOfFiles)

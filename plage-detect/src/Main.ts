@@ -1,6 +1,7 @@
 import ASTNodeGenerator from "./ASTNodeGenerator"
 import CollectNodes from "./CollectNodes"
 import DetectPlagiarism from "./DetectPlagiarism"
+const path = require("path")
 
 export default async function runPlagiarism (sub1path, sub2path) {
 	let sub1RootNodes = []
@@ -25,6 +26,7 @@ export default async function runPlagiarism (sub1path, sub2path) {
 		fileSubmission2
 	)
 
+
 	let collectNodes = new CollectNodes()
 	sub1AllNodes = collectNodes.collectNodes(sub1RootNodes)
 	sub2AllNodes = collectNodes.collectNodes(sub2RootNodes)
@@ -44,5 +46,4 @@ export default async function runPlagiarism (sub1path, sub2path) {
 	 }
 
 	return result
-}
-
+} 
