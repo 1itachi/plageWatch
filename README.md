@@ -12,13 +12,13 @@
 
 4. Navigate to the `plage-detect` folder using command prompt or terminal: 
 ```
-npm install.
+npm install
 ``` 
 It will install the dependencies on local system mentioned in the `package.json` file present inside `plage-detect` directory.
 
 5. Navigate to the `plage-watch` folder using command prompt or terminal: 
 ```
-npm install. 
+npm install
 ```
 It will install the dependencies on local system mentioned in the `package.json` file present inside `plage-watch` directory.
 
@@ -38,7 +38,7 @@ npm start
 ### Steps to use the PlagWatch application
 
 1. Open Browser (Google Chrome, Safari, etc) and enter the URL `http://localhost:3000/home` on the browser.
-* Note:- It will take some time to open for the first time on browser.
+  * Note:- It will take some time to open for the first time on browser.
 
 2. Upload 2 submissions by clicking on the upload zone and selecting the zip files or by dragging and dropping the zip files in the drop zones.
 
