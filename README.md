@@ -1,4 +1,5 @@
-# Plage Watch 
+<h1 align="center"> Plage Watch <img src='/plage-watch/src/images/plagewatch.jpg' alt='logo' width=50px /></h1> 
+
 ## A Web Application to detect plagiarism in Javascript files.
 
 
