@@ -60,6 +60,7 @@ npm start
 
 5. Click on the `Compare` button to examine the code similarities side by side.
 
+![compare](https://media.github.ccs.neu.edu/user/6143/files/bb370b80-3410-11eb-9fc5-b83db87f3f34)
 
 6. After clicking `Compare Button` the application will navigate to below page where a file by file comparision is provided.
 
