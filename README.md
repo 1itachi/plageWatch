@@ -46,6 +46,7 @@ npm start
   ![image](https://media.github.ccs.neu.edu/user/6143/files/05b68900-340d-11eb-9d21-b7c2ad55b166)
 
 2. Upload 2 submissions by clicking on the upload zone and selecting the zip files or by dragging and dropping the zip files in the drop zones.
+
 ![image](https://media.github.ccs.neu.edu/user/6143/files/4c0be800-340d-11eb-83f6-f255ac40b4ba)
 
 #### Note:- the size limit to upload .zip files is 15mb per file.
