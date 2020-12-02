@@ -23,10 +23,6 @@ npm install
 ```
 It will install the dependencies on local system mentioned in the `package.json` file present inside `plage-watch` directory.
 
-
-4] Navigate to `plage-detect` folder from command prompt or terminal run command: 
-#### `npm install.` 
-It will install the dependencies on local system mentioned in package.json file present inside plage-detect.
 ### Steps to Run the application
 1. Front-end
 Navigate to the `plage-watch` directory and run the command:
