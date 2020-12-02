@@ -52,7 +52,7 @@ npm start
 
 3. Click on the `Check Plagiarism` button. This loads the plagiarism detection results.
 
-![image](https://media.github.ccs.neu.edu/user/6143/files/c6d50300-340d-11eb-9d65-d78b88fbbf53)
+                                 ![image](https://media.github.ccs.neu.edu/user/6143/files/c6d50300-340d-11eb-9d65-d78b88fbbf53)
 
 4. Result in the form of percentage and pie chart can be seen now.
 
@@ -60,9 +60,19 @@ npm start
 
 5. Click on the `Compare` button to examine the code similarities side by side.
 
-6. Using the `Next` and `Prev` buttons navigate through all the program similarities.
 
-7. Click `Go Back` button to return to the home screen to upload new submissions.
+6. After clicking `Compare Button` the application will navigate to below page where a file by file comparision is provided.
+
+
+#### Note: The lines highlighted in red is detected as plagiarized.
+
+7. Using the `Next` and `Prev` buttons navigate through all the program similarities.
+
+
+
+8. Click `Go Back` button to return to the home screen to upload new submissions.
+
+
 
 
 ### Dependencies
