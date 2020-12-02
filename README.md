@@ -48,6 +48,7 @@ It will install the dependencies on local system mentioned in package.json file 
   * Note:- It will take some time to open for the first time on browser.
 
 2. Upload 2 submissions by clicking on the upload zone and selecting the zip files or by dragging and dropping the zip files in the drop zones.
+##### Note:- the size limit to upload .zip files is 15mb per file.
 
 3. Click on the `Check Plagiarism` button. This loads the plagiarism detection results.
 
