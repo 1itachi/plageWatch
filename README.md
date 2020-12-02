@@ -63,16 +63,17 @@ npm start
 
 6. After clicking `Compare Button` the application will navigate to below page where a file by file comparision is provided.
 
+![leftrightpane](https://media.github.ccs.neu.edu/user/6143/files/42d04a80-3410-11eb-90d4-fc6fee9de961)
 
 #### Note: The lines highlighted in red is detected as plagiarized.
 
 7. Using the `Next` and `Prev` buttons navigate through all the program similarities.
 
-
+![prevnext](https://media.github.ccs.neu.edu/user/6143/files/41068700-3410-11eb-9010-e2b504c4c518)
 
 8. Click `Go Back` button to return to the home screen to upload new submissions.
 
-
+![goback](https://media.github.ccs.neu.edu/user/6143/files/5c719200-3410-11eb-9bc7-1929bd08acce)
 
 
 ### Dependencies
