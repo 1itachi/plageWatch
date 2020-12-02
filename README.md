@@ -52,7 +52,7 @@ npm start
 
 3. Click on the `Check Plagiarism` button. This loads the plagiarism detection results.
 
-                                 ![image](https://media.github.ccs.neu.edu/user/6143/files/c6d50300-340d-11eb-9d65-d78b88fbbf53)
+![image](https://media.github.ccs.neu.edu/user/6143/files/c6d50300-340d-11eb-9d65-d78b88fbbf53)
 
 4. Result in the form of percentage and pie chart can be seen now.
 
