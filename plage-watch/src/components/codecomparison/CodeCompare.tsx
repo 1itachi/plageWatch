@@ -75,34 +75,9 @@ class CodeCompare extends React.Component<ComapareProps, ComapareState> {
     render() {
         return (
            
-            <div className='container'>
+            <div className='container-fluid'>
              <div>
-                <Row className='mb-1 mt-3'>
-                    <Col
-                        xs={{ span: 1, offset: 8 }}
-                        sm={{ span: 1, offset: 9 }}
-                        lg={{ span: 1, offset: 10 }}
-                    >
-                        <Button
-                            variant='primary'
-                            className='plagiarism-buttons'
-                        >
-                            <div>Download</div>
-                        </Button>
-                    </Col>
-                    <Col
-                        xs={{ span: 1, offset: 1 }}
-                        lg={{ span: 1, offset: 0 }}
-                    >
-                        <Button
-                            variant='primary'
-                            className='plagiarism-buttons'
-                        >
-                            <div>Report</div>
-                        </Button>
-                    </Col>
-                </Row>
-                <Row className='mb-3'>
+                <Row className='mb-3 mt-4'>
                     <Col
                         xs={{ span: 1, offset: 4 }}
                         md={{ span: 1, offset: 4 }}
