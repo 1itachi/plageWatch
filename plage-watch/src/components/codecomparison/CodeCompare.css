@@ -70,3 +70,7 @@ legend {
 .code-lines{
     font-family: 'Consolas', 'Monaco','Lucida Sans',  'Dina', 'Arial';   
 }
+.code-area-sub-name{
+    font-size: 1.2rem;
+    font-weight: bold;
+}

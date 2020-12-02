@@ -118,7 +118,7 @@ class CodeCompare extends React.Component<ComapareProps, ComapareState> {
                     index={this.state.index}
                     plagiarism_data={this.state.plagiarism_data}
                 />
-                <Col xs={{ span: 3, offset: 10 }} md={{ span: 2, offset: 10 }} lg={{ span: 2, offset: 11 }}>
+                <Col xs={{ span: 5, offset: 7 }} md={{ span: 2, offset: 10 }} lg={{ span: 2, offset: 11 }}>
                     <LinkContainer to="/home">
                         <Button
                             variant='primary'
