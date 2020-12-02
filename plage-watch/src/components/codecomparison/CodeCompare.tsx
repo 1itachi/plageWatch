@@ -14,7 +14,7 @@ interface ComapareState {
     prev_button: boolean;
     next_button: boolean;
     plagiarism_count: number;
-    plagiarism_data : any;
+    // plagiarism_data : any;
 }
 interface ComapareProps {
     plagiarism_data: any;
@@ -27,8 +27,9 @@ class CodeCompare extends React.Component<ComapareProps, ComapareState> {
             index: firstPage,
             prev_button: disabled,
             next_button: disabled,
-            plagiarism_count: Object.keys(JSON.parse(localStorage.getItem('data')|| " ")).length - 3,
-            plagiarism_data: JSON.parse(localStorage.getItem('data')|| " ")
+            plagiarism_count: Object.keys(props.plagiarism_data).length - 3
+                // Object.keys(JSON.parse(localStorage.getItem('data')|| " ")).length - 3,
+            // plagiarism_data: JSON.parse(localStorage.getItem('data')|| " ")
         };
         this.nextButtonClick = this.nextButtonClick.bind(this);
         this.previousButtonClick = this.previousButtonClick.bind(this);
@@ -116,7 +117,7 @@ class CodeCompare extends React.Component<ComapareProps, ComapareState> {
                 </Row>
                 <CodeArea
                     index={this.state.index}
-                    plagiarism_data={this.state.plagiarism_data}
+                    plagiarism_data={this.props.plagiarism_data}
                 />
                 <Col xs={{ span: 5, offset: 7 }} md={{ span: 2, offset: 10 }} lg={{ span: 2, offset: 11 }}>
                     <LinkContainer to="/home">

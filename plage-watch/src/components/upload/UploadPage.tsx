@@ -6,6 +6,7 @@ import { Button } from "react-bootstrap";
 import { LinkContainer } from 'react-router-bootstrap'
 import { PieChart } from 'react-minimal-pie-chart';
 import runPlag from './../../services/upload';
+import ErrorBoundary from "../ErrorComponent";
 
 const uploaded: boolean = true;
 const notUploaded: boolean = false;
@@ -23,7 +24,8 @@ interface UploadState {
     enableRunButton: boolean;
     submission1Files: any;
     submission2Files: any;
-    displayCompare : boolean
+    displayCompare : boolean,
+    displayError: any
 }
 interface UploadProps {
     updatePlagData: any;
@@ -43,7 +45,8 @@ export default class Upload extends React.Component
             displayProgress: false,
             submission1Files: [],
             submission2Files: [],
-            displayCompare : false
+            displayCompare : false,
+            displayError: []
         }
 
         this.uploadFile1 = this.uploadFile1.bind(this);
@@ -53,7 +56,7 @@ export default class Upload extends React.Component
 
     /* Check for plagiarism, disable until the upload is completed. */
     componentDidUpdate(prevProps: any) {
-        if (this.state.enableRunButton !== true) {
+        if (!this.state.enableRunButton) {
             const { file1Uploaded, file2Uploaded } = this.state;
             if (file1Uploaded === uploaded && file2Uploaded === uploaded) {
                 this.setState({ enableRunButton: true });
@@ -83,13 +86,15 @@ export default class Upload extends React.Component
         //api call to backend
      
         const data: any = await runPlag([this.state.submission1Files, this.state.submission2Files])
-
+        console.log(JSON.stringify(data))
         //temperory fix for errors
         if(data.hasOwnProperty("message")){
-            alert(data.message + "! Make sure you only zip .js files.")
+            this.setState({
+                displayError: data.message
+            })
         }else{
             this.props.updatePlagData(data[0])
-            localStorage.setItem('data', JSON.stringify(data[0]))
+
             await this.setState({
                 displayResult: true
             })
@@ -144,7 +149,12 @@ export default class Upload extends React.Component
                             <i className="fas fa-search"><span style={{ fontFamily: "Lucida Console, Courier, monospace" }}>Check Plagiarism  </span></i>
                         </Button>
                     </div>
-
+                    { this.state.displayError &&
+                    <ErrorBoundary>
+                        <p>
+                            <code>{this.state.displayError}</code>
+                        </p>
+                    </ErrorBoundary> }
                     {this.state.displayResult &&
                         <div id="result" className="mt-2 p-4 center row">
                             <div className="mt-4 center sub-style">
@@ -179,7 +189,8 @@ export default class Upload extends React.Component
                                     radius={50}
                                 />
                             </div>
-                        </div>}
+                        </div>
+                    }
 
                 </div>
             </div>

@@ -14,7 +14,6 @@ export default class CollectNodes {
 			})
 			nodesAcrossAllFiles.push(nodesAcrossFile)
 		})
-
 		return nodesAcrossAllFiles
 	}
 }
