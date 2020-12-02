@@ -20,7 +20,7 @@ function CodePage(props: any) {
     return (
         <>
             <fieldset className='code-area'>
-                <legend>{props.filename}</legend>
+                <legend className='code-area-sub-name'>{props.filename}</legend>
                 <div className='ml-0 overflow-auto code'>
                     {LineOfCode}
                 </div>
