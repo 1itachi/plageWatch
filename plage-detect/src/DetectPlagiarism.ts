@@ -122,6 +122,13 @@ export default class DetectPlagiarism {
 
 	private compare(obj1, obj2): boolean {
 		//properties to ignore while comparing
+		
+		//if one object is null and other isn't , they are not plagiarised
+		if(obj1==null && obj2!=null || obj1!=null && obj2==null) return false
+
+		//if both objects are null, flag them off as not plagiarised
+		if(obj1==null && obj2==null) return true
+
 		let ignoredProperties = [
 			"loc",
 			"start",
