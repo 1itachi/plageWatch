@@ -70,14 +70,17 @@ class CodeArea extends React.Component<CodeProps, CodeState> {
                             plagiarized_code_lines={plag_lines1}
                         />
                     </Col>
-                    <Col lg={{ span: 2, order: 2 }} md={{ span: 6, order: 1 }} xs={{ span: 6, order: 1 }} className='my-auto mx-auto speedometer'>
+                    <Col lg={{ span: 2, order: 2 }} md={{ span: 3, order: 1 }} sm={{ span: 4, order: 1 }} xs={{ span: 5, order: 1 }} className='my-auto mx-auto speedometer'>
                         <ReactSpeedometer
                             value={plag_score}
                             maxValue={100}
                             fluidWidth={true}
+                            height={100}
                             startColor='#33CC33'
                             endColor='red'
-                            segments={10}
+                            segments={1000}
+                            maxSegmentLabels={5}
+                            dimensionUnit='%'
                         />
                     </Col>
                     <Col lg={{ span: 5, order: 3 }} md={{ span: 12, order: 3 }} xs={{ span: 12, order: 3 }}>
@@ -88,7 +91,6 @@ class CodeArea extends React.Component<CodeProps, CodeState> {
                         />
                     </Col>
                 </Row>
-
             </>
         );
     }
