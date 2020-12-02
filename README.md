@@ -37,7 +37,7 @@ npm start
 
 ### Steps to use the PlagWatch application
 1. Open Browser (Google Chrome, Safari, etc) and enter the URL `http://localhost:3000/home` on the browser.
-  * Note:- It will take some time to open for the first time on browser.
+#### Note:- It will take some time to open for the first time on browser.
   
   ![image](https://media.github.ccs.neu.edu/user/6143/files/05b68900-340d-11eb-9d21-b7c2ad55b166)
 
