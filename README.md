@@ -51,6 +51,7 @@ npm start
 #### Note:- the size limit to upload .zip files is 15mb per file.
 
 3. Click on the `Check Plagiarism` button. This loads the plagiarism detection results.
+![image](https://media.github.ccs.neu.edu/user/6143/files/4c0be800-340d-11eb-83f6-f255ac40b4ba)
 
 4. Click on the `Compare` button to examine the code similarities side by side.
 
