@@ -56,13 +56,13 @@ npm start
 
 4. Result in the form of percentage and pie chart can be seen now.
 
-![image](https://media.github.ccs.neu.edu/user/6143/files/c6d50300-340d-11eb-9d65-d78b88fbbf53)
+![image](https://media.github.ccs.neu.edu/user/6143/files/58447500-340e-11eb-9581-950468354194)
 
-4. Click on the `Compare` button to examine the code similarities side by side.
+5. Click on the `Compare` button to examine the code similarities side by side.
 
-5. Using the `Next` and `Prev` buttons navigate through all the program similarities.
+6. Using the `Next` and `Prev` buttons navigate through all the program similarities.
 
-6. Click `Go Back` button to return to the home screen to upload new submissions.
+7. Click `Go Back` button to return to the home screen to upload new submissions.
 
 
 ### Dependencies
