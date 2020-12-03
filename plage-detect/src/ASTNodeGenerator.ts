@@ -11,7 +11,7 @@ export default class ASTNodeGenerator {
 		let allFilePaths: Array<string> = this.getAllFiles(folderPath, [])
 		allFilePaths.forEach((path) => {
 			//format name to take only names that appear on submitted zip
-			let newPath = path.split("Submissions\\")[1]
+			let newPath = path.split("Submissions")[1]
 			map[counter] = newPath
 			nodes.push(babel.transformFileSync(path, { ast: true }).ast)
 			const content = fs.readFileSync(path, "utf-8")
