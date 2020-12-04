@@ -2,6 +2,7 @@ import * as express from "express"
 import runPlagiarism from "./Main"
 import ExtractZip from "./ExtractZip"
 import DirectoryReader from "./DirectoryReader";
+
 require("dotenv").config()
 const formidable = require("formidable")
 const path = require("path")
@@ -32,63 +33,62 @@ app.use(function (req, res, next) {
     next()
 })
 
-app.post("/api/plagiarism", async (req: any, res: any) => {
-	///check the return type
+app.post("/api/plagiarism", async (req:any, res: any) => {
 
-	const form = formidable({multiples: true})
+    const form = formidable({multiples: true})
 
-	// file size limit 15MB.
-	form.maxFileSize = 15 * 1024 * 1024;
+    // file size limit 15MB.
+    form.maxFileSize = 35 * 1024 * 1024;
 
-	form.keepExtensions = true;
+    form.keepExtensions = true;
 
-	let items = []
+    let items = []
 
-	await form.parse(req, async (err: any, fields: any, files: any) => {
+    await form.parse(req, async (err: any, fields: any, files: any) => {
 
-		if (err) {
-			return res.status(413).send({"message": "Max File Size exceeded, received 15761246 bytes of file data. Maximum size limit is 15mb."})
-		}
+        if (err) {
+            return res.status(413).send({"message": "Maximum size limit per .zip file is 15MB."})
+        }
 
-		const compressedSub1: any = files.submission1
-		const compressedSub2: any = files.submission2
+        const compressedSub1 = files.submission1
+        const compressedSub2 = files.submission2
 
-		if (
-			path.extname(compressedSub1.name) !== ".zip" || path.extname(compressedSub2.name) !== ".zip"
-		) {
-			return res.status(400).send({"message": "Only .zip folders are accepted"})
+        if (path.extname(compressedSub1.name) !== ".zip") {
+            return res.status(400).send({"message": "Upload .zip folder for submission 1."})
 
-		} else {
-			await extractfiles(compressedSub1.path, submission1Path, compressedSub2.path, submission2Path)
-			try {
-				let arrayOfFilesInSubmission1:Array<string> = new DirectoryReader().getAllFiles(submission1Path, [])
-				let arrayOfFilesInSubmission2:Array<string> = new DirectoryReader().getAllFiles(submission2Path, [])
-				if (arrayOfFilesInSubmission1.length === 0 || arrayOfFilesInSubmission2.length === 0) {
-					return res.status(400).send({
-							"message": " .zip files are either contains empty directories or " +
-								"No .js files are present inside directories."
-						}
-					)
-				} else {
+        } else if (path.extname(compressedSub2.name) !== ".zip") {
+            return res.status(400).send({"message": "Upload .zip folder for submission 2."})
 
-					items.push(await runPlagiarism(arrayOfFilesInSubmission1, arrayOfFilesInSubmission2))
-					console.log(items)
-					return res.status(200).send(items)
-				}
-			} catch (e) {
-				return res.status(400).send([{"message": "e"}])
-			}
-		}
-	})
+        } else {
+            await extractfiles(compressedSub1.path, submission1Path, compressedSub2.path, submission2Path)
+            try {
+                let arrayOfFilesInSubmission1: Array<string> = new DirectoryReader().getAllFiles(submission1Path, [])
+                let arrayOfFilesInSubmission2: Array<string> = new DirectoryReader().getAllFiles(submission2Path, [])
+                if (arrayOfFilesInSubmission1.length === 0 || arrayOfFilesInSubmission2.length === 0) {
+                    return res.status(400).send({
+                            "message": " .zip files are either contains empty directories or " +
+                                "No .js files are present inside directories."
+                        }
+                    )
+                } else {
+
+                    items.push(await runPlagiarism(arrayOfFilesInSubmission1, arrayOfFilesInSubmission2))
+                    return res.status(200).send(items)
+                }
+            } catch (e) {
+                return res.status(400).send([{"message": "e"}])
+            }
+        }
+    })
 
 })
 
 async function extractfiles(compressedSub1: string, submission1Path: string, compressedSub2: string, submission2Path: string) {
-	const extractZip:ExtractZip = new ExtractZip()
-	await extractZip.extractFiles(compressedSub1, submission1Path)
-	await extractZip.extractFiles(compressedSub2, submission2Path)
+    const extractZip: ExtractZip = new ExtractZip()
+    await extractZip.extractFiles(compressedSub1, submission1Path)
+    await extractZip.extractFiles(compressedSub2, submission2Path)
 }
 
 app.listen(port, function () {
-	console.log("PlageWatch Client Server listening on port " + port)
+    console.log("PlageWatch Client Server listening on port " + port)
 })

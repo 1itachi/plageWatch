@@ -12,7 +12,6 @@ class ExtractZip {
 				try {
 					fs.rmdirSync(path.join(directoryPath, file), { recursive: true })
 				} catch (err) {
-					// console.log(error)
 					throw new exception(err)
 				}
 			}
@@ -22,18 +21,16 @@ class ExtractZip {
 	private async createDirectory(directoryPath: string) {
 		await fs.mkdir(directoryPath,async(err)=>{
 			if(err) {
-		await this.clearDirectory(directoryPath)
+				await this.clearDirectory(directoryPath)
 			}
 		})
 }
 
 	async extractFiles(compressedFilePath: string, submissionPath: string) {
-		//check the return type
 		await this.createDirectory(submissionPath)
 		try {
 			await extract(compressedFilePath, { dir: submissionPath })
 		} catch (error) {
-			// console.log(error);
 			throw new exception(error)
 		}
 	}

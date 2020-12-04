@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes, {InferType, Requireable, Validator} from 'prop-types';
 
-export default class ErrorBoundary extends Component {
+export default class ErrorBoundary extends Component<any, any> {
     state = {
         error: '',
         errorInfo: '',
@@ -25,7 +25,7 @@ export default class ErrorBoundary extends Component {
                     <p>
                         There was an error in loading this page.{' '}
             <span
-                style={{ cursor: 'pointer', color: '#0077FF' }}
+                style={{ cursor: 'pointer', color: '#C13C37' }}
             onClick={() => {
                 window.location.reload();
             }}

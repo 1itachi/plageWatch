@@ -3,7 +3,6 @@ import { Button, Row, Col } from 'react-bootstrap';
 import './CodeCompare.css'
 import CodeArea from './CodeArea';
 import { LinkContainer } from 'react-router-bootstrap';
-import { JsxEmit } from 'typescript';
 
 const disabled: boolean = false;
 const enabled: boolean = true;
@@ -14,7 +13,7 @@ interface ComapareState {
     prev_button: boolean;
     next_button: boolean;
     plagiarism_count: number;
-    // plagiarism_data : any;
+    plagiarism_data : any;
 }
 interface ComapareProps {
     plagiarism_data: any;
@@ -27,9 +26,9 @@ class CodeCompare extends React.Component<ComapareProps, ComapareState> {
             index: firstPage,
             prev_button: disabled,
             next_button: disabled,
-            plagiarism_count: Object.keys(props.plagiarism_data).length - 3
-                // Object.keys(JSON.parse(localStorage.getItem('data')|| " ")).length - 3,
-            // plagiarism_data: JSON.parse(localStorage.getItem('data')|| " ")
+            plagiarism_count: Object.keys(props.plagiarism_data).length - 3,
+            //      Object.keys(JSON.parse(localStorage.getItem('data')|| " ")).length - 3,
+            plagiarism_data: JSON.parse(localStorage.getItem('data')|| " ")
         };
         this.nextButtonClick = this.nextButtonClick.bind(this);
         this.previousButtonClick = this.previousButtonClick.bind(this);
