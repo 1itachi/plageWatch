@@ -36,6 +36,7 @@ class CodeCompare extends React.Component<ComapareProps, ComapareState> {
 
 
     async componentDidMount() {
+        window.scrollTo(0, 0)
         let { index, plagiarism_count} = this.state;
         if (index < plagiarism_count) {
             this.setState({ next_button: enabled })

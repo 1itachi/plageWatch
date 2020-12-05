@@ -1,6 +1,6 @@
 import * as express from "express"
 import runPlagiarism from "./Main"
-import ExtractZip from "./ExtractZip"
+import ExtractZipFiles from "./ExtractZipFiles"
 require("dotenv").config()
 const formidable = require("formidable")
 const path = require("path")
@@ -64,10 +64,10 @@ app.post("/api/plagiarism", async (req: any, res: any) => {
 	
 })
 
-async function extractfiles(compressedSub1, submission1Path, compressedSub2, submission2Path) {
-	const extractZip = new ExtractZip()
-	await  extractZip.extractFiles(compressedSub1, submission1Path)
-    await  extractZip.extractFiles(compressedSub2, submission2Path)
+async function extractfiles(compressedSub1, submission1Path, compressedSub2, submission2Path): Promise<void> {
+	const extractZip = new ExtractZipFiles()
+	await  extractZip.extract(compressedSub1, submission1Path)
+    await  extractZip.extract(compressedSub2, submission2Path)
 }
 
 app.listen(port, function () {
