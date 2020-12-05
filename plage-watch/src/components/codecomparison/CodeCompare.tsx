@@ -26,8 +26,7 @@ class CodeCompare extends React.Component<ComapareProps, ComapareState> {
             index: firstPage,
             prev_button: disabled,
             next_button: disabled,
-            plagiarism_count: Object.keys(props.plagiarism_data).length - 3,
-            //      Object.keys(JSON.parse(localStorage.getItem('data')|| " ")).length - 3,
+            plagiarism_count: Object.keys(JSON.parse(localStorage.getItem('data')|| " ")).length - 3,
             plagiarism_data: JSON.parse(localStorage.getItem('data')|| " ")
         };
         this.nextButtonClick = this.nextButtonClick.bind(this);
@@ -116,9 +115,9 @@ class CodeCompare extends React.Component<ComapareProps, ComapareState> {
                 </Row>
                 <CodeArea
                     index={this.state.index}
-                    plagiarism_data={this.props.plagiarism_data}
+                    plagiarism_data={this.state.plagiarism_data}
                 />
-                <Col xs={{ span: 5, offset: 7 }} md={{ span: 2, offset: 10 }} lg={{ span: 2, offset: 11 }}>
+                <Col xs={{ span: 3, offset: 10 }} md={{ span: 2, offset: 10 }} lg={{ span: 2, offset: 11 }}>
                     <LinkContainer to="/home">
                         <Button
                             variant='primary'
