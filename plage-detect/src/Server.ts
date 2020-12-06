@@ -1,18 +1,13 @@
 import * as express from "express"
-import runPlagiarism from "./Main"
-import ExtractZipFiles from "./ExtractZipFiles"
+import serveRequest from "./Routes/Service"
+
 require("dotenv").config()
-const formidable = require("formidable")
-const path = require("path")
+
 
 const port: string = process.env.API_SERVER_PORT || "8000"
 const UI_ENDPOINT: string = process.env.UI_ENDPOINT || "http://localhost:3000"
 
-const submission1Directory: string = "/Submissions/Submission1"
-const submission2Directory: string = "/Submissions/Submission2"
 
-const submission1Path: string = path.join(__dirname, submission1Directory)
-const submission2Path: string = path.join(__dirname, submission2Directory)
 
 const app = express()
 app.use(express.json())
@@ -34,41 +29,56 @@ app.use(function (req, res, next) {
 app.post("/api/plagiarism", async (req: any, res: any) => {
 	///check the return type
 
-	const form = formidable({ multiples: true })
+
+	// serveRequest(req).then((resolve, reject):=> {
+	// 	if(reject) {
+	// 		return res.status(400).send(reject)
+	// 	}
+	// 	return
+
+	// })
 	
-	// file size limit 15MB.
-	form.maxFileSize = 15 * 1024 * 1024;
-	form.keepExtensions = true;
+	serveRequest(req).then((result)=>{
+		return res.status(200).send(result)
+	}).catch((error)=>{
+		return res.status(400).send([{"message": error.message}]);
+	})
 
-	let items = []
+	// const result: Array<any> = await serveRequest(req);
 
-	await form.parse(req, async (err: any, fields: any, files: any) => {
-        const compressedSub1: any = files.submission1
-        const compressedSub2: any = files.submission2
-        if (
-            path.extname(compressedSub1.name) === ".zip" &&
-            path.extname(compressedSub2.name) === ".zip"
-        ) {
+	// if (result[0].hasOwnProperty('message'))
+
+	// const form = formidable({ multiples: true })
+	
+	// // file size limit 15MB.
+	// form.maxFileSize = 15 * 1024 * 1024;
+	// form.keepExtensions = true;
+
+	// let items = []
+
+	// await form.parse(req, async (err: any, fields: any, files: any) => {
+    //     const compressedSub1: any = files.submission1
+    //     const compressedSub2: any = files.submission2
+    //     if (
+    //         path.extname(compressedSub1.name) === ".zip" &&
+    //         path.extname(compressedSub2.name) === ".zip"
+    //     ) {
 		
-			await extractfiles(compressedSub1.path, submission1Path, compressedSub2.path, submission2Path)
-			try{
-            items.push(await runPlagiarism(submission1Path, submission2Path))
-			return res.status(200).send(items)
-			}catch(e){
-			  return res.status(400).send({"message":"Sorry something went wrong!!"})
-			}
-        } else {
-            return res.status(400).send({"message":"Only zip folders are accepted"}) // return some error for not being zip
-        }
-    })
+	// 		await extractfiles(compressedSub1.path, submission1Path, compressedSub2.path, submission2Path)
+	// 		try{
+    //         items.push(await runPlagiarism(submission1Path, submission2Path))
+	// 		return res.status(200).send(items)
+	// 		}catch(e){
+	// 		  return res.status(400).send({"message":"Sorry something went wrong!!"})
+	// 		}
+    //     } else {
+    //         return res.status(400).send({"message":"Only zip folders are accepted"}) // return some error for not being zip
+    //     }
+    // })
 	
 })
 
-async function extractfiles(compressedSub1, submission1Path, compressedSub2, submission2Path): Promise<void> {
-	const extractZip = new ExtractZipFiles()
-	await  extractZip.extract(compressedSub1, submission1Path)
-    await  extractZip.extract(compressedSub2, submission2Path)
-}
+
 
 app.listen(port, function () {
 	console.log("PlageWatch Client Server listening on port " + port)

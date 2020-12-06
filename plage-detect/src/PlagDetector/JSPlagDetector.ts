@@ -69,9 +69,6 @@ class JSPlagDetector implements IPlagDetector {
                 if (lineSet1.size !== 0 && lineSet2.size != 0) {
                     numberOfFilesMatched = numberOfFilesMatched + 1
                     let plageObject = {}
-                    // plageObject[this.file1NameMap[index1]] = Array.from(lineSet1)
-                    // plageObject[this.file2NameMap[index2]] = Array.from(lineSet2)
-                    // //build plagiarised object
                     let sub1Object = {
                         file: this.file1NameMap[index1],
                         lines: Array.from(lineSet1),
@@ -194,3 +191,5 @@ class JSPlagDetector implements IPlagDetector {
     }
 
 }
+
+export default JSPlagDetector;

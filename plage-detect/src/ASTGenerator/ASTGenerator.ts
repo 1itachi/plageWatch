@@ -13,7 +13,7 @@ class ASTGenerator implements IASTGenerator {
         this.filePaths = filePaths;
     }
 
-    generateASTs(): Node[] {
+    generateASTs(): Array<any> {
         let nodes: Array<any> = []
         let counter = 0
         this.filePaths.forEach((path) => {
