@@ -15,6 +15,7 @@ const corsOptions = {
 	optionsSuccessStatus: 200
 }
 
+
 app.post("/api/plagiarism", cors(corsOptions), serveRequest);
 
 app.listen(port, function (): void {
