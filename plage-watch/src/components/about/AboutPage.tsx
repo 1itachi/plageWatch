@@ -63,8 +63,7 @@ export default class About extends React.Component {
                                             once the user navigates to code compare page. PlageWatch algorith is robust
                                             and cannot be easily fooled by just changing the name of variables,
                                             there orders in which they are declared in JavaScript files and many other
-                                            complex scenarios.
-                                            principle of </p>
+                                            complex scenarios.</p>
                                     </div>
                                 </div>
                             </div>
