@@ -88,7 +88,7 @@ export default class Upload extends React.Component
 
         const data: any = await runPlag([this.state.submission1Files, this.state.submission2Files])
         //temperory fix for errors
-        if (data.hasOwnProperty("message")) {
+        if (data[0].hasOwnProperty("message")) {
             this.setState({
                 displayError: data.message
             })
