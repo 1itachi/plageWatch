@@ -207,14 +207,6 @@ class JSPlagDetector implements IPlagDetector {
 				case "object":
 					if (!this.compareNodes(node1[key], node2[key])) return false
 					break
-				// Compare function code
-				case "function":
-					if (
-						typeof node2[key] == "undefined" ||
-						(key != "compare" && node1[key].toString() != node2[key].toString())
-					)
-						return false
-					break
 				// Compare values
 				default:
 					if (node1[key] != node2[key]) return false
