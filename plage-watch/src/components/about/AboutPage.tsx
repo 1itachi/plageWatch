@@ -28,27 +28,28 @@ export default class About extends React.Component {
                                         both single and multiple files present in any given two folders.
                                     </li>
                                     <li className="list-group-item list-group-item-light text-dark">
-                                        PlageWatch can find the similarities between files which are deeply nested inside
+                                        PlageWatch can find the similarities between files which are deeply nested
+                                        inside
                                         directories.
                                     </li>
                                     <li className="list-group-item list-group-item-light text-dark">
                                         PlageWatch goes beyond textual difference and
                                         detect strategies to avoid detection such as renaming variables, extracting code
                                         into functions, moving code, changing comments, etc to find similarities between
-                                        two submitted submissions. our user interface should include kind of visual diff of the code portions
+                                        two submitted submissions. our user interface should include kind of visual diff
+                                        of the code portions
                                     </li>
                                     <li className="list-group-item list-group-item-light text-dark">
-                                        PlageWatch interface includes visual diff of the code portions on code compare page
-                                        where similarites between two files in which plagiarism is detected is highlighted in red color.
+                                        PlageWatch interface includes visual diff of the code portions on code compare
+                                        page
+                                        where similarites between two files in which plagiarism is detected is
+                                        highlighted in red color.
                                     </li>
                                 </ul>
                             </div>
                         </div>
-<<<<<<< HEAD
                     </div>
                 </div>
-
-
                 <div className="col border-info mb-3">
                     <div className=" border border-info">
                         <div className="card text-center">
@@ -70,7 +71,8 @@ export default class About extends React.Component {
                                         Once the comaprison is done the results are send
                                         at the front end.
                                     </li>
-                                    <li className="list-group-item list-group-item-light text-dark"> The percentage of similarity between two projects can be
+                                    <li className="list-group-item list-group-item-light text-dark"> The percentage of
+                                        similarity between two projects can be
                                         seen as well as the line numbers on which the plagiarism is found can be
                                         seen
                                         once the user navigates to code compare page.
@@ -82,32 +84,6 @@ export default class About extends React.Component {
                                         complex scenarios.
                                     </li>
                                 </ul>
-=======
-                        <div className="col border-info mb-3">
-                            <div className=" border border-info">
-                                <div className="card text-center">
-                                    <div className="card-header text-primary">
-                                        How PlageWatch can help?
-                                    </div>
-                                    <div className="card-body ">
-                                        <p className="card-text">PlageWatch can detect plagiarism between single or
-                                            multiple files.
-                                            The algorithm use to detect plagiarims uses the principle of Abstract Syntax
-                                            Trees which is use to represent each piece of
-                                            code written in .js files in the form of Nodes. PlageWatch algorithm detects
-                                            each JavaScript file and transform it into AST nodes.
-                                            These Nodes are use at the backend to detect plagiarism between two
-                                            JavaScript files. Once the comaprison is done the results are send
-                                            at the front end. The percentage of similarity between two projects can be
-                                            seen as well as the line numbers on which the plagiarism is found can be
-                                            seen
-                                            once the user navigates to code compare page. PlageWatch algorith is robust
-                                            and cannot be easily fooled by just changing the name of variables,
-                                            there orders in which they are declared in JavaScript files and many other
-                                            complex scenarios.</p>
-                                    </div>
-                                </div>
->>>>>>> 8aea14e0c5707eea7b564ece05f4539c0bfa7415
                             </div>
                         </div>
                     </div>
