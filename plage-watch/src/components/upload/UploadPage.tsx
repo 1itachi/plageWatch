@@ -83,10 +83,10 @@ export default class Upload extends React.Component
         //api call to backend
      
         const data: any = await runPlag([this.state.submission1Files, this.state.submission2Files])
-
+        
         //temperory fix for errors
-        if(data.hasOwnProperty("message")){
-            alert(data.message + "! Make sure you only zip .js files.")
+        if(data[0].hasOwnProperty("message")){
+            alert(data[0].message)
         }else{
             this.props.updatePlagData(data[0])
             localStorage.setItem('data', JSON.stringify(data[0]))
