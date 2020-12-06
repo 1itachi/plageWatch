@@ -15,13 +15,7 @@ const corsOptions = {
 	optionsSuccessStatus: 200
 }
 
-app.post("/api/plagiarism", cors(corsOptions), async (req: express.Request, res: express.Response): Promise<any> => {
-	serveRequest(req).then((result)=>{
-		return res.status(200).send(result)
-	}).catch((error)=>{
-		return res.status(400).send([{"message": error.message}]);
-	})
-})
+app.post("/api/plagiarism", cors(corsOptions), serveRequest);
 
 app.listen(port, function (): void {
 	console.log("PlageWatch Client Server listening on port " + port)

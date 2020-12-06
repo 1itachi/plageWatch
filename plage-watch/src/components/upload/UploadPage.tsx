@@ -86,7 +86,7 @@ export default class Upload extends React.Component
 
         //temperory fix for errors
         if(data[0].hasOwnProperty("message")){
-            alert(data.message + "! Make sure you only zip .js files.")
+            alert(data[0].message + "! Make sure you only zip .js files.")
         }else{
             this.props.updatePlagData(data[0])
             localStorage.setItem('data', JSON.stringify(data[0]))
