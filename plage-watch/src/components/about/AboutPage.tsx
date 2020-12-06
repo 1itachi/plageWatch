@@ -44,6 +44,7 @@ export default class About extends React.Component {
                                 </ul>
                             </div>
                         </div>
+<<<<<<< HEAD
                     </div>
                 </div>
 
@@ -81,6 +82,32 @@ export default class About extends React.Component {
                                         complex scenarios.
                                     </li>
                                 </ul>
+=======
+                        <div className="col border-info mb-3">
+                            <div className=" border border-info">
+                                <div className="card text-center">
+                                    <div className="card-header text-primary">
+                                        How PlageWatch can help?
+                                    </div>
+                                    <div className="card-body ">
+                                        <p className="card-text">PlageWatch can detect plagiarism between single or
+                                            multiple files.
+                                            The algorithm use to detect plagiarims uses the principle of Abstract Syntax
+                                            Trees which is use to represent each piece of
+                                            code written in .js files in the form of Nodes. PlageWatch algorithm detects
+                                            each JavaScript file and transform it into AST nodes.
+                                            These Nodes are use at the backend to detect plagiarism between two
+                                            JavaScript files. Once the comaprison is done the results are send
+                                            at the front end. The percentage of similarity between two projects can be
+                                            seen as well as the line numbers on which the plagiarism is found can be
+                                            seen
+                                            once the user navigates to code compare page. PlageWatch algorith is robust
+                                            and cannot be easily fooled by just changing the name of variables,
+                                            there orders in which they are declared in JavaScript files and many other
+                                            complex scenarios.</p>
+                                    </div>
+                                </div>
+>>>>>>> 8aea14e0c5707eea7b564ece05f4539c0bfa7415
                             </div>
                         </div>
                     </div>
