@@ -90,7 +90,7 @@ export default class Upload extends React.Component
         //temperory fix for errors
         if (data[0].hasOwnProperty("message")) {
             this.setState({
-                displayError: data.message
+                displayError: data[0].message
             })
         } else {
             this.props.updatePlagData(data[0])
