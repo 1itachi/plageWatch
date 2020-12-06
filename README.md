@@ -75,9 +75,10 @@ npm start
 
 
 ### Dependencies
-1. The application requires the Node version to be above v12.
-2. The application uses React v17.0.1 at the front end.
-3. Typescript v4.0 and higher is used at Front end and Back end.
-4. Express v4.17.1 is used at server side.
+1. Install TypeScript and Node if not already pre-installed into the local system. 
+2. The application requires the Node version to be above v12.
+3. The application uses React v17.0.1 at the front end.
+4. Typescript v4.0 and higher is used at Front end and Back end.
+5. Express v4.17.1 is used at server side.
 
 #### Refer to package.json present inside plage-detect and plage-watch directories.
