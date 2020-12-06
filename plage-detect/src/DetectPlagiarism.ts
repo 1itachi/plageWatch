@@ -1,13 +1,13 @@
-const _ = require("lodash");
+var _ = require("lodash")
 
 //provided array of two nodes
 export default class DetectPlagiarism {
 	private submission1: Array<Array<any>>
 	private submission2: Array<Array<any>>
-	private readonly file1NameMap = {}
-	private readonly file2NameMap = {}
-	private readonly fileSubmission1 = {}
-	private readonly fileSubmission2 = {}
+	private file1NameMap = {}
+	private file2NameMap = {}
+	private fileSubmission1 = {}
+	private fileSubmission2 = {}
 
 	constructor(
 		submission1,
@@ -122,7 +122,7 @@ export default class DetectPlagiarism {
 
 	private compare(obj1, obj2): boolean {
 		//properties to ignore while comparing
-
+		
 		//if one object is null and other isn't , they are not plagiarised
 		if(obj1==null && obj2!=null || obj1!=null && obj2==null) return false
 

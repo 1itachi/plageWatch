@@ -25,3 +25,6 @@ yarn-error.log*
 Submissions
 
 .idea
+
+package-lock.json
+
