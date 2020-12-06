@@ -158,10 +158,6 @@ class JSPlagDetector implements IPlagDetector {
 	private compareNodes(node1: babel.Node, node2: babel.Node): boolean {
 		// properties to ignore while comparing
 
-		// if one object is null and other isn't , they are not plagiarised
-		if ((node1 == null && node2 != null) || (node1 != null && node2 == null))
-			return false
-
 		// if both objects are null, flag them off as not plagiarised
 		if (node1 == null && node2 == null) return true
 
