@@ -1,4 +1,3 @@
-import { exception } from "console";
 import IASTGenerator from "../ASTGenerator/IASTGenerator";
 import IDetectorFactory from "../DetectorFactory/IDetectorFactory";
 import IFilePathGetter from "../FilePathGetter/IFilePathGetter";
@@ -22,7 +21,7 @@ class PlagiarismRunner {
         const sub2FilePaths: Array<string> = filePathGetter.getFilePaths(this.submission2Path);
 
         if (sub1FilePaths.length === 0 || sub2FilePaths.length === 0) {
-            throw new exception('empty directory')
+            throw new Error('empty directory')
         }
 
         const sub1ASTGen: IASTGenerator = detectorFactory.makeASTGenerator(sub1FilePaths);

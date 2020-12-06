@@ -34,12 +34,12 @@ class JSPlagDetector implements IPlagDetector {
         submission1Nodes.forEach((file1:Array<babel.Node>, index1:number) => {
             //calculate total number of lines in submission1
             totalLinesInSubmission1 += file1[0].loc.end.line
-            let linesPlagiarisedInFile = new Set()
+            let linesPlagiarisedInFile: Set<number> = new Set()
             //each node in the file
             //check each file of submission 2
             submission2Nodes.forEach((file2:Array<babel.Node>, index2: number) => {
-                let lineSet1 = new Set()
-                let lineSet2 = new Set()
+                let lineSet1: Set<number> = new Set()
+                let lineSet2: Set<number> = new Set()
 
                 file1.forEach((node1: babel.Node) => {
                     //check if the node is sub-nested node
@@ -79,15 +79,14 @@ class JSPlagDetector implements IPlagDetector {
                         lines: Array.from(lineSet2) as Array<number>,
                     }
 
-                    plageObject["submission1"] = sub1Object
-                    plageObject["submission2"] = sub2Object
+                    plageObject.submission1 = sub1Object
+                    plageObject.submission2 = sub2Object
 
                     result[numberOfFilesMatched] = plageObject
                 }
             })
 
-            numberOfLinesPlagiarised =
-                numberOfLinesPlagiarised + linesPlagiarisedInFile.size
+            numberOfLinesPlagiarised =                numberOfLinesPlagiarised + linesPlagiarisedInFile.size
         })
 
         result.submission1 = this.fileSubmission1
