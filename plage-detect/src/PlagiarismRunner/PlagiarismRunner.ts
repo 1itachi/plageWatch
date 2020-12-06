@@ -36,22 +36,26 @@ class PlagiarismRunner {
        
         const sub1ASTGen: IASTGenerator = detectorFactory.makeASTGenerator(sub1FilePaths);
         const sub2ASTGen: IASTGenerator = detectorFactory.makeASTGenerator(sub2FilePaths);
-        //Generate AST nodes for submission1
+        //Generate AST nodes for submission1.
         const sub1Nodes: Array<babel.Node> = sub1ASTGen.generateASTs();
 
-        //Get the file content and get mapped filepaths based on index for submission1
+        //Get the file content and get mapped filepaths based on index for submission1.
         const sub1MapFileToContent: SubmissionCode = sub1ASTGen.getFileContents();
         const sub1FileMaps: SubmissionMap = sub1ASTGen.getFileMaps();
 
-        //Generate AST nodes for submission2
+        //Generate AST nodes for submission2.
         const sub2Nodes: Array<babel.Node> = sub2ASTGen.generateASTs();
-        //Get the file content and get mapped filepaths based on index for submission2
+        //Get the file content and get mapped filepaths based on index for submission2.
         const sub2MapFileToContent: SubmissionCode = sub2ASTGen.getFileContents();
         const sub2FileMaps: SubmissionMap = sub2ASTGen.getFileMaps();
 
-        //Run plagiarism detect
-        const plagDetector: IPlagDetector = detectorFactory.makePlagDetector(sub1Nodes, sub2Nodes, sub1FileMaps, sub2FileMaps, sub1MapFileToContent, sub2MapFileToContent);
+        //Run plagiarism detect.
+        const plagDetector: IPlagDetector = detectorFactory.makePlagDetector(sub1Nodes, sub2Nodes, sub1FileMaps, sub2FileMaps);
         const result: PlagResult = plagDetector.detect()
+
+        //append the content of files to the resultant object.
+        result.submission1 = sub1MapFileToContent
+		result.submission2 = sub2MapFileToContent
 
         //Return result
         return result;
