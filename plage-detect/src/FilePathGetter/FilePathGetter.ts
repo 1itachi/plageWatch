@@ -11,7 +11,7 @@ class FilePathGetter implements IFilePathGetter {
 
     private getDeepFilePaths(directoryPath: string, arrayOfFiles: Array<string>): Array<string> {
         let files = fs.readdirSync(directoryPath)
-        files.forEach((file) => {
+        files.forEach((file: string) => {
             if (fs.statSync(directoryPath + "/" + file).isDirectory()) {
                 arrayOfFiles = this.getDeepFilePaths(directoryPath + "/" + file, arrayOfFiles)
             } else {

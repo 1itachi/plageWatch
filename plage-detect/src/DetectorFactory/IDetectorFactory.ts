@@ -1,12 +1,12 @@
 import IASTGenerator from "../ASTGenerator/IASTGenerator";
-import IExtractor from "../Extractor/IExtractor";
 import IFilePathGetter from "../FilePathGetter/IFilePathGetter";
 import IPlagDetector from "../PlagDetector/IPlagDetector";
+import * as babel from "@babel/core"
+import { SubmissionCode, SubmissionMap } from "../Types/PlagResultType";
 
 interface IDetectorFactory {
-    // makeExtractor():  IExtractor ;
     makeFilePathGetter(): IFilePathGetter;
     makeASTGenerator(filePaths: Array<string>): IASTGenerator;
-    makePlagDetector(submission1: Array<any>, submission2: Array<any>, file1NameMap: any, file2NameMap: any, fileSubmission1: any, fileSubmission2: any): IPlagDetector;
+    makePlagDetector(submission1: Array<babel.Node>, submission2: Array<babel.Node>, file1NameMap: SubmissionMap, file2NameMap: SubmissionMap, fileSubmission1: SubmissionCode, fileSubmission2: SubmissionCode): IPlagDetector;
 }
 export default IDetectorFactory;

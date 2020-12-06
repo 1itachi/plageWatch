@@ -1,5 +1,3 @@
-import { exception } from "console"
-
 const fs = require("fs")
 const path = require("path")
 const extract = require("extract-zip")
@@ -8,25 +6,25 @@ import IExtractor from './IExtractor';
 class ExtractZipFiles implements IExtractor {
 
 	private async clearDirectory(directoryPath: string): Promise<void> {
-		
-			await fs.readdir(directoryPath, async (err, files) => {
-				if(err) {
-					throw new exception(err)
+
+		await fs.readdir(directoryPath, async (error: Error, files: Array<string>) => {
+			if (error) {
+				throw new Error(error.message)
+			}
+			for (const file of files) {
+				try {
+					fs.rmdirSync(path.join(directoryPath, file), { recursive: true })
+				} catch (error: any) {
+					throw new Error(error)
 				}
-				for (const file of files) {
-					try {
-						fs.rmdirSync(path.join(directoryPath, file), { recursive: true })
-					} catch (err) {
-						throw new exception(err)
-					}
-				}
-			})
-		
+			}
+		})
+
 	}
 
 	private async createDirectory(directoryPath: string): Promise<void> {
-		await fs.mkdir(directoryPath, async (err) => {
-			if (err) {
+		await fs.mkdir(directoryPath, async (error: Error) => {
+			if (error) {
 				await this.clearDirectory(directoryPath)
 			}
 		})
@@ -36,8 +34,8 @@ class ExtractZipFiles implements IExtractor {
 		await this.createDirectory(submissionPath)
 		try {
 			await extract(compressedFilePath, { dir: submissionPath })
-		} catch (error) {
-			throw new exception(error)
+		} catch (error: any) {
+			throw new Error(error)
 		}
 	}
 }

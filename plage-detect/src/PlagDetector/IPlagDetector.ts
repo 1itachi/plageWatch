@@ -1,5 +1,7 @@
+import { PlagResult } from "../Types/PlagResultType";
+
 interface IPlagDetector {
-   detect(): any;
+   detect(): PlagResult;
 }
 
 export default IPlagDetector;
