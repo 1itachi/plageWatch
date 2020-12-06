@@ -112,8 +112,13 @@ class JSPlagDetector implements IPlagDetector {
     }
 
     private checkConditionHelper(node: any): boolean {
-        if (_.has(node, "body") || _.has(node, "expression") || _.has(node, "arguments") || _.has(node, "init") || _.has(node, "declarations"))
+        if (_.has(node, "body") || _.has(node, "expression") || _.has(node, "arguments") || _.has(node, "declarations")){
+            //ignore expression statements and call expressions
+            if((node["type"]==="ExpressionStatement" || node["type"]==="CallExpression")){
+                return false
+            }
             return true
+        }  
         else
             return false
     }
