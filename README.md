@@ -73,6 +73,17 @@ npm start
 
 ![goback](https://media.github.ccs.neu.edu/user/6143/files/5c719200-3410-11eb-9bc7-1929bd08acce)
 
+9. Click on `PlageWatch` icon at top left corner of nav bar and it will always redirect to `Home Page`.
+
+![Screen Shot 2020-12-06 at 9 52 44 AM](https://media.github.ccs.neu.edu/user/6143/files/fe92d080-37a8-11eb-894f-9f0dbdfd64f4)
+
+10. Click on `About` icon at top right corner of nav bar and it will redirect to `About Page`.
+
+
+
+11. `About Page` has user guidelines, unique features of PlageWatch and some details of brain which works at the backend to find similarities between two .js files.
+
+
 
 ### Dependencies
 1. Install TypeScript and Node if not already pre-installed into the local system. 
