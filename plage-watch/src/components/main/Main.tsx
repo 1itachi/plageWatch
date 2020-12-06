@@ -4,7 +4,7 @@ import CodeCompare from "../codecomparison/CodeCompare";
 import NavBar from './../navigation/Navigation';
 import Upload from './../upload/UploadPage';
 import Footer from './../footer/Footer';
-
+import About from './../about/AboutPage'
 
 interface PlagState {
     plagiarism_data: any;
@@ -38,6 +38,8 @@ export default class MainPage extends React.Component<{}, PlagState> {
                         {empty_check && <Redirect from="/codecomparison" to="/home"/>
                         }
                         <Route path='/codecomparison' render={() => <CodeCompare plagiarism_data={plagiarism_data}/>}/>
+
+                        <Route path='/about' render={() => <About/>}/>
 
                         <Redirect from="/" to="/home"/>
                     </Switch>
