@@ -79,9 +79,10 @@ npm start
 
 10. Click on `About` icon at top right corner of nav bar and it will redirect to `About Page`.
 
-
+![Screen Shot 2020-12-06 at 10 08 26 AM](https://media.github.ccs.neu.edu/user/6143/files/1bc89e80-37ab-11eb-86ac-f761bbe1a683)
 
 11. `About Page` has user guidelines, unique features of PlageWatch and some details of brain which works at the backend to find similarities between two .js files.
+
 
 
 
