@@ -2,6 +2,7 @@ import React from "react";
 import './Footer.css'
 
 export default function Footer() {
+    // @ts-ignore
     return (
         <div className="footer footer-style border-top row">
             <div className="col-sm-6 offset-sm-1">
@@ -29,7 +30,11 @@ export default function Footer() {
                             College of Computer Sciences</a>
                     </i>
                 </div>
-                <div className=" footer-element mr-3 ml-3 ">Northeastern University, 2020</div>
+                <div className=" footer-element mr-3 ml-3 ">
+                    <a className="col-sm-3 footer-element"
+                       href="https://www.northeastern.edu/">
+                        <span className="font-weight-bold"> Northeastern University, 2020</span></a>
+                </div>
             </div>
         </div>
     );
