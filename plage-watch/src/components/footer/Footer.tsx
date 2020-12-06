@@ -1,7 +1,5 @@
 import React from "react";
 import './Footer.css'
-import {inspect} from "util";
-import colors = module
 
 export default function Footer() {
     return (
