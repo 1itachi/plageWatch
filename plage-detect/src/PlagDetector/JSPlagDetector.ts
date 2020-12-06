@@ -5,7 +5,6 @@ import {
 	PlagResult,
 	SimilarityLines,
 	SimilaritySubmissions,
-	SubmissionCode,
 	SubmissionMap,
 } from "../Types/PlagResultType"
 
