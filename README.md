@@ -83,7 +83,7 @@ npm start
 
 11. `About Page` has user guidelines, unique features of PlageWatch and some details of brain which works at the backend to find similarities between two .js files.
 
-![Screen Shot 2020-12-06 at 9 52 13 AM](https://media.github.ccs.neu.edu/user/6143/files/3e5ab780-37ab-11eb-9633-9a8c1d610158)
+![Screen Shot 2020-12-06 at 10 11 10 AM](https://media.github.ccs.neu.edu/user/6143/files/7661fa80-37ab-11eb-8b75-c174cf5a8517)
 
 
 ### Dependencies
