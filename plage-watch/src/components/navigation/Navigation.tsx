@@ -20,7 +20,9 @@ export default class NavBar extends React.Component {
         </div>
 
         <div className="col-sm-6 row center">
-          <a className="mt-3 nav-text-style" href={'About'}> About</a>
+          <span className="mt-3 nav-text-style">
+                      <i className="fas fa-book-reader"><a className="mt-3 nav-text-style" href={'About'}> About</a></i>
+          </span>
         </div>
 
        </Navbar>
