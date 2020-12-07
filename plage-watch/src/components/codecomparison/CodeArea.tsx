@@ -72,7 +72,8 @@ class CodeArea extends React.Component<CodeProps, CodeState> {
                             index={1}
                         />
                     </Col>
-                    <Col lg={{ span: 2, order: 2 }} md={{ span: 3, order: 1 }} sm={{ span: 4, order: 1 }} xs={{ span: 5, order: 1 }} className='my-auto mx-auto speedometer'>
+                    <Col xl={{span:2, order:2}} lg={{ span: 2, order: 2 }} md={{ span: 3, order: 1 }} sm={{ span: 4, order: 1 }} xs={{ span: 5, order: 1 }} className='my-auto mx-auto speedometer'>
+                       <Col lg={10} xs={12}>
                         <ReactSpeedometer
                             value={plag_score}
                             maxValue={100}
@@ -84,6 +85,7 @@ class CodeArea extends React.Component<CodeProps, CodeState> {
                             maxSegmentLabels={5}
                             dimensionUnit='%'
                         />
+                        </Col>
                     </Col>
                     <Col lg={{ span: 5, order: 3 }} md={{ span: 12, order: 3 }} xs={{ span: 12, order: 3 }}>
                         <CodePage

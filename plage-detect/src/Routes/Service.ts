@@ -24,7 +24,7 @@ async function serveRequest(request: Request, response: Response): Promise<void>
     form.maxFileSize = MAX_FILE_SIZE;
     form.keepExtensions = true;
     let results: Array<PlagResult> = []
-    
+
     await form.parse(request, async (error: Error, fields: FormidableFields, files: FormidableFiles): Promise<Response<void>> => {
 
         //If the file size is more than the set value
@@ -54,7 +54,7 @@ async function serveRequest(request: Request, response: Response): Promise<void>
                 results.push(await plagiarismRunner.runPlagiarism(detectorFactory))
                 //Return results
                 return response.status(200).send(results)
-            } 
+            }
             //If there is an error in running plagiarism
             catch (error) {
                 //For empty directories
@@ -62,7 +62,7 @@ async function serveRequest(request: Request, response: Response): Promise<void>
                     return response.status(400).send([{ "message": ".zip files are either contains empty directories or No .js files are present inside directories." }])
                 }
                 //Run plagiarism fails
-               return response.status(400).send([{ "message": "Sorry something went wrong!!" }])
+                return response.status(400).send([{ "message": "Sorry something went wrong!!" }])
             }
         }
         else {

@@ -1,6 +1,7 @@
 import IPlagDetector from "./IPlagDetector"
 var _ = require("lodash")
 import * as babel from "@babel/core"
+import generate from "@babel/generator"
 import {
 	PlagResult,
 	SimilarityLines,
@@ -47,8 +48,11 @@ class JSPlagDetector implements IPlagDetector {
 		
 		// loop through first submission.
 		submission1Nodes.forEach((file1: Array<babel.Node>, index1: number) => {
+			
 			// calculate total number of lines in submission1.
-			totalLinesInSubmission1 += file1[0].loc.end.line
+			const codeTemp = generate(file1[0], {comments: false}).code
+			totalLinesInSubmission1 += codeTemp.replace(/^\s*\n/gm, "").split(/\n/gm).length
+			// file1[0].loc.end.line
 			let linesPlagiarisedInFile: Set<number> = new Set()
 			// each node in the file
 			// check each file of submission 2
@@ -114,7 +118,14 @@ class JSPlagDetector implements IPlagDetector {
 		})
 
 		// Calculate results score as a ration of all lines plagiarised to total number of lines present.
-		result.score = (numberOfLinesPlagiarised / totalLinesInSubmission1) * 100
+		let score = (numberOfLinesPlagiarised / totalLinesInSubmission1) * 100
+
+		//if entire file is plagiarised
+		if (score>100){
+		    score = 100
+		}
+
+		result.score = score
 		return result
 	}
 
