@@ -32,7 +32,7 @@ let plagiarismRunnerMultiple = new PlagiarismRunner
 
 describe('integration tests for student submissions directory', () => {
 
-    // plagiarism check for plagiarism matches between files.
+    // Plagiarism check for plagiarism matches between files.
     it('test for number of plagiarism matches with empty file.',
         () => {
             let emptyResult = new PlagiarismRunner(dir1, empty);
@@ -71,7 +71,7 @@ describe('integration tests for student submissions directory', () => {
         expect(_.keys(resultNested).length).to.equal(4);
     });
 
-    // plagiarism check for number of files plagiarized.
+    // Plagiarism check for number of files plagiarized.
     it('test for number of files plagiarized.', () => {
         let filesPlagiarized = plagiarismRunnerNormal.runPlagiarism
             (plagiarismFactory);
@@ -93,7 +93,7 @@ describe('integration tests for student submissions directory', () => {
             expect(_.values(flushed).length).to.equal(0);
         });
 
-    // requirements specific tests to avoid detection.
+    // Requirements specific tests to avoid detection.
     it('test to avoid detection via renaming variables from'
         + 'number of plagiarisms.', () => {
             let renamedDir1 =
@@ -246,7 +246,6 @@ describe('integration tests for student submissions directory', () => {
             expect(_.keys(resultExtractCode).length - 4).to.equal(0);
         });
 
-    // added test after manual check.
     it('test to avoid detection via extracted code'
         + ' from different files.', () => {
             let resultDiffFile = plagiarismRunnerNormal.
@@ -277,7 +276,7 @@ describe('integration tests for student submissions directory', () => {
                 (_.keys(resultDeepNest2).length);
         });
 
-    // extraneous cases.
+    // Extraneous test cases for illegal and empty files.
     it('test for number of files plagiarized' +
         ' if there are illegal files in subfolder.',
         () => {
