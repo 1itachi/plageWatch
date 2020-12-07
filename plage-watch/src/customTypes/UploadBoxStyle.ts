@@ -21,6 +21,6 @@ export type UploadBaseStyle = {
 }
 
 export type LabelStyles = {
-    fontSize: Style,
-    fontFamily: Style
+    fontSize: Style;
+    fontFamily: Style;
 }

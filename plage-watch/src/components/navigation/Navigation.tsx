@@ -25,7 +25,7 @@ export default class NavBar extends React.Component {
         <div className="col-sm-6 row center">
           <span className="mt-3 nav-text-style">
             <LinkContainer to='/about'>
-              <a className="mt-3 nav-text-style">
+              <a className="mt-3 nav-text-style nav_about">
                 <i className="fas fa-book-reader mr-1" />
                   About
               </a>

@@ -15,7 +15,7 @@ const notUploaded: boolean = false
 
 const defaultLabelStyle: LabelStyles = {
   fontSize: "25%",
-  fontFamily: "Lucida Console, Courier, monospace",
+  fontFamily: "Lucida Console, Courier, monospace",  
 }
 
 interface UploadState {
