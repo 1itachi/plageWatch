@@ -23,7 +23,9 @@
 }
 
 .speedometer{
-    padding: 0;   
+    padding: 0px;
+    height: 250px;
+    width: 200px;
 }
 
 legend { 
