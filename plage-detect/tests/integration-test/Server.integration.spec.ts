@@ -3,7 +3,7 @@ import JSDetectorFactory from '../../src/DetectorFactory/JSDetectorFactory';
 import PlagiarismRunner from '../../src/PlagiarismRunner/PlagiarismRunner';
 import runPlagiarism from '../../src/PlagiarismRunner/PlagiarismRunner';
 
-var _ = require("lodash")
+var _ = require('lodash');
 
 // Integration tests for the run plagiarism server check.
 
