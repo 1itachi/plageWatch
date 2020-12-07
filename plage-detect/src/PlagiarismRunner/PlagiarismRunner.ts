@@ -6,7 +6,7 @@ import * as babel from "@babel/core";
 import { PlagResult, SubmissionCode, SubmissionMap } from "./../Types/PlagResultType";
 
 /**
- *  Class implements runPlagiarims method (Client in Abstract Factory Design pattern)
+ *  Class implements runPlagiarism method (Client in Abstract Factory Design pattern)
  */
 class PlagiarismRunner {
     private submission1Path: string;

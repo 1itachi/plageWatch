@@ -189,9 +189,8 @@ class JSPlagDetector implements IPlagDetector {
 			)
 		}
 
-		// Loop through properties in object 1
-		// TODO: is this var or can i change to let
-		for (var key in node1) {
+		// Loop through properties in node 1
+		for (let key in node1) {
 			if (ignoredProperties.includes(key)) continue
 
 			// Check property exists on both objects
@@ -209,8 +208,7 @@ class JSPlagDetector implements IPlagDetector {
 		}
 
 		// Check object 2 for any extra properties
-		// TODO: is this var or can i change to let
-		for (var key in node2) {
+		for (let key in node2) {
 			if (ignoredProperties.includes(key)) continue
 			if (typeof node1[key] == "undefined") return false
 		}
