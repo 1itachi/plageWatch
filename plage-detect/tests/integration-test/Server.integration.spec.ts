@@ -14,6 +14,8 @@ let dir_illegal = './tests/resources/dir_illegal';
 let empty = './tests/resources/empty';
 let dir1_deeply_nested = './tests/resources/nested';
 let dir2_deeply_nested = './tests/resources/nested2';
+let dir1_multi = "./tests/resources/multi-file/Student1";
+let dir2_multi = "./tests/resources/multi-file/Student2";
 
 // Declare the plagiarism factory object.
 let plagiarismFactory = new JSDetectorFactory();
@@ -25,6 +27,8 @@ let plagiarismRunnerIllegal = new PlagiarismRunner(dir_illegal,
     dir_illegal);
 let plagiarismRunnerNested = new PlagiarismRunner(dir1_deeply_nested,
     dir2_deeply_nested);
+let plagiarismRunnerMultiple = new PlagiarismRunner
+    (dir1_multi, dir2_multi);
 
 describe('integration tests for student submissions directory', () => {
 
@@ -310,5 +314,30 @@ describe('integration tests for student submissions directory', () => {
             expect(resultIllegalFilesAll.runPlagiarism.bind
                 (resultIllegalFilesAll, plagiarismFactory))
                 .to.throw("empty directory");
+        });
+
+    // Add in test for multi-file coverage.
+    it('test for number of plagiarisms for multiple file ' +
+        'submissions between students.', () => {
+            let resultMultiple = plagiarismRunnerMultiple.
+                runPlagiarism(plagiarismFactory);
+            expect(_.keys(resultMultiple).length - 4).to.equal(1);
+        });
+
+    it('test for number of files plagiarized for multiple file ' +
+        'submissions between students.', () => {
+            let resultMultiple = plagiarismRunnerMultiple.
+                runPlagiarism(plagiarismFactory);
+            expect(_.values(resultMultiple).length - 4).to.equal(1);
+        });
+
+    it('test for plagiarism for multiple file ' +
+        'submissions between students in repeat submissions.', () => {
+            let resultMultiple = plagiarismRunnerMultiple.
+                runPlagiarism(plagiarismFactory);
+            let resultMultipleRepeat = plagiarismRunnerMultiple.
+                runPlagiarism(plagiarismFactory);
+            expect(_.keys(resultMultiple).length - 4).to.equal(
+                _.keys(resultMultipleRepeat).length - 4);
         });
 });
