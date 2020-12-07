@@ -1,4 +1,4 @@
-import React from "react"
+import React, { ReactNode } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom"
 import CodeCompare from "../codecomparison/CodeCompare"
 import NavBar from "./../navigation/Navigation"
@@ -11,7 +11,7 @@ interface PlagState {
 }
 
 export default class MainPage extends React.Component<{}, PlagState> {
-  constructor(props: any) {
+  constructor(props: {}) {
     super(props)
     this.state = {
       empty_check: localStorage.getItem("data") === null,
@@ -23,7 +23,7 @@ export default class MainPage extends React.Component<{}, PlagState> {
     this.setState({ empty_check: false })
   }
 
-  render() {
+  render(): ReactNode {
     const { empty_check } = this.state
 
     return (

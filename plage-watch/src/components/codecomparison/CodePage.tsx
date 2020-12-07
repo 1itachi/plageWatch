@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import CodeLine from './CodeLine';
 
-function CodePage(props: any) {
-    const LineOfCode = props.code.split(/\n/g).map((line: string, index: number) => {
+interface CodeProps {
+    code: string;
+    plagiarized_code_lines: Array<number>;
+    filename: string;
+    index: number
+}
+
+function CodePage(props: CodeProps): ReactElement {
+    const LineOfCode = props.code.split(/\n/g).map((line: string, index: number): ReactElement => {
         let isPlagiarized: boolean = false;
         if (props.plagiarized_code_lines.includes(index + 1)) {
             isPlagiarized = true;
@@ -19,6 +26,7 @@ function CodePage(props: any) {
     )
     return (
         <>
+        <h4 className='center'>Submission {props.index}</h4>
             <fieldset className='code-area'>
                 <legend className='code-area-sub-name'>{props.filename}</legend>
                 <div className='ml-0 overflow-auto code'>

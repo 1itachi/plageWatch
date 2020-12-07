@@ -1,6 +1,9 @@
-const runPlag = async (files: any) => {
+import PlagResult from "../customTypes/PlagiarismData";
 
-    const data = new FormData();
+const runUpload: Function = async (files: Array<Array<File>>):Promise<Array<PlagResult>>  => {
+
+    const data: FormData = new FormData()
+
     let i: number=1;
     for (const file of files) {
         data.append(`submission${i}`, file[0], file[0].name);
@@ -12,4 +15,4 @@ const runPlag = async (files: any) => {
     }).then((response) => response.json()).catch((error) => error));
 }
 
-export default runPlag;
+export default runUpload;
