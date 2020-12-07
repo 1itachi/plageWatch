@@ -1,7 +1,8 @@
-import React, { useMemo } from 'react';
-import { useDropzone } from 'react-dropzone';
+import React, { ReactElement, useMemo } from 'react';
+import {useDropzone, DropzoneState} from 'react-dropzone';
+import { UploadBaseStyle, UploadBoxBorder } from '../../customTypes/UploadBoxStyle';
 
-const baseStyle = {
+const baseStyle: UploadBaseStyle = {
   flex: 1,
   display: 'flex',
   flexDirection: 'column',
@@ -17,21 +18,27 @@ const baseStyle = {
   transition: 'border .24s ease-in-out'
 };
 
-const activeStyle = {
+const activeStyle: UploadBoxBorder = {
   borderColor: '#2196f3'
 };
 
-const acceptStyle = {
+const acceptStyle: UploadBoxBorder = {
   borderColor: '#00e676'
 };
 
-const rejectStyle = {
+const rejectStyle: UploadBoxBorder = {
   borderColor: '#ff1744'
 };
 
-export default function StyledDropzone(props: any) {
+interface DropZoneProps {
+  onChange: Function;
+  submission: Array<File>;
+}
 
-  const onDrop = (acceptedFiles: any) => {
+export default function StyledDropzone(props: DropZoneProps): ReactElement {
+
+  const onDrop = (acceptedFiles: Array<File>): void => {
+    console.log(acceptedFiles)
     props.onChange(acceptedFiles);
   };
 
@@ -44,9 +51,9 @@ export default function StyledDropzone(props: any) {
     isDragActive,
     isDragAccept,
     isDragReject
-  } = useDropzone({ accept: '.zip' });
+  }: DropzoneState = useDropzone({ accept: '.zip' });
 
-  const style: any = useMemo(() => ({
+  const style: UploadBaseStyle = useMemo(() => ({
     ...baseStyle,
     ...(isDragActive ? activeStyle : {}),
     ...(isDragAccept ? acceptStyle : {}),
@@ -67,7 +74,7 @@ export default function StyledDropzone(props: any) {
         </div>
         <div>
           {
-             props.submission.map((file: any, index: number) => <div key={index}>{file.path}   </div>)
+             props.submission.map((file: File, index: number) => <div key={index}>{file.name}  </div>)
           }
         </div>
       </div>

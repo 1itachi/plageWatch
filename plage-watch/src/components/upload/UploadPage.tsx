@@ -1,11 +1,13 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import './UploadPage.css'
 import Drop from './DropZone';
 import Results from './../../components/results/Results';
 import { Button } from "react-bootstrap";
 import { LinkContainer } from 'react-router-bootstrap'
 import { PieChart } from 'react-minimal-pie-chart';
-import runPlag from './../../services/upload';
+import runUpload from './../../services/upload';
+import PlagResult from "../../customTypes/PlagiarismData";
+import PieElement from "../../customTypes/PieElement";
 
 const uploaded: boolean = true;
 const notUploaded: boolean = false;
@@ -21,19 +23,19 @@ interface UploadState {
     displayResult: boolean;
     displayProgress: boolean;
     enableRunButton: boolean;
-    submission1Files: any;
-    submission2Files: any;
+    submission1Files: Array<File>;
+    submission2Files: Array<File>;
     displayCompare : boolean
 }
 interface UploadProps {
-    updatePlagData: any;
-    plagiarism_data: any;
+    updatePlagData: Function;
+    plagiarism_data: PlagResult;
 }
 
 export default class Upload extends React.Component
     <UploadProps, UploadState> {
 
-    constructor(props: any) {
+    constructor(props: UploadProps) {
         super(props);
         this.state = {
             file1Uploaded: notUploaded,
@@ -52,7 +54,7 @@ export default class Upload extends React.Component
     }
 
     /* Check for plagiarism, disable until the upload is completed. */
-    componentDidUpdate(prevProps: any) {
+    componentDidUpdate(): void {
         if (this.state.enableRunButton !== true) {
             const { file1Uploaded, file2Uploaded } = this.state;
             if (file1Uploaded === uploaded && file2Uploaded === uploaded) {
@@ -62,17 +64,17 @@ export default class Upload extends React.Component
         }
     }
 
-    uploadFile1(submissionFile: any) {
+    uploadFile1(submissionFile: Array<File>): void {
         this.setState({ file1Uploaded: true });
         this.setState({ submission1Files: submissionFile });
     }
 
-    uploadFile2(submissionFile: any) {
+    uploadFile2(submissionFile: Array<File>): void {
         this.setState({ file2Uploaded: true });
         this.setState({ submission2Files: submissionFile });
     }
 
-    async runPlagiarism() {
+    async runPlagiarism(): Promise<void> {
         //dispaly progress bar
         await this.setState({
             displayProgress: true,
@@ -82,7 +84,7 @@ export default class Upload extends React.Component
 
         //api call to backend
      
-        const data: any = await runPlag([this.state.submission1Files, this.state.submission2Files])
+        const data: Array<PlagResult> = await runUpload([this.state.submission1Files, this.state.submission2Files])
         
         //temperory fix for errors
         if(data[0].hasOwnProperty("message")){
@@ -99,8 +101,8 @@ export default class Upload extends React.Component
                     displayCompare: true
                 })
             }
-            const result: any = document.getElementById('result')
-            result.scrollIntoView({ behavior: 'smooth' })
+            const result: HTMLElement|null = document.getElementById('result')
+            result?.scrollIntoView({ behavior: 'smooth' })
     
             //hide progress bar
             await this.setState({
@@ -109,7 +111,7 @@ export default class Upload extends React.Component
         }
     }
 
-    data: any = () => {
+    data: Function = (): Array<PieElement> => {
         let { score } = this.props.plagiarism_data;
         score =  parseInt(score.toFixed(2));
         return [
@@ -118,7 +120,7 @@ export default class Upload extends React.Component
         ]
     }
 
-    render() {
+    render(): ReactNode {
         return (
             <div className="m-4">
                 <h1 className="center upload-text">Upload Folders To
@@ -167,7 +169,7 @@ export default class Upload extends React.Component
                                     animationDuration={500}
                                     animationEasing="ease-out"
                                     data={this.data()}
-                                    label={({ dataEntry }) => {
+                                    label={({ dataEntry }): string => {
                                         if (dataEntry.value === 0) {
                                             return dataEntry.title = ""
                                         }
@@ -180,7 +182,6 @@ export default class Upload extends React.Component
                                 />
                             </div>
                         </div>}
-
                 </div>
             </div>
         );

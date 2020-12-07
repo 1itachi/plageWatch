@@ -1,29 +1,30 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import CodeCompare from "../codecomparison/CodeCompare";
 import NavBar from './../navigation/Navigation';
 import Upload from './../upload/UploadPage';
 import Footer from './../footer/Footer';
+import PlagResult from "../../customTypes/PlagiarismData";
 
 
 interface PlagState {
-  plagiarism_data: any;
+  plagiarism_data: PlagResult;
 }
 
 export default class MainPage extends React.Component<{}, PlagState> {
-  constructor(props:any) {
+  constructor(props:{}) {
     super(props);
     this.state={
-      plagiarism_data:{}
+      plagiarism_data:{} as PlagResult
     }
     this.updatePlagData = this.updatePlagData.bind(this);
   }
 
-  updatePlagData(data: any) {
+  updatePlagData(data: PlagResult): void {
     this.setState({plagiarism_data: data});
   }
 
-  render() {
+  render(): ReactNode {
     const {plagiarism_data} = this.state;
     return (
       <div>

@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import CodeLine from './CodeLine';
 
-function CodePage(props: any) {
-    const LineOfCode = props.code.split(/\n/g).map((line: string, index: number) => {
+interface CodeProps {
+    code: string;
+    plagiarized_code_lines: Array<number>;
+    filename: string;
+}
+
+function CodePage(props: CodeProps): ReactElement {
+    const LineOfCode = props.code.split(/\n/g).map((line: string, index: number): ReactElement => {
         let isPlagiarized: boolean = false;
         if (props.plagiarized_code_lines.includes(index + 1)) {
             isPlagiarized = true;

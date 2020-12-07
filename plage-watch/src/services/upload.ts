@@ -1,16 +1,17 @@
-const runPlag = async (files: any) => {
+import PlagResult from "../customTypes/PlagiarismData";
 
-    var data = new FormData()
+const runUpload: Function = async (files: any):Promise<Array<PlagResult>>  => {
+
+    const data = new FormData()
     let i: number=1;
     for (const file of files) {
         data.append(`submission${i}`, file[0], file[0].name);
         i++
     }
-    let results = await (await fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/plagiarism`, {
+    return await (await fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/plagiarism`, {
         method: 'POST',
         body: data
     }).then((response) => response.json()).catch((error) => error));
-    return results;
 }
 
-export default runPlag;
+export default runUpload;

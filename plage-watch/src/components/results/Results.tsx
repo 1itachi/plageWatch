@@ -1,30 +1,32 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import './Results.css'
 
-export default function  Results (props:any) {
+type PlageResultProps = {
+    score: number;
+}
+type Color = string;
+export default function Results(props: PlageResultProps): ReactElement {
 
-        let color:string
-        if(props.score > 50){
-            color = '#C13C37'
-        }else{
-            color = '#02A938'
-        }
+    let color: Color;
+    if (props.score > 50) {
+        color = '#C13C37'
+    } else {
+        color = '#02A938'
+    }
 
 
-        return (
-            <div className="results mt-4 container-wide">
-                <div className="container">
-                    <div className="container-main">
-                        <h1 className="upload-text">Plagiarism Detection
-                        Results: </h1>
-                    </div>
-                    <div style={{background:color}}>
-                        <div className="center col">
-                            <h2><strong>Similarity Percentage:
-                                &nbsp; {props.score} %</strong></h2>
-                        </div>
+    return (
+        <div className="results mt-4 container-wide">
+            <div className="container">
+                <div className="container-main">
+                    <h1 className="upload-text">Plagiarism Detection Results: </h1>
+                </div>
+                <div style={{ background: color }}>
+                    <div className="center col">
+                        <h2><strong>Submission 1 is {props.score}% similar to Submission 2</strong></h2>
                     </div>
                 </div>
             </div>
-        );
+        </div>
+    );
 }

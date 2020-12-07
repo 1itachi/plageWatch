@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import CodePage from './CodePage';
 import ReactSpeedometer from "react-d3-speedometer";
+import PlagResult from '../../customTypes/PlagiarismData';
 
 interface CodeState {
     plag_code1: string;
@@ -15,11 +16,11 @@ interface CodeState {
 
 interface CodeProps {
     index: number;
-    plagiarism_data: any;
+    plagiarism_data: PlagResult;
 }
 
 class CodeArea extends React.Component<CodeProps, CodeState> {
-    constructor(props: any) {
+    constructor(props: CodeProps) {
         super(props);
         this.state = {
             plag_code1: '',
@@ -32,7 +33,7 @@ class CodeArea extends React.Component<CodeProps, CodeState> {
         }
     }
 
-    componentDidUpdate(prevProps: any) {
+    componentDidUpdate(prevProps: CodeProps): void {
         const { plagiarism_data, index } = this.props;
         if (prevProps.plagiarism_data !== plagiarism_data || prevProps.index !== index) {
             if (plagiarism_data.submission1 !== undefined) {
@@ -41,11 +42,11 @@ class CodeArea extends React.Component<CodeProps, CodeState> {
         }
     }
 
-    componentDidMount() {
+    componentDidMount(): void {
         this.loadData();
     }
 
-    loadData() {
+    loadData(): void {
         const { plagiarism_data, index } = this.props;
         this.setState({
             plag_code1: plagiarism_data.submission1[plagiarism_data[index].submission1.file],
@@ -58,7 +59,7 @@ class CodeArea extends React.Component<CodeProps, CodeState> {
         });
     }
 
-    render() {
+    render(): ReactNode {
         const { plag_code1, plag_code2, plag_lines1, plag_lines2, plag_fileName1, plag_fileName2, plag_score } = this.state;
         return (
             <>

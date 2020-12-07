@@ -1,9 +1,10 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import './Navigation.css'
 import detect from './../../images/plagewatch.jpg'
 import { Navbar } from 'react-bootstrap';
+
 export default class NavBar extends React.Component {
-  render() {
+  render(): ReactNode {
     return (
       <Navbar
         collapseOnSelect
@@ -15,7 +16,7 @@ export default class NavBar extends React.Component {
           <img className="ml-4 plagewatch-image-style" src={detect} alt="detect" />
           <h1 className="mt-3 nav-text-style"> PlageWatch</h1>
         </div>
-       </Navbar>
+      </Navbar>
     );
   }
 }
