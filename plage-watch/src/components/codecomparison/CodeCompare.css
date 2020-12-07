@@ -24,8 +24,6 @@
 
 .speedometer{
     padding: 0px;
-    height: 250px;
-    width: 200px;
 }
 
 legend { 
@@ -50,7 +48,7 @@ legend {
 }
 
 .code-lines{
-    font-family: 'Consolas', 'Monaco', 'Lucida Sans', 'Dina', 'Arial', serif;   
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 .code-area-sub-name{
     font-size: 1.2rem;
