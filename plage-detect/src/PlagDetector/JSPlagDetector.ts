@@ -5,69 +5,67 @@ import {
 	PlagResult,
 	SimilarityLines,
 	SimilaritySubmissions,
-	SubmissionCode,
 	SubmissionMap,
 } from "../Types/PlagResultType"
 
+/**
+ * Class implements IPlagDetector for Javascript.
+ */
 class JSPlagDetector implements IPlagDetector {
 	private submission1: Array<babel.Node>
 	private submission2: Array<babel.Node>
 	private file1NameMap: SubmissionMap
 	private file2NameMap: SubmissionMap
-	// TODO: check whether this is needed?
-	private fileSubmission1: SubmissionCode
-	private fileSubmission2: SubmissionCode
 
+	//Constructor for JSPlagDetector.
 	constructor(
 		submission1: Array<babel.Node>,
 		submission2: Array<babel.Node>,
 		file1NameMap: SubmissionMap,
-		file2NameMap: SubmissionMap,
-		fileSubmission1: SubmissionCode,
-		fileSubmission2: SubmissionCode
+		file2NameMap: SubmissionMap
 	) {
 		this.submission1 = submission1
 		this.submission2 = submission2
 		this.file1NameMap = file1NameMap
 		this.file2NameMap = file2NameMap
-		this.fileSubmission1 = fileSubmission1
-		this.fileSubmission2 = fileSubmission2
 	}
 
 	detect(): PlagResult {
-		//loop through first submission
+	
 		let result: PlagResult = {} as PlagResult
 		let totalLinesInSubmission1: number = 0
 		let numberOfFilesMatched: number = 0
 		let numberOfLinesPlagiarised: number = 0
-
+		
+		// get all node from root nodes
 		const submission1Nodes: Array<Array<babel.Node>> = this.collectNodes(
 			this.submission1
 		)
 		const submission2Nodes: Array<Array<babel.Node>> = this.collectNodes(
 			this.submission2
 		)
-
+		
+		// loop through first submission.
 		submission1Nodes.forEach((file1: Array<babel.Node>, index1: number) => {
-			//calculate total number of lines in submission1
+			// calculate total number of lines in submission1.
 			totalLinesInSubmission1 += file1[0].loc.end.line
 			let linesPlagiarisedInFile: Set<number> = new Set()
-			//each node in the file
-			//check each file of submission 2
+			// each node in the file
+			// check each file of submission 2
 			submission2Nodes.forEach((file2: Array<babel.Node>, index2: number) => {
 				let lineSet1: Set<number> = new Set()
 				let lineSet2: Set<number> = new Set()
 
 				file1.forEach((node1: babel.Node) => {
-					//check if the node is sub-nested node
+					// check if the node is sub-nested node.
 					if (this.checkConditionHelper(node1)) {
-						//check each of nodes of submission 2
+						// check each of nodes of submission 2.
 						file2.forEach((node2: babel.Node) => {
-							//check if the node is sub-nested
+							// check if the node is sub-nested.
 							if (this.checkConditionHelper(node2)) {
-								//if plagiarism is found
+								// if plagiarism is found.
 								if (this.compareNodes(node1, node2) === true) {
-									//add lines to sets of file 1
+									// add lines to sets of file 1.
 									for (
 										let i: number = node1.loc.start.line;
 										i <= node1.loc.end.line;
@@ -77,7 +75,7 @@ class JSPlagDetector implements IPlagDetector {
 										linesPlagiarisedInFile.add(i)
 									}
 
-									//add lines to sets of file 2
+									// add lines to sets of file 2.
 									for (
 										let i: number = node2.loc.start.line;
 										i <= node2.loc.end.line;
@@ -90,8 +88,8 @@ class JSPlagDetector implements IPlagDetector {
 						})
 					}
 				})
-				//
-				//add the lines for respoective files
+				
+				// add the lines for respective files.
 				if (lineSet1.size !== 0 && lineSet2.size != 0) {
 					numberOfFilesMatched = numberOfFilesMatched + 1
 					let plageObject: SimilaritySubmissions = {} as SimilaritySubmissions
@@ -115,12 +113,12 @@ class JSPlagDetector implements IPlagDetector {
 				numberOfLinesPlagiarised + linesPlagiarisedInFile.size
 		})
 
-		result.submission1 = this.fileSubmission1
-		result.submission2 = this.fileSubmission2
+		// Calculate results score as a ration of all lines plagiarised to total number of lines present.
 		result.score = (numberOfLinesPlagiarised / totalLinesInSubmission1) * 100
 		return result
 	}
 
+	// helper method to collect all nodes from root nodes.
 	private collectNodes(rootNodes: Array<babel.Node>): Array<Array<babel.Node>> {
 		let nodesAcrossAllFiles: Array<Array<babel.Node>> = []
 		rootNodes.forEach((ele: babel.Node) => {
@@ -136,6 +134,7 @@ class JSPlagDetector implements IPlagDetector {
 		return nodesAcrossAllFiles
 	}
 
+	//helper method to check if the required keys exist in the object. 
 	private checkConditionHelper(node: any): boolean {
 		if (
 			_.has(node, "body") ||
@@ -154,14 +153,11 @@ class JSPlagDetector implements IPlagDetector {
 		} else return false
 	}
 
+	// Helper method to compare two node objects for similarity
 	private compareNodes(node1: babel.Node, node2: babel.Node): boolean {
-		//properties to ignore while comparing
+		// properties to ignore while comparing
 
-		//if one object is null and other isn't , they are not plagiarised
-		if ((node1 == null && node2 != null) || (node1 != null && node2 == null))
-			return false
-
-		//if both objects are null, flag them off as not plagiarised
+		// if both objects are null, flag them off as not plagiarised
 		if (node1 == null && node2 == null) return true
 
 		let ignoredProperties = [
@@ -178,7 +174,7 @@ class JSPlagDetector implements IPlagDetector {
 			"name",
 		]
 
-		//Logic to check the condition 9 * (5+10) && (5+10) * 9 is plagiarised
+		// Logic to check the condition 9 * (5+10) && (5+10) * 9 is plagiarised
 		if (
 			node1 != null &&
 			node2 != null &&
@@ -193,38 +189,28 @@ class JSPlagDetector implements IPlagDetector {
 			)
 		}
 
-		//Loop through properties in object 1
-		// TODO: is this var or can i change to let
-		for (var p in node1) {
-			if (ignoredProperties.includes(p)) continue
+		// Loop through properties in node 1
+		for (let key in node1) {
+			if (ignoredProperties.includes(key)) continue
 
-			//Check property exists on both objects
-			if (node1.hasOwnProperty(p) !== node2.hasOwnProperty(p)) return false
+			// Check property exists on both objects
+			if (node1.hasOwnProperty(key) !== node2.hasOwnProperty(key)) return false
 
-			switch (typeof node1[p]) {
-				//Deep compare objects
+			switch (typeof node1[key]) {
+				// Deep compare objects
 				case "object":
-					if (!this.compareNodes(node1[p], node2[p])) return false
+					if (!this.compareNodes(node1[key], node2[key])) return false
 					break
-				//Compare function code
-				case "function":
-					if (
-						typeof node2[p] == "undefined" ||
-						(p != "compare" && node1[p].toString() != node2[p].toString())
-					)
-						return false
-					break
-				//Compare values
+				// Compare values
 				default:
-					if (node1[p] != node2[p]) return false
+					if (node1[key] != node2[key]) return false
 			}
 		}
 
-		//Check object 2 for any extra properties
-		// TODO: is this var or can i change to let
-		for (var p in node2) {
-			if (ignoredProperties.includes(p)) continue
-			if (typeof node1[p] == "undefined") return false
+		// Check object 2 for any extra properties
+		for (let key in node2) {
+			if (ignoredProperties.includes(key)) continue
+			if (typeof node1[key] == "undefined") return false
 		}
 		return true
 	}
