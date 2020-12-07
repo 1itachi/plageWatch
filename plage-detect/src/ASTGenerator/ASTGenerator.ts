@@ -24,7 +24,7 @@ class ASTGenerator implements IASTGenerator {
     this.filePaths.forEach((path: string) => {
       let newPath: string = path.split(/Submission\d{1}[/\\]{1,2}/)[1]
       this.fileMap[counter] = newPath
-      nodes.push(babel.transformFileSync(path, { ast: true }).ast)
+      nodes.push(babel.transformFileSync(path, { ast: true, code:false }).ast)
       const content: string = fs.readFileSync(path, "utf-8")
       this.mapFileToContent[newPath] = content
       counter = counter + 1
