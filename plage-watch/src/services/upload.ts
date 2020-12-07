@@ -1,8 +1,8 @@
 import PlagResult from "../customTypes/PlagiarismData";
 
-const runUpload: Function = async (files: any):Promise<Array<PlagResult>>  => {
+const runUpload: Function = async (files: Array<Array<File>>):Promise<Array<PlagResult>>  => {
 
-    const data = new FormData()
+    const data: FormData = new FormData()
 
     let i: number=1;
     for (const file of files) {

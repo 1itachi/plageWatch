@@ -17,12 +17,8 @@ interface ComapareState {
     plagiarism_data: PlagResult;
 }
 
-interface CompareProps {
-    plagiarism_data: PlagResult;
-}
-
-class CodeCompare extends React.Component<CompareProps, ComapareState> {
-    constructor(props: CompareProps) {
+class CodeCompare extends React.Component<{}, ComapareState> {
+    constructor(props: {}) {
         super(props)
         this.state =
         {

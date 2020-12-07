@@ -1,16 +1,14 @@
 import './AboutPage.css'
-import React from "react";
+import React, { ReactNode } from "react";
 
 export default class About extends React.Component {
-
-
-    render() {
+    render(): ReactNode {
         return (
-            <div className="card-group">
+            <div className="card-group mt-4">
                 <div className="col-sm border-info mb-3">
                     <div className=" border border-info">
                         <div className="card text-center">
-                            <div className="card-header text-primary">
+                            <div className="card-header">
                                 What is PlageWatch?
                             </div>
                             <div className="card-body ">
@@ -51,7 +49,7 @@ export default class About extends React.Component {
                 <div className="col-sm border-info mb-3">
                     <div className=" border border-info">
                         <div className="card text-center">
-                            <div className="card-header text-primary">
+                            <div className="card-header">
                                 How PlageWatch can help to find similarities between two submissions?
                             </div>
                             <div className="card-body ">
@@ -86,7 +84,7 @@ export default class About extends React.Component {
                 <div className="col border-info mb-3">
                     <div className=" border border-info">
                         <div className="card text-center">
-                            <div className="card-header text-primary">
+                            <div className="card-header">
                                 How to use PlageWatch?
                             </div>
                             <div className="card-body ">
@@ -114,9 +112,7 @@ export default class About extends React.Component {
                                         User can see all the files in two submissions where the similarity was
                                         found.
                                     </li>
-    
                                 </ul>
-
                             </div>
                         </div>
                     </div>

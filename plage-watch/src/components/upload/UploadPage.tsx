@@ -1,18 +1,19 @@
-
-import React from "react"
+import React, { ReactNode } from "react"
 import "./UploadPage.css"
 import Drop from "./DropZone"
 import Results from "./../../components/results/Results"
 import { Button } from "react-bootstrap"
 import { LinkContainer } from "react-router-bootstrap"
 import { PieChart } from "react-minimal-pie-chart"
-import runPlag from "./../../services/upload"
-
+import runUpload from "./../../services/upload"
+import PieElement from "../../customTypes/PieElement";
+import { LabelStyles } from "../../customTypes/UploadBoxStyle"
+import PlagResult from "../../customTypes/PlagiarismData"
 
 const uploaded: boolean = true
 const notUploaded: boolean = false
 
-const defaultLabelStyle = {
+const defaultLabelStyle: LabelStyles = {
   fontSize: "25%",
   fontFamily: "Lucida Console, Courier, monospace",
 }
@@ -23,19 +24,19 @@ interface UploadState {
   displayResult: boolean
   displayProgress: boolean
   enableRunButton: boolean
-  submission1Files: any
-  submission2Files: any
-  displayCompare: boolean
-  displayError: any
-  score: number
+  submission1Files: Array<File>;
+  submission2Files: Array<File>;
+  displayCompare: boolean;
+  displayError: string | undefined;
+  score: number;
 }
 
 interface UploadProps {
-  toggleEmptyCheck: any
+  toggleEmptyCheck: Function
 }
 
 export default class Upload extends React.Component<UploadProps, UploadState> {
-  constructor(props: any) {
+  constructor(props: UploadProps) {
     super(props)
     this.state = {
       file1Uploaded: notUploaded,
@@ -46,7 +47,7 @@ export default class Upload extends React.Component<UploadProps, UploadState> {
       submission1Files: [],
       submission2Files: [],
       displayCompare: false,
-      displayError: [],
+      displayError: "",
       score: 0,
     }
 
@@ -56,37 +57,37 @@ export default class Upload extends React.Component<UploadProps, UploadState> {
   }
 
   /* Check for plagiarism, disable until the upload is completed. */
-  componentDidUpdate(prevProps: any) {
+  componentDidUpdate(): void {
     if (!this.state.enableRunButton) {
       const { file1Uploaded, file2Uploaded } = this.state
       if (file1Uploaded === uploaded && file2Uploaded === uploaded) {
         this.setState({ enableRunButton: true })
-        // this.setState({ checkedResults: true });
       }
     }
   }
 
-  uploadFile1(submissionFile: any) {
+  uploadFile1(submissionFile: Array<File>): void {
     this.setState({ file1Uploaded: true })
     this.setState({ submission1Files: submissionFile })
   }
 
-  uploadFile2(submissionFile: any) {
+  uploadFile2(submissionFile: Array<File>): void {
     this.setState({ file2Uploaded: true })
     this.setState({ submission2Files: submissionFile })
   }
 
-  async runPlagiarism() {
+  async runPlagiarism():  Promise<void>  {
     //dispaly progress bar
     await this.setState({
       displayProgress: true,
       displayResult: false,
       displayCompare: false,
+      displayError:"",
     })
 
     //api call to backend
 
-    const data: any = await runPlag([
+    const data: Array<PlagResult> = await runUpload([
       this.state.submission1Files,
       this.state.submission2Files,
     ])
@@ -107,8 +108,8 @@ export default class Upload extends React.Component<UploadProps, UploadState> {
           score: data[0].score,
         })
       }
-      const result: any = document.getElementById("result")
-      result.scrollIntoView({ behavior: "smooth" })
+      const result:HTMLElement|null  = document.getElementById("result")
+      result?.scrollIntoView({ behavior: "smooth" })
       //hide progress bar
       await this.setState({
         displayProgress: false,
@@ -118,7 +119,7 @@ export default class Upload extends React.Component<UploadProps, UploadState> {
     }
   }
 
-  data: any = () => {
+  data: Function = (): Array<PieElement> => {
     let { score } = this.state
     score = parseInt(score.toFixed(2))
     return [
@@ -127,11 +128,11 @@ export default class Upload extends React.Component<UploadProps, UploadState> {
     ]
   }
 
-  render() {
+  render(): ReactNode {
     return (
       <div className="m-4">
         <h1 className="center upload-text">
-          Upload Folders To Detect For Plagiarism!!
+          Upload Folders To Detect For Plagiarism
         </h1>
         <h3 className="m-4 center directions">
           Please upload two submissions to run plagiarism. Supported formats for
@@ -168,11 +169,9 @@ export default class Upload extends React.Component<UploadProps, UploadState> {
             </Button>
           </div>
           {this.state.displayError && (
-            <ErrorBoundary>
               <p className="center mt-3 error">
                 <code>{this.state.displayError}</code>
               </p>
-            </ErrorBoundary>
           )}
           {this.state.displayResult && (
             <div id="result" className="mt-2 p-4 center row">
@@ -205,7 +204,7 @@ export default class Upload extends React.Component<UploadProps, UploadState> {
                   animationDuration={500}
                   animationEasing="ease-out"
                   data={this.data()}
-                  label={({ dataEntry }) => {
+                  label={({ dataEntry }): string => {
                     if (dataEntry.value === 0) {
                       return (dataEntry.title = "")
                     }
