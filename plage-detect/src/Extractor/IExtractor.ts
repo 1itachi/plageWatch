@@ -1,5 +1,8 @@
+/**
+ * Provides methods to Extract zip files to given directory path.
+ */
 interface IExtractor {
-    extract(sourcepath: string, destinationPath: string):Promise<void>;
+  extract(sourcepath: string, destinationPath: string): Promise<void>
 }
 
-export default IExtractor;
+export default IExtractor

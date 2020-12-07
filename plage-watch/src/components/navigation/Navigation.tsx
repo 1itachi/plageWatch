@@ -14,9 +14,16 @@ export default class NavBar extends React.Component {
       >
         <div className="col-sm-6 row center">
           <img className="ml-4 plagewatch-image-style" src={detect} alt="detect" />
-          <h1 className="mt-3 nav-text-style"> PlageWatch</h1>
+          <a href={'Upload'}> <h1 className="mt-3 nav-text-style"> PlageWatch </h1></a>
         </div>
-      </Navbar>
+
+        <div className="col-sm-6 row center">
+          <span className="mt-3 nav-text-style">
+                      <i className="fas fa-book-reader"><a className="mt-3 nav-text-style" href={'About'}> About</a></i>
+          </span>
+        </div>
+
+       </Navbar>
     );
   }
 }

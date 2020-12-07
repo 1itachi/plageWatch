@@ -4,7 +4,7 @@ import './CodeCompare.css'
 import CodeArea from './CodeArea';
 import { LinkContainer } from 'react-router-bootstrap';
 import PlagResult from '../../customTypes/PlagiarismData';
-
+        
 const disabled: boolean = false;
 const enabled: boolean = true;
 const firstPage: number = 1;
@@ -16,9 +16,11 @@ interface ComapareState {
     plagiarism_count: number;
     plagiarism_data: PlagResult;
 }
+
 interface CompareProps {
     plagiarism_data: PlagResult;
 }
+
 class CodeCompare extends React.Component<CompareProps, ComapareState> {
     constructor(props: CompareProps) {
         super(props)
