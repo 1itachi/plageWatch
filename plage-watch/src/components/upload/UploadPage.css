@@ -43,9 +43,10 @@
     background-color: white;
   }
 
-  progress.plagiarism-check {
-    color: blue;
-    margin-left: 50%;
-    size: 150%;
-    width: 150px;
+
+  .error {
+    color: '#C13C37';
+    font-size: x-large;
+    text-align: center;
+    justify-content: center;
   }

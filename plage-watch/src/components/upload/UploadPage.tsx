@@ -169,7 +169,7 @@ export default class Upload extends React.Component<UploadProps, UploadState> {
           </div>
           {this.state.displayError && (
             <ErrorBoundary>
-              <p className="center mt-3 1.5em">
+              <p className="center mt-3 error">
                 <code>{this.state.displayError}</code>
               </p>
             </ErrorBoundary>

@@ -9,16 +9,16 @@ export default function Footer() {
                 <p className="footer-header col-sm-4 center"><u>CONTRIBUTORS</u></p>
                 <div className="row">
                     <a className="col-sm-3 footer-element mr-3 ml-3"
-                       href="https://www.linkedin.com/in/deepak-kumar-bb1810115/">Deepak Kumar <i
+                       href="https://www.linkedin.com/in/deepak-kumar-bb1810115/">Deepak Kumar<i
                         className="fab fa-linkedin"/></a>
                     <a className="col-sm-3 offset-sm-0 footer-element" href="https://www.linkedin.com/in/jasonlu123/">Jason
-                        Lu <i className="fab fa-linkedin"/></a>
+                        Lu<i className="fab fa-linkedin"/></a>
                 </div>
                 <div className="row">
                     <a className="col-sm-3 footer-element mr-3 ml-3"
-                       href="https://www.linkedin.com/in/sanket-ghanmare/"> Sanket Ghanmare <i
+                       href="https://www.linkedin.com/in/sanket-ghanmare/">Sanket Ghanmare<i
                         className="fab fa-linkedin"/></a>
-                    <a className="col-sm-3 footer-element" href="https://www.linkedin.com/in/vinaysj/">Vinay S.Joseph <i
+                    <a className="col-sm-3 footer-element" href="https://www.linkedin.com/in/vinaysj/">Vinay S.Joseph<i
                         className="fab fa-linkedin"/></a>
                 </div>
             </div>
