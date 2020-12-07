@@ -24,7 +24,7 @@ const MAX_FILE_SIZE = 15 * 1024 * 1024
  * @param response response sent back to client includes results of plagiarism or approriate error messages.
  */
 async function serveRequest(request: Request, response: Response): Promise<void> {
-    const form = formidable({ multiples: true })
+    const form = new formidable.IncomingForm()
 
     form.maxFileSize = MAX_FILE_SIZE;
     form.keepExtensions = true;
