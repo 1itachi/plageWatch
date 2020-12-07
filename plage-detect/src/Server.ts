@@ -3,7 +3,7 @@ import serveRequest from "./Routes/Service"
 import * as cors from "cors"
 require("dotenv").config()
 
-const port: string = process.env.API_SERVER_PORT || "8000"
+const port: string = process.env.PORT || "8000"
 const UI_ENDPOINT: string = process.env.UI_ENDPOINT || "http://localhost:3000"
 
 const app = express()

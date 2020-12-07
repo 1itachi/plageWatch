@@ -1,6 +1,7 @@
 import IPlagDetector from "./IPlagDetector"
 var _ = require("lodash")
 import * as babel from "@babel/core"
+import generate from "@babel/generator"
 import {
 	PlagResult,
 	SimilarityLines,
@@ -47,8 +48,11 @@ class JSPlagDetector implements IPlagDetector {
 		
 		// loop through first submission.
 		submission1Nodes.forEach((file1: Array<babel.Node>, index1: number) => {
+			
 			// calculate total number of lines in submission1.
-			totalLinesInSubmission1 += file1[0].loc.end.line
+			const codeTemp = generate(file1[0], {comments: false}).code
+			totalLinesInSubmission1 += codeTemp.replace(/^\s*\n/gm, "").split(/\n/gm).length
+			// file1[0].loc.end.line
 			let linesPlagiarisedInFile: Set<number> = new Set()
 			// each node in the file
 			// check each file of submission 2
@@ -156,7 +160,10 @@ class JSPlagDetector implements IPlagDetector {
 	// Helper method to compare two node objects for similarity
 	private compareNodes(node1: babel.Node, node2: babel.Node): boolean {
 		// properties to ignore while comparing
-
+		
+		//if one object is null and other isn't , they are not plagiarised
+		if(node1==null && node2!=null || node1!=null && node2==null) return false
+		
 		// if both objects are null, flag them off as not plagiarised
 		if (node1 == null && node2 == null) return true
 
