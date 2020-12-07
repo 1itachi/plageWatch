@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
+import { Color } from '../../customTypes/CommonTypes';
 
-const lightred: string = '#FFCCCB';
+const lightred: Color = '#FFCCCB';
 
-function CodeLine(props: any) {
-    let color: string = 'inherit';
+interface LineProps {
+    isPlagiarized: boolean;
+    line: string;
+    lineNo: number
+}
+
+function CodeLine(props: LineProps): ReactElement {
+    let color: Color = 'inherit';
     if (props.isPlagiarized) {
         color = lightred;
     }

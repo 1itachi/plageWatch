@@ -31,11 +31,11 @@ async function serveRequest(request: Request, response: Response): Promise<void>
 
     let results: Array<PlagResult> = []
 
-    await form.parse(request, async (error: Error, fields: FormidableFields, files: FormidableFiles): Promise<void> => {
+    await form.parse(request, async (error: Error, fields: FormidableFields, files: FormidableFiles): Promise<Response<void>> => {
 
         //If the file size is more than the set value
         if (error) {
-            response.status(400).send([{ "message": "Max File Size exceeded. Maximum size limit is 15mb." }])
+            return response.status(400).send([{ "message": "Max File Size exceeded. Maximum size limit is 15mb." }])
         }
 
         const compressedSub1: FormidableSubmission = files.submission1
@@ -51,7 +51,7 @@ async function serveRequest(request: Request, response: Response): Promise<void>
             } 
             //If extracting of files fail
             catch (error) {
-                response.status(400).send([{ "message": "Error in Extracting Files" }])
+                return response.status(400).send([{ "message": "Error in Extracting Files" }])
             }
 
             try {
@@ -64,23 +64,23 @@ async function serveRequest(request: Request, response: Response): Promise<void>
                 results.push(await plagiarismRunner.runPlagiarism(detectorFactory))
 
                 //Return results
-                response.status(200).send(results)
+                return response.status(200).send(results)
 
             } 
             //If there is an error in running plagiarism
             catch (error) {
                 //For empty directories
                 if (error['message'] === 'empty directory') {
-                    response.status(400).send([{ "message": ".zip files are either contains empty directories or No .js files are present inside directories." }])
+                    return response.status(400).send([{ "message": ".zip files are either contains empty directories or No .js files are present inside directories." }])
                 }
 
                 //Run plagiarism fails
-                response.status(400).send([{ "message": "Sorry something went wrong!!" }])
+               return response.status(400).send([{ "message": "Sorry something went wrong!!" }])
             }
         } 
         else {
             //Extra check to make sure only zip files are received
-            response.status(400).send([{ "message": "Only zip folders are accepted" }])
+            return response.status(400).send([{ "message": "Only zip folders are accepted" }])
         }
 
     })
