@@ -5,6 +5,7 @@ interface CodeProps {
     code: string;
     plagiarized_code_lines: Array<number>;
     filename: string;
+    index: number
 }
 
 function CodePage(props: CodeProps): ReactElement {
@@ -25,6 +26,7 @@ function CodePage(props: CodeProps): ReactElement {
     )
     return (
         <>
+        <h4 className='center'>Submission {props.index}</h4>
             <fieldset className='code-area'>
                 <legend className='code-area-sub-name'>{props.filename}</legend>
                 <div className='ml-0 overflow-auto code'>

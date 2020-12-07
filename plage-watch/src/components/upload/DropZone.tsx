@@ -1,5 +1,5 @@
 import React, { ReactElement, useMemo } from 'react';
-import {useDropzone, DropzoneState} from 'react-dropzone';
+import { useDropzone, DropzoneState } from 'react-dropzone';
 import { UploadBaseStyle, UploadBoxBorder } from '../../customTypes/UploadBoxStyle';
 
 const baseStyle: UploadBaseStyle = {
@@ -38,7 +38,6 @@ interface DropZoneProps {
 export default function StyledDropzone(props: DropZoneProps): ReactElement {
 
   const onDrop = (acceptedFiles: Array<File>): void => {
-    console.log(acceptedFiles)
     props.onChange(acceptedFiles);
   };
 
@@ -74,7 +73,7 @@ export default function StyledDropzone(props: DropZoneProps): ReactElement {
         </div>
         <div>
           {
-             props.submission.map((file: File, index: number) => <div key={index}>{file.name}  </div>)
+            props.submission.map((file: File, index: number) => <div key={index}>{file.name} </div>)
           }
         </div>
       </div>

@@ -62,13 +62,14 @@ class CodeArea extends React.Component<CodeProps, CodeState> {
     render(): ReactNode {
         const { plag_code1, plag_code2, plag_lines1, plag_lines2, plag_fileName1, plag_fileName2, plag_score } = this.state;
         return (
-            <>
+            <div className='pl-4 pr-4'>
                 <Row>
                     <Col lg={{ span: 5, order: 1 }} md={{ span: 12, order: 2 }} xs={{ span: 12, order: 2 }}>
                         <CodePage
                             code={plag_code1}
                             filename={plag_fileName1}
                             plagiarized_code_lines={plag_lines1}
+                            index={1}
                         />
                     </Col>
                     <Col lg={{ span: 2, order: 2 }} md={{ span: 3, order: 1 }} sm={{ span: 4, order: 1 }} xs={{ span: 5, order: 1 }} className='my-auto mx-auto speedometer'>
@@ -89,10 +90,11 @@ class CodeArea extends React.Component<CodeProps, CodeState> {
                             code={plag_code2}
                             filename={plag_fileName2}
                             plagiarized_code_lines={plag_lines2}
+                            index={2}
                         />
                     </Col>
                 </Row>
-            </>
+            </div>
         );
     }
 
