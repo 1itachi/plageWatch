@@ -40,7 +40,8 @@ describe('integration tests for student submissions directory', () => {
     it('test for plagiarism match in two empty files.',
         () => {
             let emptyBoth = plagiarismRunnerEmpty;
-            expect(emptyBoth.runPlagiarism.bind(emptyBoth, plagiarismFactory))
+            expect(emptyBoth.runPlagiarism.bind(emptyBoth,
+                plagiarismFactory))
                 .to.throw("empty directory");
         });
 
@@ -91,7 +92,8 @@ describe('integration tests for student submissions directory', () => {
     // requirements specific tests to avoid detection.
     it('test to avoid detection via renaming variables from'
         + 'number of plagiarisms.', () => {
-            let renamedDir1 = './tests/resources/Submission/Submission1';
+            let renamedDir1 =
+                './tests/resources/Submission/Submission1';
             let resultDetect1 = new PlagiarismRunner(dir1, renamedDir1).
                 runPlagiarism(plagiarismFactory);
             let resultDetect2 = new PlagiarismRunner(renamedDir1, dir1)
@@ -102,7 +104,8 @@ describe('integration tests for student submissions directory', () => {
 
     it('test to avoid detection via renaming variables from' +
         ' number of files.', () => {
-            let renamedDir2 = './tests/resources/Submission/Submission2';
+            let renamedDir2 =
+                './tests/resources/Submission/Submission2';
             let resultRename1 = new PlagiarismRunner(dir2, renamedDir2)
                 .runPlagiarism(plagiarismFactory);
             let resultRename2 = new PlagiarismRunner(renamedDir2, dir2)
@@ -113,8 +116,10 @@ describe('integration tests for student submissions directory', () => {
 
     it('test to avoid detection via extracing code into functions'
         + ' from number of plagiarisms.', () => {
-            let extractDir1 = './tests/resources/Submission/Submission1';
-            let extractDir2 = './tests/resources/Submission/Submission2';
+            let extractDir1 =
+                './tests/resources/Submission/Submission1';
+            let extractDir2 =
+                './tests/resources/Submission/Submission2';
             let resultExtract1 = new PlagiarismRunner(extractDir1,
                 extractDir2).runPlagiarism(plagiarismFactory);
             let resultExtract2 = new runPlagiarism(extractDir2,
@@ -193,8 +198,8 @@ describe('integration tests for student submissions directory', () => {
                 './tests/resources/Submission/Submission1';
             let functionSwapPlag =
                 './tests/resources/Submission/Submission2';
-            let resultFuncPlag = new PlagiarismRunner(whitespaceFuncPlag,
-                functionSwapPlag)
+            let resultFuncPlag = new PlagiarismRunner
+                (whitespaceFuncPlag, functionSwapPlag)
                 .runPlagiarism(plagiarismFactory);
             expect(_.keys(resultFuncPlag).length - 4).to.equal(0);
         });
