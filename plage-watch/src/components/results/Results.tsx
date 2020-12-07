@@ -22,7 +22,7 @@ export default function Results(props: PlageResultProps): ReactElement {
                     <h1 className="upload-text">Plagiarism Detection Results: </h1>
                 </div>
                 <div style={{ background: color, color: 'white' }}>
-                    <div className="center col">
+                    <div className="center">
                         <h2><strong>Submission 1 is {props.score}% similar to Submission 2</strong></h2>
                     </div>
                 </div>
