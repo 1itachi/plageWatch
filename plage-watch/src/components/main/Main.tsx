@@ -25,7 +25,7 @@ export default class MainPage extends React.Component<{}, PlagState> {
 
   render() {
     const { empty_check } = this.state
-    console.log(empty_check)
+
     return (
       <div>
         <BrowserRouter>

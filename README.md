@@ -1,4 +1,4 @@
-<h1 align="center"> Plage Watch <img src='/plage-watch/src/images/plagewatch.jpg' alt='logo' width=50px /></h1> 
+<h1 align="center"> <img src='/plage-watch/src/images/plagewatch.jpg' alt='logo' width=50px /> Plage Watch </h1> 
 
 ## A Web Application to detect plagiarism in Javascript files.
 
@@ -72,6 +72,18 @@ npm start
 8. Click `Go Back` button to return to the home screen to upload new submissions.
 
 ![goback](https://media.github.ccs.neu.edu/user/6143/files/5c719200-3410-11eb-9bc7-1929bd08acce)
+
+9. Click on `PlageWatch` icon at top left corner of nav bar and it will always redirect to `Home Page`.
+
+![Screen Shot 2020-12-06 at 9 52 44 AM](https://media.github.ccs.neu.edu/user/6143/files/fe92d080-37a8-11eb-894f-9f0dbdfd64f4)
+
+10. Click on `About` icon at top right corner of nav bar and it will redirect to `About Page`.
+
+![Screen Shot 2020-12-06 at 10 08 26 AM](https://media.github.ccs.neu.edu/user/6143/files/1bc89e80-37ab-11eb-86ac-f761bbe1a683)
+
+11. `About Page` has user guidelines, unique features of PlageWatch and some details of brain which works at the backend to find similarities between two .js files.
+
+![Screen Shot 2020-12-06 at 10 11 10 AM](https://media.github.ccs.neu.edu/user/6143/files/7661fa80-37ab-11eb-8b75-c174cf5a8517)
 
 
 ### Dependencies

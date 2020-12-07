@@ -2,8 +2,7 @@ import React from "react";
 import './Navigation.css'
 import detect from './../../images/plagewatch.jpg'
 import { Navbar } from 'react-bootstrap';
-import About from "../about/AboutPage";
-import Upload from "../upload/UploadPage";
+
 
 export default class NavBar extends React.Component {
   render() {

@@ -22,6 +22,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-/Submissions
-
-package-lock.json
+/src/Submissions/Submission1
+/src/Submissions/Submission2
