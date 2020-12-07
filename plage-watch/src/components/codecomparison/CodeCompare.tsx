@@ -3,7 +3,6 @@ import { Button, Row, Col } from 'react-bootstrap';
 import './CodeCompare.css'
 import CodeArea from './CodeArea';
 import { LinkContainer } from 'react-router-bootstrap';
-import { JsxEmit } from 'typescript';
 
 const disabled: boolean = false;
 const enabled: boolean = true;
@@ -16,10 +15,8 @@ interface ComapareState {
     plagiarism_count: number;
     plagiarism_data : any;
 }
-interface ComapareProps {
-    plagiarism_data: any;
-}
-class CodeCompare extends React.Component<ComapareProps, ComapareState> {
+
+class CodeCompare extends React.Component<{}, ComapareState> {
     constructor(props: any) {
         super(props)
         this.state =
