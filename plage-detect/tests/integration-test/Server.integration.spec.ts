@@ -30,7 +30,7 @@ let plagiarismRunnerNested = new PlagiarismRunner(dir1_deeply_nested,
 let plagiarismRunnerMultiple = new PlagiarismRunner
     (dir1_multi, dir2_multi);
 
-describe('integration tests for student submissions directory', () => {
+describe('Integration tests for student submissions directory', () => {
 
     // Plagiarism check for plagiarism matches between files.
     it('test for number of plagiarism matches with empty file.',
