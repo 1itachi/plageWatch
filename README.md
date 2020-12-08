@@ -99,6 +99,6 @@ npm start
 4. Typescript v4.0 and higher is used at Front end and Back end.
 5. Express v4.17.1 is used at server side.
 6. Mocha v8.1.3 & Chai v4.2.0 is used for Backend testing.
-7. We performed manual testing.
+7. We performed manual testing for front end.
 
 #### Refer to package.json present inside plage-detect and plage-watch directories.
