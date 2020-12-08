@@ -61,7 +61,7 @@ npm start
 
 6. After clicking `Compare Button` the application will navigate to below page where a file by file comparision is provided.
 
-![leftrightpane](https://media.github.ccs.neu.edu/user/6143/files/42d04a80-3410-11eb-90d4-fc6fee9de961)
+ <img width="1277" alt="Screen Shot 2020-12-07 at 9 33 33 PM" src="https://media.github.ccs.neu.edu/user/6143/files/f2eff880-38d3-11eb-8a6c-0030a09004a8">
 
 #### Note: The lines highlighted in red is detected as plagiarized.
 
