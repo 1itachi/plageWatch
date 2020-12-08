@@ -118,7 +118,14 @@ class JSPlagDetector implements IPlagDetector {
 		})
 
 		// Calculate results score as a ration of all lines plagiarised to total number of lines present.
-		result.score = (numberOfLinesPlagiarised / totalLinesInSubmission1) * 100
+		let score = (numberOfLinesPlagiarised / totalLinesInSubmission1) * 100
+
+		//if entire file is plagiarised
+		if (score>100){
+		    score = 100
+		}
+
+		result.score = score
 		return result
 	}
 
