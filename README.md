@@ -39,7 +39,7 @@ npm start
 1. Open Browser (Google Chrome, Safari, etc) and enter the URL `http://localhost:3000/home` on the browser.
 #### Note:- It will take some time to open for the first time on browser.
   
- <img width="1280" alt="Screen Shot 2020-12-07 at 9 30 09 PM" src="https://media.github.ccs.neu.edu/user/6143/files/76f5b080-38d3-11eb-9227-2bc6da7d565b">
+ ![Screen Shot 2020-12-08 at 9 53 23 AM](https://media.github.ccs.neu.edu/user/6143/files/55301400-393b-11eb-8cb3-4b7cb3752e29)
 
 2. Upload 2 submissions by clicking on the upload zone and selecting the zip files or by dragging and dropping the zip files in the drop zones.
 
