@@ -24,3 +24,7 @@ yarn-error.log*
 
 /src/Submissions/Submission1
 /src/Submissions/Submission2
+
+.nyc_output
+
+package-lock.json
