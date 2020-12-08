@@ -89,6 +89,8 @@ npm start
 
 ### [PlageWatch Web Application](https://plagewatch.netlify.app/)
 
+#### Backend is hosted on Heroku and Frontend is seperately hosted on Netlify.
+
 
 ### Dependencies
 1. Install TypeScript and Node if not already pre-installed into the local system. 
