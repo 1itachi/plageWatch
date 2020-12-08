@@ -85,6 +85,10 @@ npm start
 
 <img width="1278" alt="Screen Shot 2020-12-07 at 9 28 44 PM" src="https://media.github.ccs.neu.edu/user/6143/files/41e95e00-38d3-11eb-94cb-49173dd6b252">
 
+12. The live version of PlageWatch can seen on the below link:
+
+### 
+
 
 ### Dependencies
 1. Install TypeScript and Node if not already pre-installed into the local system. 
