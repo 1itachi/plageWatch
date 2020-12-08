@@ -53,7 +53,7 @@ npm start
 
 4. Result in the form of percentage and pie chart can be seen now.
 
-![image](https://media.github.ccs.neu.edu/user/6143/files/58447500-340e-11eb-9581-950468354194)
+ <img width="552" alt="Screen Shot 2020-12-07 at 10 02 28 PM" src="https://media.github.ccs.neu.edu/user/6143/files/f5ece800-38d7-11eb-84de-60ca36cdab16">
 
 5. Click on the `Compare` button to examine the code similarities side by side.
 
