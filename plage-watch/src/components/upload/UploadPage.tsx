@@ -135,8 +135,9 @@ export default class Upload extends React.Component<UploadProps, UploadState> {
           Upload Folders To Detect For Plagiarism
         </h1>
         <h3 className="m-4 center directions">
+          <span>
           Please upload two submissions to run plagiarism. Supported formats for
-          file transfer: .js
+          file transfer: .js <span className="size">(Max size: 15MB)</span></span> 
         </h3>
         <div className="container-fluid mx-auto">
           <div className=" mt-4 center sub-style">
@@ -176,7 +177,7 @@ export default class Upload extends React.Component<UploadProps, UploadState> {
           {this.state.displayResult && (
             <div id="result" className="mt-2 p-4 center row">
               <div className="mt-4 center sub-style">
-                <Results score={parseInt(this.state.score.toFixed(2))} />
+                <Results score={Math.round(this.state.score)} />
               </div>
 
               {this.state.displayCompare && (

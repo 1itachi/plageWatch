@@ -1,6 +1,6 @@
-import * as express from "express"
+import express from "express"
 import serveRequest from "./Routes/Service"
-import * as cors from "cors"
+import cors from "cors"
 require("dotenv").config()
 
 const port: string = process.env.PORT || "8000"
