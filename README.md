@@ -87,10 +87,9 @@ npm start
 
 12. The live version of PlageWatch can seen on the below link:
 
-### [PlageWatch Web Application](https://plagewatch.netlify.app/)
 
 #### Backend is hosted on Heroku and Frontend is seperately hosted on Netlify.
-
+The application can be found here: [PlageWatch Web Application](https://plagewatch.netlify.app/)
 
 ### Dependencies
 1. Install TypeScript and Node if not already pre-installed into the local system. 
