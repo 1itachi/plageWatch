@@ -1,0 +1,5 @@
+# Ignore everything in this directory
+# This directory is used to dum files after unzip
+*
+# Except this file
+!.gitignore

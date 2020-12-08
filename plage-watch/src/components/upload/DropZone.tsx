@@ -43,7 +43,7 @@ export default function StyledDropzone(props: DropZoneProps): ReactElement {
 
   const { getRootProps, getInputProps } = useDropzone({
     onDrop, accept:
-      '.zip'
+    '.zip', maxSize: 15 * 1024 * 1024
   });
 
   const {

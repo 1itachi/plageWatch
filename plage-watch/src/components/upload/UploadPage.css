@@ -50,3 +50,7 @@
     text-align: center;
     justify-content: center;
   }
+
+  .size {
+    font-size: medium;
+  }
