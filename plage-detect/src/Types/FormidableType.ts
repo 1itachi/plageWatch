@@ -7,13 +7,13 @@ export type FormidableFiles = {
 //Type for each zip file of Fomidable
 export type FormidableSubmission = {
 	size: number;
-    path: string;
-    name: string;
-    type: string;
-    lastModifiedDate?: Date;
-    hash?: string;
+	path: string;
+	name: string;
+	type: string;
+	lastModifiedDate?: Date;
+	hash?: string;
 
-    toJSON(): Object;
+	toJSON(): Object;
 }
 
 //Type for Fomidable Fields
