@@ -104,3 +104,5 @@ The application can be found here: [PlageWatch Web Application](https://plagewat
 #### [Manual Testing Results Wiki Page](https://github.ccs.neu.edu/CS-4530-5500-Fall-2020-Term-Project/Team-28/wiki)
 
 #### Refer to package.json present inside plage-detect and plage-watch directories.
+
+Make sure to delete tsconfig.json after downloading the application from the ```plage-watch``` folder. 
