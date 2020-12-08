@@ -99,5 +99,8 @@ The application can be found here: [PlageWatch Web Application](https://plagewat
 5. Express v4.17.1 is used at server side.
 6. Mocha v8.1.3 & Chai v4.2.0 is used for Backend testing.
 7. We performed manual testing for front end.
+8. Manual Testing details are present on the below Wiki link
+
+#### [Manual Testing Results Wiki Page](https://github.ccs.neu.edu/CS-4530-5500-Fall-2020-Term-Project/Team-28/wiki)
 
 #### Refer to package.json present inside plage-detect and plage-watch directories.
