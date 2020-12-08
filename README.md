@@ -87,7 +87,7 @@ npm start
 
 12. The live version of PlageWatch can seen on the below link:
 
-### ![PlageWatch](https://plagewatch.netlify.app/)
+### [PlageWatch Web Application](https://plagewatch.netlify.app/)
 
 
 ### Dependencies
