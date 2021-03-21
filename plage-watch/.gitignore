@@ -25,3 +25,5 @@ yarn-error.log*
 package-lock.json
 .netlify
 .idea
+tsconfig.json
+package-lock.json
