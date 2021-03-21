@@ -54,3 +54,8 @@
   .size {
     font-size: medium;
   }
+
+  .page-container {
+    position: relative;
+    min-height: 100vh;
+  }

@@ -5,6 +5,7 @@ import NavBar from "./../navigation/Navigation"
 import Upload from "./../upload/UploadPage"
 import Footer from "./../footer/Footer"
 import About from "./../about/AboutPage"
+import "./Main.css"
 
 interface PlagState {
   empty_check: boolean
@@ -27,7 +28,7 @@ export default class MainPage extends React.Component<{}, PlagState> {
     const { empty_check } = this.state
 
     return (
-      <div>
+      <div className= "page-container">
         <BrowserRouter>
           <NavBar />
 
@@ -43,7 +44,7 @@ export default class MainPage extends React.Component<{}, PlagState> {
 
             <Redirect from="/" to="/home" />
           </Switch>
-          <Footer />
+          <Footer/>
         </BrowserRouter>
       </div>
     )

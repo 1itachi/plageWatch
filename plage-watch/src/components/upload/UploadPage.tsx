@@ -130,7 +130,7 @@ export default class Upload extends React.Component<UploadProps, UploadState> {
 
   render(): ReactNode {
     return (
-      <div className="m-4">
+      <div className="m-4 page-container">
         <h1 className="center upload-text">
           Upload Folders To Detect For Plagiarism
         </h1>
